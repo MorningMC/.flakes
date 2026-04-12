@@ -20,12 +20,10 @@
 		wl-clipboard # Wayland clipboard service
 		cliphist # Clipboard manager
 		playerctl # MPRIS controller
-		brightnessctl # Monitor brightness controller
 		imagemagick # Used when screenshotting
-		slurp
 		matugen
-		bc # Command-line calculator used in scripts
 		curl
+		ydotool
 		
 		material-symbols # Contains icons
 		bibata-cursors

@@ -40,8 +40,14 @@
 				# Import Home Manager module
 				home-manager.nixosModules.default
 
-				# Import configuration entry
-				./configuration.nix
+				# Import global modules
+				./modules
+
+				# Import host configurations
+				./hosts/morningmc-laptop
+
+				# Import user configurations
+				./home/morningmc
 			];
 		};
 	};

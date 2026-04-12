@@ -2,7 +2,7 @@
 
 {
 	imports = [
-		./modules.nix
+		./packages.nix
 		./git.nix
 		./desktop.nix
 		./docker.nix

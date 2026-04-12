@@ -16,9 +16,15 @@
 		btop # System resource monitor
 		fastfetch
 		freerdp # Remote control
-		fzf # Fuzzy finder
 		qq
-		#wechat
+		wechat
+
+		# Command-line helpers
+		jq # JSON parser
+		fzf # Fuzzy finder
+		bc # Basic calculator used in scripts
+		slurp # Screenshot utility
+		brightnessctl # Monitor brightness controller
 
 		# Coding
 		# Enable JDK 21 & 17 (latest JDK should be enabled by program.java.enabled)
