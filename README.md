@@ -1,7 +1,10 @@
 # MorningMC's flakes
 
-These are the Nix flakes that i use to build my NixOS, softwares, etc. The flakes are aimed to arrange in a clear and maintainable way.
-You might refer to or use these flakes, but some flakes might not fit everyone as these are for my personal use.
+These are the Nix flakes that i use to build my NixOS system, packages, etc. The flakes are aimed to arrange in a clear and
+maintainable way. You might refer to or use these flakes, but some flakes might not fit everyone as these are for my personal use.
+
+Sometimes a `README.md` might be present in the root of a specific flake for further explanation of that flake. See
+[`README.md` in `nixos` flake](nixos/README.md) as a example.
 
 ## Usage
 
