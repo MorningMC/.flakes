@@ -4,6 +4,8 @@ This flake configures my system, which is available at `github:MorningMC/.flakes
 directly, but you are welcome to refer to or study this flake. Also acknowledging [@frsFallingSand](https://github.com/frsFallingSand)
 here as this flake hugely refers to his [nix-dots](https://github.com/frsFallingSand/nix-dots) and his explanation to me.
 
+Note that this flake depends on `quickshell` flake. For more information, refer to [global README](../README.md).
+
 ## Structure
 
 This flake has a clean and maintainable structure heavily inspired to [this repo](https://github.com/MCB-SMART-BOY/nixos-config). It
