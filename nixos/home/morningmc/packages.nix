@@ -15,7 +15,8 @@
 		kdePackages.bluedevil # Adds Bluetooth capabilities to KDE Plasma
 		btop # System resource monitor
 		fastfetch
-		freerdp # Remote control
+		freerdp # RDP client
+		#opendrop # AirDrop client
 		qq
 		wechat
 
@@ -33,6 +34,7 @@
 		# JetBrains IDEs
 		jetbrains.idea
 		jetbrains.webstorm
+		gemini-cli # Gemini command-line client
 
 		# Creative stuff
 		(blender.override { cudaSupport = true; })
