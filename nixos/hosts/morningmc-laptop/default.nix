@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
 	imports = [
 		./hardware.nix
 		./locale.nix

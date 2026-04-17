@@ -1,6 +1,4 @@
-{ config, pkgs, system, quickshell, ... }:
-
-{
+{ config, pkgs, system, quickshell, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		# Hypr ecosystem
 		hyprlock

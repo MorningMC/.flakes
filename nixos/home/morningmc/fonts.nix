@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
 	fonts = {
 		# Enable builtin fonts
 		enableDefaultPackages = true;
