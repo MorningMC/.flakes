@@ -10,7 +10,6 @@
 	# List packages installed in system profile. To search, run:
 	# $ nix search <package>
 	environment.systemPackages = with pkgs; [
-		ripgrep # Used by Neovim for searching
 	];
 
 	# Enable the OpenSSH daemon (NOT client)
@@ -49,14 +48,4 @@
 
 	# Allow passwordless wheel group
 	security.sudo.wheelNeedsPassword = false;
-
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-	# Open ports in the firewall.
-	# networking.firewall.allowedTCPPorts = [ ... ];
-	# networking.firewall.allowedUDPPorts = [ ... ];
-	# Or disable the firewall altogether.
-	# networking.firewall.enable = false;
 }

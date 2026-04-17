@@ -1,5 +1,5 @@
 {
-	description = "MorningMC's NixOS flake";
+	description = "NixOS System Flake";
 	
 	# Declare external dependencies
 	inputs = {

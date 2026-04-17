@@ -1,5 +1,5 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
+# your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, flake, ... }:
@@ -12,23 +12,31 @@
 		./locale.nix
 	];
 
-	# Enable Nix command & flakes
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+	nix = {
+		# Enable Nix command & flakes
+		settings.experimental-features = [ "nix-command" "flakes" ];
+
+		# Automatically optimise Nix store after building system
+		settings.auto-optimise-store = true;
+
+		# Configure Nix store optimizer
+		optimise = {
+			automatic = true;
+			dates = "weekly";
+		};
+
+		# Configure garbage cleaner
+		gc = {
+			automatic = false;
+			options = "--delete-older-than 1M";
+			dates = "monthly";
+		};
+	};
 
 	# Enable system auto-upgrade
 	system.autoUpgrade = {
 		enable = true;
 		inherit flake; # Use current flake
-		dates = "monthly";
-	};
-
-	# Configure Nix store optimizer
-	nix.settings.auto-optimise-store = true;
-
-	# Configure garbage cleaner
-	nix.gc = {
-		automatic = false;
-		options = "--delete-older-than 1m";
 		dates = "monthly";
 	};
 

@@ -9,6 +9,7 @@
 	# Bootloader configurations
 	boot.loader = {
 		systemd-boot.enable = true;
+		systemd-boot.configurationLimit = 5; # Limit generation entries in boot partition
 		timeout = 0;
 		efi.canTouchEfiVariables = true;
 	};
@@ -19,9 +20,6 @@
 		
 		# Enable networking
 		networkmanager.enable = true;
-		
-		# Enables wireless support via wpa_supplicant. Contradicts with networking.networkmanager.enable
-		#wireless.enable = true;
 	};
 
 	# Enable bluetooth
