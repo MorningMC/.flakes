@@ -13,10 +13,6 @@
 
 		dbus # Event bus
 		quickshell.packages.${system}.default # Quickshell from flake
-		
-		# KDE theme
-		kdePackages.breeze
-		kdePackages.breeze-icons
 
 		# Other utilities (used by Illogical Impulse)
 		inetutils # Provides hostname, ifconfig, ping, etc.
@@ -36,6 +32,17 @@
 	
 	# Enable Plasma 6 desktop environment
 	services.desktopManager.plasma6.enable = true;
+	environment.plasma6.excludePackages = with pkgs.kdePackages; [
+		kate
+		gwenview
+		okular
+		elisa
+		qrca
+		discover
+		konsole
+		spectacle
+		plasma-systemmonitor
+	];
 
 	programs = {
 		# Enable Hyprland & XWayland

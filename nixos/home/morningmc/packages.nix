@@ -10,9 +10,6 @@
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
 		thunderbird # Email client
-		kdePackages.systemsettings # KDE System Settings
-		kdePackages.plasma-nm # NetworkManager graphics interface
-		kdePackages.bluedevil # Adds Bluetooth capabilities to KDE Plasma
 		btop # System resource monitor
 		fastfetch
 		freerdp # RDP client
@@ -23,6 +20,7 @@
 		# Command-line helpers
 		jq # JSON parser
 		fzf # Fuzzy finder
+		ripgrep # Used by Neovim for searching
 		bc # Basic calculator used in scripts
 		slurp # Screenshot utility
 		brightnessctl # Monitor brightness controller
