@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
 	imports = [
 		./packages.nix
+		./flatpak.nix
 		./git.nix
 		./desktop.nix
 		./docker.nix

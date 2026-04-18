@@ -53,9 +53,6 @@
 	users.users.morningmc.shell = pkgs.zsh;
 
 	services = {
-		# Enable Flatpak
-		flatpak.enable = true;
-
 		# Enable MPD
 		mpd = {
 			enable = true;

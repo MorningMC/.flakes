@@ -12,6 +12,9 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# Use nix-flatpak to manage Flatpak declaratively
+		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
+
 		# Use Quickshell derivation flake as Quickshell is outdated in Nixpkgs
 		quickshell = {
 			url = "path:../quickshell";
@@ -20,15 +23,12 @@
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, quickshell, ... }: {
+	outputs = { self, nixpkgs, home-manager, nix-flatpak, quickshell, ... }: {
 
 		# Configure system for morningmc-laptop
 		nixosConfigurations.morningmc-laptop = let
-			# Declare hardware architecture
-			system = "x86_64-linux";
-
-			# Specify current flake's path
-			flake = "/home/morningmc/.flakes/nixos";
+			system = "x86_64-linux"; # Declare hardware architecture
+			flake = "/home/morningmc/.flakes/nixos"; # Specify current flake's path
 		in
 		nixpkgs.lib.nixosSystem {
 			inherit system;
@@ -39,6 +39,9 @@
 			modules = [
 				# Import Home Manager module
 				home-manager.nixosModules.default
+
+				# Import nix-flatpak module
+				nix-flatpak.nixosModules.nix-flatpak
 
 				# Import global modules
 				./modules
