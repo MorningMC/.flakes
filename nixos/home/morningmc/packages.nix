@@ -8,6 +8,8 @@
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
 		thunderbird # Email client
+		pwvucontrol # Volume controller
+		crosspipe # PipeWire device controller
 		btop # System resource monitor
 		fastfetch
 		freerdp # RDP client
@@ -45,7 +47,8 @@
 		rmpc # MPD client
 		mpd-mpris # Make MPD and other MPRIS controller compatible
 		haruna # Media player
-		yt-dlp
+		ffmpeg # Video / audio codec
+		yt-dlp # Video downloader
 		cava # Audio Visualizer
 	];
 

@@ -5,6 +5,7 @@
 		./git.nix
 		./desktop.nix
 		./docker.nix
+		./easytier.nix
 		./fcitx.nix
 		./fonts.nix
 	];

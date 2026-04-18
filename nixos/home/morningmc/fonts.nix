@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
 	fonts = {
+		# Enable backward portability
+		fontDir.enable = true;
+
 		# Enable builtin fonts
 		enableDefaultPackages = true;
 		
