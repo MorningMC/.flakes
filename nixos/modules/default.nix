@@ -5,7 +5,7 @@
 { config, flake, ... }: {
 	imports = [
 		./packages.nix
-		./nvidia.nix
+		./graphics.nix
 		./pipewire.nix
 		./locale.nix
 	];

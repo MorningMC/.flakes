@@ -10,7 +10,6 @@
 		thunderbird # Email client
 		pwvucontrol # Volume controller
 		crosspipe # PipeWire device controller
-		btop # System resource monitor
 		fastfetch
 		freerdp # RDP client
 		#opendrop # AirDrop client

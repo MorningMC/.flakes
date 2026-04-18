@@ -7,6 +7,7 @@
 		./docker.nix
 		./easytier.nix
 		./mpd.nix
+		./btop.nix
 		./fcitx.nix
 		./fonts.nix
 	];
