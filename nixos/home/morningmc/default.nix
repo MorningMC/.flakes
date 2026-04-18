@@ -2,10 +2,11 @@
 	imports = [
 		./packages.nix
 		./flatpak.nix
-		./git.nix
 		./desktop.nix
+		./git.nix
 		./docker.nix
 		./easytier.nix
+		./mpd.nix
 		./fcitx.nix
 		./fonts.nix
 	];
@@ -20,6 +21,21 @@
 	home-manager.users.morningmc = {
 		# Let Home Manager install and manage itself.
 		programs.home-manager.enable = true;
+
+		# Enable XDG user directories
+		xdg.userDirs = {
+			enable = true;
+
+			# Export environment variables to session
+			setSessionVariables = true;
+
+			# Disable unused directories
+			desktop = null;
+			publicShare = null;
+
+			# Add custom directories
+			extraConfig.WORKSPACES = "${config.users.users.morningmc.home}/Workspaces";
+		};
 		
 		# This value determines the Home Manager release that your configuration is
 		# compatible with. This helps avoid breakage when a new Home Manager release

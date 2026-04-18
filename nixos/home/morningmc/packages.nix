@@ -44,8 +44,6 @@
 		hmcl # Minecraft launcher
 
 		# Media stuff
-		rmpc # MPD client
-		mpd-mpris # Make MPD and other MPRIS controller compatible
 		haruna # Media player
 		ffmpeg # Video / audio codec
 		yt-dlp # Video downloader
@@ -56,12 +54,6 @@
 	users.users.morningmc.shell = pkgs.zsh;
 
 	services = {
-		# Enable MPD
-		mpd = {
-			enable = true;
-			startWhenNeeded = true;
-		};
-		
 		# Enable TUN mode of clash core
 		mihomo.tunMode = true;
 		
