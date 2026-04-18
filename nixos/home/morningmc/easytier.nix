@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
 	# Enable EasyTier
 	services.easytier = {
 		enable = true;
@@ -23,4 +23,7 @@
 			];
 		};
 	};
+
+	# Disable local instance from systemd by default
+	systemd.services.easytier-local.wantedBy = lib.mkForce [ ];
 }
