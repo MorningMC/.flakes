@@ -17,11 +17,12 @@
 		wechat
 
 		# Command-line helpers
+		curl
 		jq # JSON parser
 		fzf # Fuzzy finder
 		ripgrep # Used by Neovim for searching
 		bc # Basic calculator used in scripts
-		slurp # Screenshot utility
+		grim # Screenshot utility
 		brightnessctl # Monitor brightness controller
 
 		# Coding

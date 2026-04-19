@@ -21,8 +21,8 @@
 		cliphist # Clipboard manager
 		playerctl # MPRIS controller
 		imagemagick # Used when screenshotting
+		ddcutil
 		matugen
-		curl
 		
 		material-symbols # Contains icons
 		bibata-cursors
