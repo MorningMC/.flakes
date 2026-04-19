@@ -67,8 +67,11 @@
 		# Enable Zsh shell
 		zsh.enable = true;
 
-		# Enable JDKs
-		java.enable = true;
+		# Enable latest JDK & set JAVA_HOME (currently 25)
+		java = {
+			enable = true;
+			package = pkgs.jdk25;
+		};
 		
 		# Enable Clash Verge Rev
 		clash-verge = {

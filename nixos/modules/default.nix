@@ -22,20 +22,31 @@
 			automatic = true;
 			dates = "weekly";
 		};
-
-		# Configure garbage cleaner
-		gc = {
-			automatic = false;
-			options = "--delete-older-than 1M";
-			dates = "monthly";
-		};
 	};
 
 	# Enable system auto-upgrade
 	system.autoUpgrade = {
 		enable = true;
-		inherit flake; # Use current flake
+
+		# Run at the first day of every month
 		dates = "monthly";
+
+		# Use current flake
+		inherit flake;
+
+		# Update flake lock (this might cause breakage, but we have backups anyways)
+		flags = [
+			"--recreate-lock-file"
+			"--commit-lock-file"
+
+			# Specify commit message
+			"--option"
+			"commit-lockfile-summary"
+			"chore: update flake lock"
+		];
+
+		# Automatically collects garbage
+		runGarbageCollection = true;
 	};
 
 	# This value determines the NixOS release from which the default

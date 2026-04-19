@@ -29,12 +29,14 @@
 		# Enable NH command helper
 		nh = {
 			enable = true;
+			inherit flake; # Use current flake
+
+			# Setup garbage cleaner (this makes nix.gc obsolete)
 			clean = {
 				enable = true;
 				dates = "weekly";
 				extraArgs = "--keep 3 --keep-since 7d";
 			};
-			inherit flake; # Use current flake
 		};
 
 		# Enable AppImage support
