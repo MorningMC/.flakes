@@ -27,6 +27,17 @@
 		material-symbols # Contains icons
 		bibata-cursors
 	];
+
+	programs = {
+		# Enable Hyprland & XWayland
+		hyprland = {
+			enable = true;
+			xwayland.enable = true;
+		};
+
+		# Enable ydotool
+		ydotool.enable = true;
+	};
 	
 	# Enable Plasma 6 desktop environment
 	services.desktopManager.plasma6.enable = true;
@@ -41,17 +52,6 @@
 		spectacle
 		plasma-systemmonitor
 	];
-
-	programs = {
-		# Enable Hyprland & XWayland
-		hyprland = {
-			enable = true;
-			xwayland.enable = true;
-		};
-
-		# Enable ydotool
-		ydotool.enable = true;
-	};
 
 	# Enable XDG desktop portals
 	xdg.portal = {

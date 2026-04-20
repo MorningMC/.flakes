@@ -11,5 +11,8 @@
 			"org.gnome.Snapshot"
 			"org.gnome.SoundRecorder"
 		];
+
+		# Enable periodic update (run weekly by default)
+		update.auto.enable = true;
 	};
 }

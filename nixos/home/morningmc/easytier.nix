@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, flake, ... }: {
 	# Enable EasyTier
 	services.easytier = {
 		enable = true;
@@ -8,7 +8,7 @@
 
 		# Define instance configurations
 		instances.local = {
-			environmentFiles = [ "/home/morningmc/.flakes/nixos/home/morningmc/easytier.env.secret" ]; # Includes network secrets
+			environmentFiles = [ "${flake}/home/morningmc/easytier.env.secret" ]; # Includes network secrets
 			settings.dhcp = true; # Automatically allocate IP
 			settings.peers = [
 				"tcp://public.easytier.top:11010"
