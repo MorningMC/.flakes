@@ -3,10 +3,11 @@
 		./packages.nix
 		./flatpak.nix
 		./desktop.nix
+		./media.nix
+		./shell.nix
 		./git.nix
 		./docker.nix
 		./easytier.nix
-		./mpd.nix
 		./btop.nix
 		./fcitx.nix
 		./fonts.nix

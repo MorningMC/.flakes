@@ -8,8 +8,6 @@
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
 		thunderbird # Email client
-		pwvucontrol # Volume controller
-		crosspipe # PipeWire device controller
 		fastfetch
 		freerdp # RDP client
 		#opendrop # AirDrop client
@@ -42,16 +40,7 @@
 
 		# Gaming
 		hmcl # Minecraft launcher
-
-		# Media stuff
-		haruna # Media player
-		ffmpeg # Video / audio codec
-		yt-dlp # Video downloader
-		cava # Audio Visualizer
 	];
-
-	# Set default shell to Zsh
-	users.users.morningmc.shell = pkgs.zsh;
 
 	services = {
 		# Enable TUN mode of clash core
@@ -65,10 +54,7 @@
 	};
 
 	programs = {
-		# Enable Zsh shell
-		zsh.enable = true;
-
-		# Enable latest JDK & set JAVA_HOME (currently 25)
+		# Enable latest JDK as default Java (currently 25)
 		java = {
 			enable = true;
 			package = pkgs.jdk25;
