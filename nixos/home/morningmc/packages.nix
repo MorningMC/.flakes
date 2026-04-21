@@ -3,7 +3,6 @@
 	# $ nix search <package>
 	users.users.morningmc.packages = with pkgs; [
 		# Utilities
-		kitty # Terminal emulator
 		kdePackages.dolphin # File explorer
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
