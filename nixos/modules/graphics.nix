@@ -14,5 +14,12 @@
 		open = true; # Use open-source kernel module
 		modesetting.enable = true;
 		powerManagement.enable = true;
+
+		# Enable PRIME render offload support. PCI addresses is declared in specific host configurations.
+		prime.offload = {
+			enable = true;
+			enableOffloadCmd = config.hardware.nvidia.prime.offload.enable;
+			offloadCmdMainProgram = "prime-run"; # Follows conventional name
+		};
 	};
 }

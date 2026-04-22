@@ -2,13 +2,19 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, flake, ... }: {
+{ config, pkgs, flake, ... }: {
 	imports = [
 		./packages.nix
 		./graphics.nix
 		./pipewire.nix
 		./locale.nix
 	];
+
+	# Use vanilla Linux kernel.
+	boot.kernelPackages = pkgs.linuxPackages_latest;
+
+	# Enable SysRq functions
+	boot.kernel.sysctl."kernel.sysrq" = 1;
 
 	nix = {
 		# Enable Nix command & flakes

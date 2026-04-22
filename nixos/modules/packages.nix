@@ -1,7 +1,4 @@
 { config, pkgs, flake, ... }: {
-	# Use linux-zen kernel.
-	boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
