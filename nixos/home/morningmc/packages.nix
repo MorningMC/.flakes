@@ -6,8 +6,6 @@
 		kdePackages.dolphin # File explorer
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
-		thunderbird # Email client
-		fastfetch
 		freerdp # RDP client
 		#opendrop # AirDrop client
 		qq
@@ -29,7 +27,6 @@
 		# JetBrains IDEs
 		jetbrains.idea
 		jetbrains.webstorm
-		gemini-cli # Gemini command-line client
 
 		# Creative stuff
 		(blender.override { cudaSupport = true; })
@@ -52,24 +49,40 @@
 		logrotate.checkConfig = false;
 	};
 
-	programs = {
+	# Enable Clash Verge Rev
+	programs.clash-verge = {
+		enable = true;
+		tunMode = true;
+		serviceMode = true;
+	};
+
+	home-manager.users.morningmc.programs = {
 		# Enable latest JDK as default Java (currently 25)
 		java = {
 			enable = true;
 			package = pkgs.jdk25;
 		};
-		
-		# Enable Clash Verge Rev
-		clash-verge = {
-			enable = true;
-			tunMode = true;
-			serviceMode = true;
-		};
 
 		# Enable OBS Studio
-		obs-studio = {
+		obs-studio.enable = true;
+
+		# Enable Fastfetch
+		fastfetch.enable = true;
+
+		# Enable Gemini command-line client
+		gemini-cli.enable = true;
+
+		# Enable Thunderbird
+		thunderbird = {
 			enable = true;
-			enableVirtualCamera = true;
+
+			# Fix environment leak when launched from Quickshell.
+			package = (pkgs.symlinkJoin {
+				name = ".thunderbird-wrapper";
+				paths = [ pkgs.thunderbird ];
+				buildInputs = [ pkgs.makeWrapper ];
+				postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
+			});
 		};
 	};
 }
