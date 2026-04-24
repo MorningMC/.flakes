@@ -6,7 +6,13 @@
 	};
 
 	# Make graphics libraries discoverable by applications
-	environment.sessionVariables.LD_LIBRARY_PATH = [ "/run/opengl-driver/lib" ];
+	environment.sessionVariables = let
+		driversPath = [ "/run/opengl-driver/lib" ];
+	in
+	{
+		LIBGL_DRIVERS_PATH = driversPath;
+		LD_LIBRARY_PATH = driversPath;
+	};
 
 	# Enable Nvidia drivers
 	services.xserver.videoDrivers = [ "nvidia" ];

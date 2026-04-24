@@ -10,12 +10,6 @@
 		./locale.nix
 	];
 
-	# Use vanilla Linux kernel.
-	boot.kernelPackages = pkgs.linuxPackages_latest;
-
-	# Enable SysRq functions
-	boot.kernel.sysctl."kernel.sysrq" = 1;
-
 	nix = {
 		# Enable Nix command & flakes
 		settings.experimental-features = [ "nix-command" "flakes" ];
@@ -26,33 +20,8 @@
 		# Configure Nix store optimizer
 		optimise = {
 			automatic = true;
-			dates = "weekly";
+			dates = "daily";
 		};
-	};
-
-	# Enable system auto-upgrade
-	system.autoUpgrade = {
-		enable = true;
-
-		# Run at the first day of every month
-		dates = "monthly";
-
-		# Use current flake
-		inherit flake;
-
-		# Update flake lock (this might cause breakage, but we have backups anyways)
-		flags = [
-			"--recreate-lock-file"
-			"--commit-lock-file"
-
-			# Specify commit message
-			"--option"
-			"commit-lockfile-summary"
-			"chore: update flake lock"
-		];
-
-		# Automatically collects garbage
-		runGarbageCollection = true;
 	};
 
 	# This value determines the NixOS release from which the default

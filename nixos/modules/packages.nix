@@ -1,11 +1,16 @@
 { config, pkgs, flake, ... }: {
+	# Use stable Linux kernel.
+	boot.kernelPackages = pkgs.linuxPackages;
+
+	# Enable SysRq functions
+	boot.kernel.sysctl."kernel.sysrq" = 1;
+
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
 	# List packages installed in system profile. To search, run:
 	# $ nix search <package>
-	environment.systemPackages = with pkgs; [
-	];
+	environment.systemPackages = with pkgs; [ ];
 
 	# Enable the OpenSSH daemon (NOT client)
 	#services.openssh.enable = true;
@@ -31,7 +36,7 @@
 			# Setup garbage cleaner (this makes nix.gc obsolete)
 			clean = {
 				enable = true;
-				dates = "weekly";
+				dates = "daily";
 				extraArgs = "--keep 3 --keep-since 7d";
 			};
 		};
@@ -42,6 +47,9 @@
 			binfmt = true;
 		};
 	};
+
+	# Expose shared libraries to environment variables
+	environment.sessionVariables.LD_LIBRARY_PATH = [ "/run/current-system/sw/lib" ];
 
 	# Allow passwordless wheel group
 	security.sudo.wheelNeedsPassword = false;
