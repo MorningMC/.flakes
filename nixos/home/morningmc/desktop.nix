@@ -2,7 +2,6 @@
 	users.users.morningmc.packages = with pkgs; [
 		# Hypr ecosystem
 		hyprlock
-		hypridle
 		hyprpicker # Color picker
 		hyprshutdown # Graceful shutdown
 
@@ -53,32 +52,49 @@
 		konsole
 		spectacle
 		plasma-systemmonitor
+		kwallet
+		kwalletmanager
 	];
 
-	# Enable XDG desktop portals
-	xdg.portal = {
-		enable = true;
+	home-manager.users.morningmc = {
+		services = {
+			# Enable hypridle
+			hypridle.enable = true;
 
-		# Enable platform-specific portals.
-		extraPortals = with pkgs; [
-			xdg-desktop-portal-gtk
-		];
+			# Automatically start GNOME Keyring
+			gnome-keyring.enable = true;
 
-		# Use configurations provided by portals.
-		configPackages = config.xdg.portal.extraPortals;
+			# Enable Policykit agent
+			polkit-gnome.enable = true;
+		};
+
+		# Enable XDG desktop portals
+		xdg.portal = {
+			enable = true;
+
+			# Enable platform-specific portals.
+			extraPortals = with pkgs; [
+				xdg-desktop-portal-gtk
+			];
+
+			# Use configurations provided by portals.
+			configPackages = config.xdg.portal.extraPortals;
+		};
+
+		# Setup environment variables
+		home.sessionVariables = {
+			NIXOS_OZONE_WL = 1;
+			QT_QPA_PLATFORM = "wayland;xcb";
+			QT_QPA_PLATFORMTHEME = "kde";
+			XDG_MENU_PREFIX = "plasma-";
+			XDG_SESSION_TYPE = "wayland";
+			GDK_BACKEND = "wayland";
+		};
 	};
 
-	# Setup environment variables
-	home-manager.users.morningmc.home.sessionVariables = {
-		NIXOS_OZONE_WL = 1;
-		QT_QPA_PLATFORM = "wayland;xcb";
-		QT_QPA_PLATFORMTHEME = "kde";
-		XDG_MENU_PREFIX = "plasma-";
-		XDG_SESSION_TYPE = "wayland";
-		GDK_BACKEND = "wayland";
-	};
-	
-	# Secret agents
+	# Enable Policykit daemon
 	security.polkit.enable = true;
+
+	# Enable GNOME Keyring
 	services.gnome.gnome-keyring.enable = true;
 }
