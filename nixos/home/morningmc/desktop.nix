@@ -1,7 +1,8 @@
 { config, pkgs, system, quickshell, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		# Hypr ecosystem
-		hyprlock
+		hyprlock # Lock login session
+		hypridle # Idle management daemon
 		hyprpicker # Color picker
 		hyprshutdown # Graceful shutdown
 
@@ -58,9 +59,6 @@
 
 	home-manager.users.morningmc = {
 		services = {
-			# Enable hypridle
-			hypridle.enable = true;
-
 			# Automatically start GNOME Keyring
 			gnome-keyring.enable = true;
 
