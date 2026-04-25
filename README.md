@@ -31,7 +31,7 @@ in `inputs` of your flake, or pin to a specific commit using
 
 . Lock the commit in `flake.lock` is favorable as well.
 
-You are welcomed to fork or clone this repository, but be aware that that some flakes in this repository depends on each other.
+You are welcomed to fork or clone this repository, but be aware that some flakes in this repository depends on each other.
 If you are using a single flake locally, make sure it has no dependency or it is included in a Git repository **alongside with
-its dependencies**. Nix will treat a Git repository as a whole during evaluation. If the repository is absent, Nix will only copy
-that single flake to Nix store and fail during evaluation as the flake cannot find its dependency using relative path.
+its dependencies**, as Nix will treat a Git repository as a whole during evaluation. If the repository is absent, Nix will
+only copy that single flake to Nix store and fail during evaluation as the flake cannot find its dependency using relative path.
