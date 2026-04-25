@@ -1,10 +1,4 @@
 { config, pkgs, flake, ... }: {
-	# Use stable Linux kernel.
-	boot.kernelPackages = pkgs.linuxPackages;
-
-	# Enable SysRq functions
-	boot.kernel.sysctl."kernel.sysrq" = 1;
-
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
