@@ -24,9 +24,11 @@
 		ddcutil
 		matugen
 		
-		material-symbols # Contains icons
 		bibata-cursors
 	];
+
+	# Enable material symbols icon for Illogical Impulse
+	fonts.packages = with pkgs; [ material-symbols ];
 
 	programs = {
 		# Enable Hyprland & XWayland
