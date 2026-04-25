@@ -73,9 +73,7 @@
 			enable = true;
 
 			# Enable platform-specific portals.
-			extraPortals = with pkgs; [
-				xdg-desktop-portal-gtk
-			];
+			extraPortals = config.xdg.portal.extraPortals;
 
 			# Use configurations provided by portals.
 			configPackages = config.xdg.portal.extraPortals;
