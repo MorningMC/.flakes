@@ -5,6 +5,7 @@
 		./desktop.nix
 		./media.nix
 		./shell.nix
+		./terminal.nix
 		./git.nix
 		./docker.nix
 		./easytier.nix

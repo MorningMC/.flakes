@@ -14,7 +14,6 @@
 		# Command-line helpers
 		curl
 		jq # JSON parser
-		fzf # Fuzzy finder
 		ripgrep # Used by Neovim for searching
 		bc # Basic calculator used in scripts
 		grim # Screenshot utility
@@ -65,6 +64,12 @@
 
 		# Enable OBS Studio
 		obs-studio.enable = true;
+
+		# Enable Fuzzy Finder
+		fzf = {
+			enable = true;
+			enableZshIntegration = true;
+		};
 
 		# Enable Fastfetch
 		fastfetch.enable = true;
