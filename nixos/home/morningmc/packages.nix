@@ -13,8 +13,6 @@
 
 		# Command-line helpers
 		curl
-		jq # JSON parser
-		ripgrep # Used by Neovim for searching
 		bc # Basic calculator used in scripts
 		grim # Screenshot utility
 		brightnessctl # Monitor brightness controller
@@ -38,7 +36,7 @@
 	];
 
 	services = {
-		# Enable TUN mode of clash core
+		# Enable TUN mode of Clash core
 		mihomo.tunMode = true;
 		
 		# Enable Weechat (IRC client)
@@ -64,6 +62,12 @@
 
 		# Enable OBS Studio
 		obs-studio.enable = true;
+
+		# Enable command-line JSON processor
+		jq.enable = true;
+
+		# Enable Ripgrep
+		ripgrep.enable = true;
 
 		# Enable Fuzzy Finder
 		fzf = {

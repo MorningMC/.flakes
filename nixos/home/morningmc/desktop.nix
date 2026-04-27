@@ -9,8 +9,8 @@
 		# Hyprland plugins
 		hyprlandPlugins.hyprsplit
 
-		dbus # Event bus
-		quickshell.packages.${system}.default # Quickshell from flake
+		# Quickshell from flake
+		quickshell.packages.${system}.default
 
 		# Other utilities (used by Illogical Impulse)
 		inetutils # Provides hostname, ifconfig, ping, etc.
@@ -24,11 +24,15 @@
 		ddcutil
 		matugen
 		
+		# Cursor theme
 		bibata-cursors
 	];
 
 	# Enable material symbols icon for Illogical Impulse
 	fonts.packages = with pkgs; [ material-symbols ];
+
+	# Use modern broker D-Bus implementation
+	services.dbus.implementation = "broker";
 
 	programs = {
 		# Enable Hyprland & XWayland
