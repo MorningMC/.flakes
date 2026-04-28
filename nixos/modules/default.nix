@@ -4,6 +4,7 @@
 
 { config, pkgs, flake, ... }: {
 	imports = [
+		./kernel.nix
 		./packages.nix
 		./graphics.nix
 		./pipewire.nix
@@ -14,14 +15,9 @@
 		# Enable Nix command & flakes
 		settings.experimental-features = [ "nix-command" "flakes" ];
 
-		# Automatically optimise Nix store after building system
+		# Optimise Nix store daily & after building system
 		settings.auto-optimise-store = true;
-
-		# Configure Nix store optimizer
-		optimise = {
-			automatic = true;
-			dates = "daily";
-		};
+		optimise.automatic = true;
 	};
 
 	# This value determines the NixOS release from which the default

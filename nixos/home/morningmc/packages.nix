@@ -81,6 +81,9 @@
 		# Enable Gemini command-line client
 		gemini-cli.enable = true;
 
+		# Enable OnlyOffice desktop suite
+		onlyoffice.enable = true;
+
 		# Enable Thunderbird
 		thunderbird = {
 			enable = true;
