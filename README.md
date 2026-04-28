@@ -1,7 +1,7 @@
 # MorningMC's flakes
 ![GitHub License](https://img.shields.io/github/license/MorningMC/.flakes?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/MorningMC/.flakes?style=for-the-badge&color=blue)
-![GitHub repo size](https://img.shields.io/github/repo-size/MorningMC/.flakes)
+![GitHub last commit](https://img.shields.io/github/last-commit/MorningMC/.flakes?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/MorningMC/.flakes?style=for-the-badge)
 ![Nix Flake](https://img.shields.io/badge/Nix_Flake-5e81ac?logo=nixos&logoColor=d8dee9&style=for-the-badge)
 
 These are the Nix flakes that I use to build my NixOS system, packages, etc. The flakes are aimed to arrange in a clear and
