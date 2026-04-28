@@ -8,6 +8,7 @@
 		microsoft-edge # Web browser
 		freerdp # RDP client
 		#opendrop # AirDrop client
+		weechat # IRC client
 		qq
 		wechat
 
@@ -34,17 +35,6 @@
 		# Gaming
 		hmcl # Minecraft launcher
 	];
-
-	services = {
-		# Enable TUN mode of Clash core
-		mihomo.tunMode = true;
-		
-		# Enable Weechat (IRC client)
-		weechat.enable = true;
-		
-		# Fix cannot find name for group ID 30000 when building logrotate
-		logrotate.checkConfig = false;
-	};
 
 	# Enable Clash Verge Rev
 	programs.clash-verge = {
