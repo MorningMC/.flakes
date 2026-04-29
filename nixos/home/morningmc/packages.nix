@@ -6,8 +6,8 @@
 		kdePackages.dolphin # File explorer
 		kdePackages.filelight # Inspect filesystem usage
 		microsoft-edge # Web browser
+		libreoffice # Office suite
 		freerdp # RDP client
-		#opendrop # AirDrop client
 		weechat # IRC client
 		qq
 		wechat
@@ -70,9 +70,6 @@
 
 		# Enable Gemini command-line client
 		gemini-cli.enable = true;
-
-		# Enable OnlyOffice desktop suite
-		onlyoffice.enable = true;
 
 		# Enable Thunderbird
 		thunderbird = {
