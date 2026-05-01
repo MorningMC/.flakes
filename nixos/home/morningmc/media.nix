@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
-		ffmpeg-full # Video / audio codec
+		ffmpeg # Video / audio codec
 		yt-dlp # Video downloader
 		cava # Audio Visualizer
 		haruna # Media player

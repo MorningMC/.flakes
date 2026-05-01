@@ -29,7 +29,7 @@
 		# Creative stuff
 		(blender.override { cudaSupport = true; })
 		blockbench
-		gimp2-with-plugins # Image Editor
+		gimp # Image Editor
 		kdePackages.kdenlive # Video editor
 
 		# Gaming
