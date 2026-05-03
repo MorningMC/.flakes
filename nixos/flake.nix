@@ -20,10 +20,16 @@
 			url = "path:../quickshell";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		# Fetch Ly blackhole background
+		ly-blackhole = {
+			url = "https://codeberg.org/attachments/f336d6ac-8331-4323-91fc-0e4619803401";
+			flake = false;
+		};
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, nix-flatpak, quickshell, ... }: {
+	outputs = { self, nixpkgs, home-manager, nix-flatpak, quickshell, ly-blackhole, ... }: {
 
 		# Configure system for morningmc-laptop
 		nixosConfigurations.morningmc-laptop = let
@@ -34,7 +40,7 @@
 			inherit system;
 
 			# Declare arguments passed to modules
-			specialArgs = { inherit system flake quickshell; };
+			specialArgs = { inherit system flake quickshell ly-blackhole; };
 
 			modules = [
 				# Import Home Manager module

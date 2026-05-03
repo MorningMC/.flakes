@@ -1,4 +1,4 @@
-{ config, pkgs, flake, ... }: {
+{ config, pkgs, flake, ly-blackhole, ... }: {
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
@@ -11,6 +11,21 @@
 
 	# Enable systemd-resolved
 	services.resolved.enable = true;
+
+	# Enable Ly display manager
+	services.displayManager.ly = {
+		enable = true;
+
+		settings = {
+			# Specify background animation
+			animation = "dur_file";
+			dur_file_path = "${ly-blackhole}";
+			full_color = true; # Enable 256 color mode
+
+			# Enable clock widget
+			bigclock = true;
+		};
+	};
 
 	programs = {
 		# Disable Nano & switch to Neovim. A text editor is required to edit NixOS configurations.

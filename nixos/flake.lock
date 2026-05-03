@@ -36,6 +36,18 @@
         "type": "github"
       }
     },
+    "ly-blackhole": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-7M+0beB6GV1iD1OMFPGNeRjnAyZ4tYogbOEOTb3Edho=",
+        "type": "file",
+        "url": "https://codeberg.org/attachments/f336d6ac-8331-4323-91fc-0e4619803401"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://codeberg.org/attachments/f336d6ac-8331-4323-91fc-0e4619803401"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1767983141,
@@ -110,6 +122,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "ly-blackhole": "ly-blackhole",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "quickshell": "quickshell"
