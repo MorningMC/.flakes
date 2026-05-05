@@ -42,21 +42,13 @@
 			# Declare arguments passed to modules
 			specialArgs = { inherit system flake quickshell ly-blackhole; };
 
+			# Declare modules to include
 			modules = [
-				# Import Home Manager module
-				home-manager.nixosModules.default
-
-				# Import nix-flatpak module
-				nix-flatpak.nixosModules.nix-flatpak
-
-				# Import global modules
-				./modules
-
-				# Import host configurations
-				./hosts/morningmc-laptop
-
-				# Import user configurations
-				./home/morningmc
+				home-manager.nixosModules.default # Import Home Manager module
+				nix-flatpak.nixosModules.nix-flatpak # Import nix-flatpak module
+				./modules # Import global modules
+				./hosts/morningmc-laptop # Import host configurations
+				./home/morningmc # Import user configurations
 			];
 		};
 	};

@@ -11,14 +11,20 @@
 		./locale.nix
 	];
 
-	nix = {
+	nix.settings = {
 		# Enable Nix command & flakes
-		settings.experimental-features = [ "nix-command" "flakes" ];
+		experimental-features = [ "nix-command" "flakes" ];
 
-		# Optimise Nix store daily & after building system
-		settings.auto-optimise-store = true;
-		optimise.automatic = true;
+		# Optimise Nix store after building system
+		auto-optimise-store = true;
+
+		# Enable Cachix community cache
+		substituters = [ "https://nix-community.cachix.org" ];
+		trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 	};
+
+	# Optimise Nix store daily
+	nix.optimise.automatic = true;
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
