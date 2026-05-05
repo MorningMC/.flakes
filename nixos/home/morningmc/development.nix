@@ -1,4 +1,19 @@
 { config, pkgs, ... }: {
+	users.users.morningmc.packages = with pkgs; [
+		# JDK 21 & 17 (latest JDK should be enabled by program.java.enabled)
+		jdk21
+		jdk17
+
+		# Python runtimes
+		python3
+
+		# JetBrains IDEs
+		jetbrains.idea
+		jetbrains.webstorm
+
+		commitlint # Git commit message style check
+	];
+
 	home-manager.users.morningmc.programs = {
 		# Enable Git
 		git = {
@@ -22,8 +37,17 @@
 
 		# Enable LazyGit
 		lazygit.enable = true;
-	};
 
-	# Enable commitlint
-	users.users.morningmc.packages = with pkgs; [ commitlint ];
+		# Enable latest JDK as default Java (currently 25)
+		java = {
+			enable = true;
+			package = pkgs.jdk25;
+		};
+
+		# Enable Gradle
+		gradle.enable = true;
+
+		# Enable Gemini command-line client
+		gemini-cli.enable = true;
+	};
 }

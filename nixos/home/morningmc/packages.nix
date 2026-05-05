@@ -18,14 +18,6 @@
 		grim # Screenshot utility
 		brightnessctl # Monitor brightness controller
 
-		# Coding
-		# Enable JDK 21 & 17 (latest JDK should be enabled by program.java.enabled)
-		jdk21
-		jdk17
-		# JetBrains IDEs
-		jetbrains.idea
-		jetbrains.webstorm
-
 		# Creative stuff
 		(blender.override { cudaSupport = true; })
 		blockbench
@@ -44,15 +36,6 @@
 	};
 
 	home-manager.users.morningmc.programs = {
-		# Enable latest JDK as default Java (currently 25)
-		java = {
-			enable = true;
-			package = pkgs.jdk25;
-		};
-
-		# Enable OBS Studio
-		obs-studio.enable = true;
-
 		# Enable command-line JSON processor
 		jq.enable = true;
 
@@ -68,8 +51,8 @@
 		# Enable Fastfetch
 		fastfetch.enable = true;
 
-		# Enable Gemini command-line client
-		gemini-cli.enable = true;
+		# Enable OBS Studio
+		obs-studio.enable = true;
 
 		# Enable Thunderbird
 		thunderbird = {

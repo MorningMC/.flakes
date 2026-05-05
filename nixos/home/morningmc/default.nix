@@ -3,10 +3,10 @@
 		./packages.nix
 		./flatpak.nix
 		./desktop.nix
+		./development.nix
 		./media.nix
 		./shell.nix
 		./terminal.nix
-		./git.nix
 		./docker.nix
 		./easytier.nix
 		./btop.nix
