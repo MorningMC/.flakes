@@ -1,4 +1,4 @@
-{ config, pkgs, system, quickshell, ... }: {
+{ config, pkgs, system, inputs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		# Hypr ecosystem
 		hyprlock # Lock login session
@@ -10,7 +10,7 @@
 		hyprlandPlugins.hyprsplit
 
 		# Quickshell from flake
-		quickshell.packages.${system}.default
+		inputs.quickshell.packages.${system}.default
 
 		# Other utilities (used by Illogical Impulse)
 		inetutils # Provides hostname, ifconfig, ping, etc.

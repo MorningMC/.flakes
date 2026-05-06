@@ -29,7 +29,7 @@
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, nix-flatpak, quickshell, ly-blackhole, ... }: {
+	outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
 
 		# Configure system for morningmc-laptop
 		nixosConfigurations.morningmc-laptop = let
@@ -40,7 +40,7 @@
 			inherit system;
 
 			# Declare arguments passed to modules
-			specialArgs = { inherit system flake quickshell ly-blackhole; };
+			specialArgs = { inherit system flake inputs; };
 
 			# Declare modules to include
 			modules = [

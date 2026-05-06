@@ -1,4 +1,4 @@
-{ config, pkgs, flake, ly-blackhole, ... }: {
+{ config, pkgs, flake, inputs, ... }: {
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
@@ -19,7 +19,7 @@
 		settings = {
 			# Specify background animation
 			animation = "dur_file";
-			dur_file_path = "${ly-blackhole}";
+			dur_file_path = "${inputs.ly-blackhole}";
 			full_color = true; # Enable 256 color mode
 
 			# Enable clock widget
