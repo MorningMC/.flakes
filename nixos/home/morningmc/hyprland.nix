@@ -15,7 +15,4 @@
 		enable = true;
 		xwayland.enable = true;
 	};
-
-	# Use integrated GPU as primary renderer
-	home-manager.users.morningmc.home.sessionVariables.AQ_DRM_DEVICES = "/dev/dri/igpu:/dev/dri/dgpu";
 }

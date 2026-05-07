@@ -20,10 +20,4 @@ in
 		intelBusId = toNixPci integratedCardPci;
 		nvidiaBusId = toNixPci discreteCardPci;
 	};
-
-	# Create consistent device paths for graphics cards (required by Aquamarine)
-	services.udev.extraRules = ''
-		KERNEL=="card*", KERNELS=="${integratedCardPci}", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/igpu"
-		KERNEL=="card*", KERNELS=="${discreteCardPci}", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/dgpu"
-	'';
 }
