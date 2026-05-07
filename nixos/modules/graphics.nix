@@ -17,9 +17,17 @@
 	# Enable Nvidia drivers
 	services.xserver.videoDrivers = [ "nvidia" ];
 	hardware.nvidia = {
-		open = true; # Use open-source kernel module
+		# Use open-source kernel module
+		open = true;
+
+		# Enable kernel modesetting
 		modesetting.enable = true;
-		powerManagement.enable = true;
+
+		# Enable power management through systemd
+		powerManagement = {
+			enable = true;
+			finegrained = true; # Enable for PRIME offload
+		};
 
 		# Enable PRIME render offload support. PCI addresses is declared in specific host configurations.
 		prime.offload = {

@@ -1,14 +1,5 @@
 { config, pkgs, system, inputs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
-		# Hypr ecosystem
-		hyprlock # Lock login session
-		hypridle # Idle management daemon
-		hyprpicker # Color picker
-		hyprshutdown # Graceful shutdown
-
-		# Hyprland plugins
-		hyprlandPlugins.hyprsplit
-
 		# Quickshell from flake
 		inputs.quickshell.packages.${system}.default
 
@@ -34,16 +25,8 @@
 	# Use modern broker D-Bus implementation
 	services.dbus.implementation = "broker";
 
-	programs = {
-		# Enable Hyprland & XWayland
-		hyprland = {
-			enable = true;
-			xwayland.enable = true;
-		};
-
-		# Enable ydotool
-		ydotool.enable = true;
-	};
+	# Enable ydotool
+	programs.ydotool.enable = true;
 	
 	# Enable Plasma 6 desktop environment
 	services.desktopManager.plasma6.enable = true;

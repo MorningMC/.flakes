@@ -3,6 +3,7 @@
 		./packages.nix
 		./flatpak.nix
 		./desktop.nix
+		./hyprland.nix
 		./development.nix
 		./media.nix
 		./shell.nix

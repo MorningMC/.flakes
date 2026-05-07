@@ -1,6 +1,7 @@
 { config, ... }: {
 	imports = [
 		./hardware.nix
+		./graphics.nix
 	];
 
 	# Bootloader configurations

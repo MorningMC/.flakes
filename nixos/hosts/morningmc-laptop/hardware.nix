@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, system, ... }: {
+{ config, lib, modulesPath, system, ... }: {
 	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
 	boot = {
@@ -48,10 +48,4 @@
 
 	nixpkgs.hostPlatform = lib.mkDefault system;
 	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-	# Specify Intel & Nvidia PCI address as Nvidia PRIME requires these
-	hardware.nvidia.prime = {
-		intelBusId = "PCI:0@0:2:0";
-		nvidiaBusId = "PCI:2@0:0:0";
-	};
 }
