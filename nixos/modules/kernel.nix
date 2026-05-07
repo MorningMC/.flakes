@@ -1,7 +1,12 @@
 { config, pkgs, ... }: {
-	# Use stable Linux kernel.
-	boot.kernelPackages = pkgs.linuxPackages_zen;
+	boot = {
+		# Specify the Linux kernel used
+		kernelPackages = pkgs.linuxPackages_zen;
 
-	# Enable SysRq functions
-	boot.kernel.sysctl."kernel.sysrq" = 1;
+		# Enable SysRq functions
+		kernel.sysctl."kernel.sysrq" = 1;
+
+		# Fix ACPI Error on boot
+		blacklistedKernelModules = [ "acpi_power_meter" ];
+	};
 }
