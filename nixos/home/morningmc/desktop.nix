@@ -12,8 +12,10 @@
 		cliphist # Clipboard manager
 		playerctl # MPRIS controller
 		imagemagick # Used when screenshotting
+		kdePackages.kdialog # Used when choosing desktop
 		ddcutil
 		matugen
+		mpvpaper # Render dynamic wallpaper
 		
 		# Cursor theme
 		bibata-cursors
