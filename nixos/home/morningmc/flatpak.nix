@@ -5,11 +5,12 @@
 
 		# Declare packages to install
 		packages = [
-			"com.github.tchx84.Flatseal"
-			"com.usebottles.bottles"
+			"org.gnome.clocks"
 			"org.gnome.Calculator"
 			"org.gnome.Snapshot"
 			"org.gnome.SoundRecorder"
+			"com.github.tchx84.Flatseal"
+			"com.usebottles.bottles"
 		];
 
 		# Enable periodic update (run weekly by default)
