@@ -3,20 +3,20 @@
 		./packages.nix
 		./flatpak.nix
 		./desktop.nix
-		./hyprland.nix
 		./development.nix
 		./media.nix
 		./shell.nix
 		./terminal.nix
 		./docker.nix
-		./easytier.nix
 		./btop.nix
 		./mpvpaper.nix
 		./fcitx.nix
 		./fonts.nix
+		./hyprland
+		./easytier
 	];
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
+	# Define a user account. Don't forget to set a password with ‘passwd’
 	users.users.morningmc = {
 		isNormalUser = true;
 		description = "MorningMC";
@@ -24,7 +24,7 @@
 	};
 	
 	home-manager.users.morningmc = {
-		# Let Home Manager install and manage itself.
+		# Let Home Manager install and manage itself
 		programs.home-manager.enable = true;
 
 		# Enable XDG user directories
