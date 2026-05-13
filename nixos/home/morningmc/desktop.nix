@@ -15,7 +15,6 @@
 		kdePackages.kdialog # Used when choosing desktop
 		ddcutil
 		matugen
-		mpvpaper # Render dynamic wallpaper
 		
 		# Cursor theme
 		bibata-cursors
@@ -23,9 +22,6 @@
 
 	# Enable material symbols icon for Illogical Impulse
 	fonts.packages = with pkgs; [ material-symbols ];
-
-	# Use modern broker D-Bus implementation
-	services.dbus.implementation = "broker";
 
 	# Enable ydotool
 	programs.ydotool.enable = true;
@@ -47,14 +43,6 @@
 	];
 
 	home-manager.users.morningmc = {
-		services = {
-			# Automatically start GNOME Keyring
-			gnome-keyring.enable = true;
-
-			# Enable Policykit agent
-			polkit-gnome.enable = true;
-		};
-
 		# Enable XDG desktop portals
 		xdg.portal = {
 			enable = true;
@@ -72,14 +60,7 @@
 			QT_QPA_PLATFORM = "wayland;xcb";
 			QT_QPA_PLATFORMTHEME = "kde";
 			XDG_MENU_PREFIX = "plasma-";
-			XDG_SESSION_TYPE = "wayland";
 			GDK_BACKEND = "wayland";
 		};
 	};
-
-	# Enable Policykit daemon
-	security.polkit.enable = true;
-
-	# Enable GNOME Keyring
-	services.gnome.gnome-keyring.enable = true;
 }

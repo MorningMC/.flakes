@@ -11,6 +11,7 @@
 		./docker.nix
 		./easytier.nix
 		./btop.nix
+		./mpvpaper.nix
 		./fcitx.nix
 		./fonts.nix
 	];

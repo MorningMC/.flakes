@@ -6,24 +6,26 @@
 	# $ nix search <package>
 	environment.systemPackages = with pkgs; [ ];
 
-	# Enable the OpenSSH daemon (NOT client)
-	#services.openssh.enable = true;
+	services = {
+		# Use modern broker D-Bus implementation
+		dbus.implementation = "broker";
 
-	# Enable systemd-resolved
-	services.resolved.enable = true;
+		# Enable network name resolution daemon
+		resolved.enable = true;
 
-	# Enable Ly display manager
-	services.displayManager.ly = {
-		enable = true;
+		# Enable Ly display manager
+		displayManager.ly = {
+			enable = true;
 
-		settings = {
-			# Specify background animation
-			animation = "dur_file";
-			dur_file_path = "${inputs.ly-blackhole}";
-			full_color = true; # Enable 256 color mode
+			settings = {
+				# Specify background animation
+				animation = "dur_file";
+				dur_file_path = "${inputs.ly-blackhole}";
+				full_color = true; # Enable 256 color mode
 
-			# Enable clock widget
-			bigclock = true;
+				# Enable clock widget
+				bigclock = true;
+			};
 		};
 	};
 

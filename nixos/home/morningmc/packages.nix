@@ -35,36 +35,52 @@
 		serviceMode = true;
 	};
 
-	home-manager.users.morningmc.programs = {
-		# Enable command-line JSON processor
-		jq.enable = true;
+	home-manager.users.morningmc = {
+		services = {
+			# Automatically start GNOME Keyring
+			gnome-keyring.enable = true;
 
-		# Enable Ripgrep
-		ripgrep.enable = true;
-
-		# Enable Fuzzy Finder
-		fzf = {
-			enable = true;
-			enableZshIntegration = true;
+			# Enable Policykit agent
+			polkit-gnome.enable = true;
 		};
 
-		# Enable Fastfetch
-		fastfetch.enable = true;
+		programs = {
+			# Enable command-line JSON processor
+			jq.enable = true;
 
-		# Enable OBS Studio
-		obs-studio.enable = true;
+			# Enable Ripgrep
+			ripgrep.enable = true;
 
-		# Enable Thunderbird
-		thunderbird = {
-			enable = true;
+			# Enable Fuzzy Finder
+			fzf = {
+				enable = true;
+				enableZshIntegration = true;
+			};
 
-			# Fix environment leak when launched from Quickshell.
-			package = (pkgs.symlinkJoin {
-				name = ".thunderbird-wrapper";
-				paths = [ pkgs.thunderbird ];
-				buildInputs = [ pkgs.makeWrapper ];
-				postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
-			});
+			# Enable Fastfetch
+			fastfetch.enable = true;
+
+			# Enable OBS Studio
+			obs-studio.enable = true;
+
+			# Enable Thunderbird
+			thunderbird = {
+				enable = true;
+
+				# Fix environment leak when launched from Quickshell.
+				package = (pkgs.symlinkJoin {
+					name = ".thunderbird-wrapper";
+					paths = [ pkgs.thunderbird ];
+					buildInputs = [ pkgs.makeWrapper ];
+					postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
+				});
+			};
 		};
 	};
+
+	# Enable Policykit daemon
+	security.polkit.enable = true;
+
+	# Enable GNOME Keyring
+	services.gnome.gnome-keyring.enable = true;
 }
