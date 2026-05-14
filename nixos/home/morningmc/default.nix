@@ -3,17 +3,19 @@
 		./packages.nix
 		./flatpak.nix
 		./desktop.nix
+		./hyprland
+		./hypridle.nix
+		./hyprlock.nix
 		./development.nix
 		./media.nix
 		./shell.nix
 		./terminal.nix
 		./docker.nix
+		./easytier
 		./btop.nix
 		./mpvpaper.nix
 		./fcitx.nix
 		./fonts.nix
-		./hyprland
-		./easytier
 	];
 
 	# Define a user account. Don't forget to set a password with ‘passwd’
