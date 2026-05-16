@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 	# List packages installed in user profile. To search, run:
 	# $ nix search <package>
 	users.users.morningmc.packages = with pkgs; [
@@ -36,6 +36,9 @@
 	};
 
 	home-manager.users.morningmc = {
+		# Import Home Manager module required by comma
+		imports = [ inputs.nix-index-database.homeModules.nix-index ];
+
 		services = {
 			# Automatically start GNOME Keyring
 			gnome-keyring.enable = true;
@@ -52,13 +55,14 @@
 			ripgrep.enable = true;
 
 			# Enable Fuzzy Finder
-			fzf = {
-				enable = true;
-				enableZshIntegration = true;
-			};
+			fzf.enable = true;
 
 			# Enable Fastfetch
 			fastfetch.enable = true;
+
+			# Enable comma & nix-index
+			nix-index-database.comma.enable = true;
+			nix-index.enable = true;
 
 			# Enable OBS Studio
 			obs-studio.enable = true;
@@ -68,12 +72,12 @@
 				enable = true;
 
 				# Fix environment leak when launched from Quickshell.
-				package = (pkgs.symlinkJoin {
+				package = pkgs.symlinkJoin {
 					name = ".thunderbird-wrapper";
 					paths = [ pkgs.thunderbird ];
 					buildInputs = [ pkgs.makeWrapper ];
 					postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
-				});
+				};
 			};
 		};
 	};

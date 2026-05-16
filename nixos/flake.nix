@@ -15,6 +15,12 @@
 		# Use nix-flatpak to manage Flatpak declaratively
 		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
+		# Use nix-index-database to enable comma and its required database
+		nix-index-database = {
+			url = "github:nix-community/nix-index-database";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		# Use Quickshell derivation flake as Quickshell is outdated in Nixpkgs
 		quickshell = {
 			url = "path:../quickshell";
@@ -29,7 +35,7 @@
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
 
 		# Configure system for morningmc-laptop
 		nixosConfigurations.morningmc-laptop = let
@@ -45,7 +51,6 @@
 			# Declare modules to include
 			modules = [
 				home-manager.nixosModules.default # Import Home Manager module
-				nix-flatpak.nixosModules.nix-flatpak # Import nix-flatpak module
 				./modules # Import global modules
 				./hosts/morningmc-laptop # Import host configurations
 				./home/morningmc # Import user configurations
