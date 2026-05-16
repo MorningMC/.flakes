@@ -13,6 +13,9 @@
 		enable = true;
 		package = null; # Using system Hyprland package
 
+		# Specify configuration type
+		configType = "hyprlang"; # Default before Home Manager state version 26.05
+
 		# Source configurations
 		settings.source = "${config.users.users.morningmc.home}/.config/hypr/hyprland/*";
 
