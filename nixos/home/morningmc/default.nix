@@ -5,7 +5,7 @@
 		./desktop.nix
 		./hyprland
 		./hypridle.nix
-		./hyprlock.nix
+		./hyprlock
 		./development.nix
 		./media.nix
 		./shell.nix
