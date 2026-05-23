@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, system, ... }: {
+{ config, lib, modulesPath, ... }: {
 	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
 	boot = {
@@ -46,6 +46,6 @@
 		{ device = "/dev/disk/by-uuid/6eb5dd68-dfa0-400c-8e3e-1470849d272b"; }
 	];
 
-	nixpkgs.hostPlatform = lib.mkDefault system;
+	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

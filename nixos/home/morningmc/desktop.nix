@@ -1,7 +1,7 @@
-{ config, pkgs, system, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		# Quickshell from flake
-		inputs.quickshell.packages.${system}.default
+		inputs.quickshell.packages.${stdenv.hostPlatform.system}.default
 
 		# Other utilities (used by Illogical Impulse)
 		inetutils # Provides hostname, ifconfig, ping, etc.

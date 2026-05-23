@@ -38,15 +38,14 @@
 	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
 
 		# Configure system for morningmc-laptop
-		nixosConfigurations.morningmc-laptop = let
-			system = "x86_64-linux"; # Declare hardware architecture
-			flake = "/home/morningmc/.flakes/nixos"; # Specify current flake's path
-		in
-		nixpkgs.lib.nixosSystem {
-			inherit system;
-
+		nixosConfigurations.morningmc-laptop = nixpkgs.lib.nixosSystem {
 			# Declare arguments passed to modules
-			specialArgs = { inherit system flake inputs; };
+			specialArgs = {
+				inherit inputs;
+
+				# Specify current flake's path on filesystem
+				flake = "/home/morningmc/.flakes/nixos";
+			};
 
 			# Declare modules to include
 			modules = [
