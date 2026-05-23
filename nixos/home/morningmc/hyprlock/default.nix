@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
 	imports = [
 		./settings.nix
+		./media.nix
 	];
 
 	home-manager.users.morningmc = {

@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }: {
-	# Declare Hyprlock settings
+	# Declare Hyprlock configurations
 	home-manager.users.morningmc.programs.hyprlock.settings = {
 		"$font" = "JetbrainsMonoNL Nerd Font"; # Declare font family used to render text
 		"$text_color" = "rgb(DAE2FF)"; # Declare accent color used to render text
+		"$secondary_text_color" = "rgb(A3ABC6)"; # Declare secondary color used to render text
 
 		# Declare background style
 		background = {
@@ -39,7 +40,7 @@
 		label = [
 			# Display time
 			{
-				# Specify position and size
+				# Specify position
 				position = "0, 300";
 				halign = "center";
 				valign = "center";
@@ -53,21 +54,21 @@
 
 			# Display date
 			{
-				# Specify position and size
+				# Specify position
 				position = "0, 240";
 				halign = "center";
 				valign = "center";
 
 				# Declare text style
 				text = "cmd[update:5000] date \"+%Y-%m-%d %A\""; # Get date every 5 seconds
-				color = "$text_color";
+				color = "$secondary_text_color";
 				font_family = "$font";
-				font_size = 16;
+				font_size = 18;
 			}
 
 			# Display user
 			{
-				# Specify position and size
+				# Specify position
 				position = "0, 70";
 				halign = "center";
 				valign = "bottom";
@@ -82,31 +83,34 @@
 			# Display battery status
 			(let
 				# Declare shell script to fetch battery status
-				batteryStatus = pkgs.writeShellScript "battery-status" (lib.fileContents ./battery-status.sh);
+				batteryStatus = pkgs.writeShellApplication {
+					name = "battery-status";
+					text = lib.fileContents ./battery-status.sh;
+				};
 			in
 			{
-				# Specify position and size
+				# Specify position
 				position = "30, 30";
 				halign = "left";
 				valign = "bottom";
 
 				# Declare text style
-				text = "cmd[update:5000] ${batteryStatus}"; # Get battery status every 5 seconds
-				color = "$text_color";
+				text = "cmd[update:5000] ${lib.getExe batteryStatus}"; # Get battery status every 5 seconds
+				color = "$secondary_text_color";
 				font_family = "$font";
 				font_size = 14;
 			})
 
 			# Display keyboard layout
 			{
-				# Specify position and size
+				# Specify position
 				position = "-30, 30";
 				halign = "right";
 				valign = "bottom";
 
 				# Declare text style
 				text = "$LAYOUT";
-				color = "$text_color";
+				color = "$secondary_text_color";
 				font_family = "$font";
 				font_size = 14;
 			}

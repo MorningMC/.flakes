@@ -40,6 +40,9 @@
 		imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
 		services = {
+			# Enable Playerctl daemon
+			playerctld.enable = true;
+
 			# Automatically start GNOME Keyring
 			gnome-keyring.enable = true;
 

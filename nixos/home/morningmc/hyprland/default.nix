@@ -17,7 +17,7 @@
 		configType = "hyprlang"; # Default before Home Manager state version 26.05
 
 		# Source configurations
-		settings.source = "${config.users.users.morningmc.home}/.config/hypr/hyprland/*";
+		settings.source = "${config.home-manager.users.morningmc.xdg.configHome}/hypr/hyprland/*";
 
 		# Declare enabled plugins
 		plugins = with pkgs.hyprlandPlugins; [

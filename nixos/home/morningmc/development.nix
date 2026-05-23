@@ -28,7 +28,7 @@
 				user.name = "MorningMC";
 				user.email = "github@momc.qzz.io";
 
-				core.hooksPath = "${config.users.users.morningmc.home}/.config/scripts/githooks";
+				core.hooksPath = "${config.home-manager.users.morningmc.xdg.configHome}/scripts/githooks";
 				credential.helper = "libsecret";
 				init.defaultBranch = "main";
 				pull.rebase = false;
