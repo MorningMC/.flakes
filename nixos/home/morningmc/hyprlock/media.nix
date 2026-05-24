@@ -28,9 +28,6 @@
 			# Declare image style
 			rounding = 5;
 			border_size = 0;
-
-			# Register the command to execute when the widget is clicked
-			onclick = "pkill -SIGUSR2 --exact hyprlock"; # Click the album art to trigger a manual update
 		};
 
 		# Declare labels

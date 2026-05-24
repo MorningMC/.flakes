@@ -55,9 +55,6 @@
 				};
 
 				Service = {
-					# Wait for 0.1 seconds to prevent Hyprlock killed by SIGUSR2 in early stage
-					ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 0.1";
-
 					# Command executed on service start
 					ExecStart = lib.getExe script;
 
