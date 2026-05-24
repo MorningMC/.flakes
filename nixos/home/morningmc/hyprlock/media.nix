@@ -30,7 +30,7 @@
 			border_size = 0;
 
 			# Register the command to execute when the widget is clicked
-			onclick = "pkill -SIGUSR2 hyprlock"; # Click the album art to trigger a manual update
+			onclick = "pkill -SIGUSR2 --exact hyprlock"; # Click the album art to trigger a manual update
 		};
 
 		# Declare labels
