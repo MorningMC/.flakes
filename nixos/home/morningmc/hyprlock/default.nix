@@ -8,26 +8,65 @@
 		# Enable Hyprlock
 		programs.hyprlock.enable = true;
 
-		# Register Hyprlock as a Systemd service
-		systemd.user.services.hyprlock = let
-			# Specify required graphical session target
-			sessionTarget = [ config.home-manager.users.morningmc.wayland.systemd.target ];
-		in
-		{
-			Unit = {
-				Description = "hyprlock";
+		systemd.user.services = {
+			# Register Hyprlock as a Systemd service
+			hyprlock = let
+				# Specify required graphical session target
+				sessionTarget = [ config.home-manager.users.morningmc.wayland.systemd.target ];
+			in
+			{
+				Unit = {
+					Description = "hyprlock";
 
-				# Run only when specified target is active
-				BindsTo = sessionTarget;
-				After = sessionTarget;
+					# Run only when specified target is active
+					BindsTo = sessionTarget;
+					After = sessionTarget;
+				};
+
+				Service = {
+					# Command executed on service start
+					ExecStart = lib.getExe pkgs.hyprlock;
+
+					# Restart Hyprlock on failure
+					Restart = "on-failure";
+				};
 			};
 
-			Service = {
-				# Command executed on service start
-				ExecStart = lib.getExe pkgs.hyprlock;
+			# Register a deamon service to update Hyprlock when media matadata is changed
+			hyprlock-media-updater = let
+				# Specify required Hyprlock service
+				lockscreenTarget = [ "hyprlock.service" ];
 
-				# Restart Hyprlock on failure
-				Restart = "on-failure";
+				# Declare the shell script to execute
+				script = pkgs.writeShellApplication {
+					name = "hyprlock-media-updater";
+					runtimeInputs = [ pkgs.playerctl ];
+					text = lib.fileContents ./hyprlock-media-updater.sh;
+				};
+			in
+			{
+				Unit = {
+					Description = "Hyprlock media updater daemon";
+					Documentation = [ "man:playerctl(1)" ];
+
+					# Run only when specified target is active
+					BindsTo = lockscreenTarget;
+					After = lockscreenTarget;
+				};
+
+				Service = {
+					# Wait for 0.1 seconds to prevent Hyprlock killed by SIGUSR2 in early stage
+					ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 0.1";
+
+					# Command executed on service start
+					ExecStart = lib.getExe script;
+
+					# Restart service on failure
+					Restart = "on-failure";
+				};
+
+				# Run automatically after specified target hits
+				Install.WantedBy = lockscreenTarget;
 			};
 		};
 	};
