@@ -3,7 +3,7 @@
 	services.flatpak.enable = true;
 
 	home-manager.users.morningmc = {
-		# Import required Home Manager module
+		# Import nix-flatpak Home Manager module
 		imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
 		# Manage Flatpak by Home Manager

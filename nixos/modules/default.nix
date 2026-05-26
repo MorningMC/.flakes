@@ -6,6 +6,7 @@
 	imports = [
 		./kernel.nix
 		./packages.nix
+		./networking.nix
 		./graphics.nix
 		./pipewire.nix
 		./locale.nix

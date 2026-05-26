@@ -26,7 +26,3 @@ result-*
 
 # Ignore NixOS interactive test driver history
 **/.nixos-test-history
-
-### User defined
-# Secret
-*secret*

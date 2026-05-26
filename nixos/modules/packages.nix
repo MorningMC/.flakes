@@ -10,9 +10,6 @@
 		# Use modern broker D-Bus implementation
 		dbus.implementation = "broker";
 
-		# Enable network name resolution daemon
-		resolved.enable = true;
-
 		# Enable Ly display manager
 		displayManager.ly = {
 			enable = true;
@@ -53,10 +50,8 @@
 		};
 
 		# Enable AppImage support
-		appimage = {
-			enable = true;
-			binfmt = true;
-		};
+		appimage.enable = true;
+		appimage.binfmt = true;
 	};
 
 	# Expose shared libraries to environment variables

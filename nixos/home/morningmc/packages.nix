@@ -36,12 +36,12 @@
 	};
 
 	home-manager.users.morningmc = {
-		# Import Home Manager module required by comma
+		# Import nix-index database Home Manager module required by comma
 		imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
 		services = {
-			# Enable Playerctl daemon
-			playerctld.enable = true;
+			# Enable OpenSSH private key agent
+			ssh-agent.enable = true;
 
 			# Automatically start GNOME Keyring
 			gnome-keyring.enable = true;

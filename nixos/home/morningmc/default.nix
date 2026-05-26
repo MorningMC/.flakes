@@ -10,12 +10,13 @@
 		./media.nix
 		./shell.nix
 		./terminal.nix
-		./docker.nix
-		./easytier
+		./virtualisation.nix
+		./easytier.nix
 		./btop.nix
 		./mpvpaper.nix
 		./fcitx.nix
 		./fonts.nix
+		./secrets
 	];
 
 	# Define a user account. Don't forget to set a password with ‘passwd’

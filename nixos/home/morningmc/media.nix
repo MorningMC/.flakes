@@ -43,5 +43,8 @@
 
 		# Make MPD and other MPRIS controller compatible
 		mpd-mpris.enable = true;
+
+		# Enable MPRIS media player daemon
+		playerctld.enable = true;
 	};
 }

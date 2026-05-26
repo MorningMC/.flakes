@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }: {
 	# Enable mpvpaper & register as a Systemd service
 	home-manager.users.morningmc.systemd.user.services.mpvpaper = let
-		homeManager = config.home-manager.users.morningmc;
+		homeConfig = config.home-manager.users.morningmc;
 
 		# Declare wallpaper path
-		wallpaperPath = "${homeManager.xdg.userDirs.pictures}/Saved/desktop/nighttime.mp4";
+		wallpaperPath = "${homeConfig.xdg.userDirs.pictures}/Saved/desktop/nighttime.mp4";
 
 		# Specify required graphical session target
-		sessionTarget = [ homeManager.wayland.systemd.target ];
+		sessionTarget = [ homeConfig.wayland.systemd.target ];
 	in
 	{
 		Unit = {

@@ -1,4 +1,7 @@
-{ config, lib, flake, ... }: {
+{ config, lib, ... }: {
+	# Declare encrypted secrets
+	age.secrets.easytier-local.file = ./secrets/easytier-local.env.age;
+
 	# Enable EasyTier
 	services.easytier = {
 		enable = true;
@@ -8,8 +11,13 @@
 
 		# Define instance configurations
 		instances.local = {
-			environmentFiles = [ "${flake}/home/morningmc/easytier/.env.secret" ]; # Includes network secrets
-			settings.dhcp = true; # Automatically allocate IP
+			# Includes network secrets
+			environmentFiles = [ config.age.secrets.easytier-local.path ];
+
+			# Automatically allocate IP
+			settings.dhcp = true;
+
+			# Specify peer nodes to connect on service start
 			settings.peers = [
 				"tcp://public.easytier.top:11010"
 				"tcp://103.184.47.79:11010"
@@ -24,6 +32,6 @@
 		};
 	};
 
-	# Disable local instance from systemd by default
+	# Prevent starting on machine boot
 	systemd.services.easytier-local.wantedBy = lib.mkForce [ ];
 }

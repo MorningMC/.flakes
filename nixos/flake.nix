@@ -12,6 +12,14 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# Use agenix to encrypt secrets in flake
+		agenix = {
+			url = "github:ryantm/agenix";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.home-manager.follows = "home-manager";
+			inputs.darwin.follows = ""; # Not to download darwin dependencies
+		};
+
 		# Use nix-flatpak to manage Flatpak declaratively
 		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
@@ -35,8 +43,7 @@
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-
+	outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs: {
 		# Configure system for morningmc-laptop
 		nixosConfigurations.morningmc-laptop = nixpkgs.lib.nixosSystem {
 			# Declare arguments passed to modules
@@ -50,6 +57,8 @@
 			# Declare modules to include
 			modules = [
 				home-manager.nixosModules.default # Import Home Manager module
+				agenix.nixosModules.default # Import agenix module for secret encryption
+
 				./modules # Import global modules
 				./hosts/morningmc-laptop # Import host configurations
 				./home/morningmc # Import user configurations

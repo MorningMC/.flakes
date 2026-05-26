@@ -12,25 +12,11 @@
 		efi.canTouchEfiVariables = true;
 	};
 
-	networking = {
-		# Define your hostname.
-		hostName = "morningmc-laptop";
-		
-		# Enable networking
-		networkmanager.enable = true;
-	};
-
-	# Enable bluetooth
-	hardware.bluetooth.enable = true;
+	# Define the hostname of the machine
+	networking.hostName = "morningmc-laptop";
 
 	# Specify time zone.
 	time.timeZone = "Asia/Shanghai";
-
-	# Configure keymap in X11
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "";
-	};
 
 	# Ignore power key action. This prevents others pressing my power key >:(
 	services.logind.settings.Login = {
