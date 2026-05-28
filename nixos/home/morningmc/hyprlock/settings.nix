@@ -27,9 +27,10 @@
 			font_family = "$font";
 			font_color = "$text_color";
 
-			# Declare color
+			# Declare colors
 			inner_color = "rgb(14181D)";
 			outer_color = "rgb(282A2E)";
+			capslock_color = "rgb(FFFF00)"; # Change border color to yellow when capslock is active
 			outline_thickness = 1;
 
 			# Do not hide input field when no input

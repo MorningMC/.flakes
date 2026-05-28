@@ -1,34 +1,50 @@
 { config, lib, pkgs, ... }: {
 	# Declare media widgets in Hyprlock configurations
 	home-manager.users.morningmc.programs.hyprlock.settings = {
-		# Display media album art
-		image = let
-			# Declare where to store the album art
-			path = "/tmp/hyprlock-album-art.png";
+		# Declare images
+		image = [
+			# Display media album art
+			(let
+				# Declare shell script to fetch media album art image
+				fetchAlbumArt = pkgs.writeShellApplication {
+					name = "fetch-album-art";
+					runtimeInputs = with pkgs; [ curl playerctl imagemagick ];
+					text = lib.fileContents ./fetch-album-art.sh;
+				};
+			in
+			{
+				# Specify position and size
+				position = "-200, -200";
+				size = 150;
+				halign = "center";
+				valign = "center";
 
-			# Declare shell script to fetch media album art image
-			fetchAlbumArt = pkgs.writeShellApplication {
-				name = "fetch-album-art";
-				runtimeInputs = [ pkgs.curl pkgs.playerctl ];
-				text = lib.fileContents ./fetch-album-art.sh;
-			};
-		in
-		{
-			# Specify position and size
-			position = "-200, -200";
-			size = 150;
-			halign = "center";
-			valign = "center";
+				# Specify image loading script
+				reload_cmd = lib.getExe fetchAlbumArt;
+				reload_time = 0; # Reload when Hyprlock recieved SIGUSR2 update
 
-			# Specify image path
-			inherit path;
-			reload_cmd = lib.escapeShellArgs [ (lib.getExe fetchAlbumArt) path ];
-			reload_time = 0; # Reload when Hyprlock recieved SIGUSR2 update
+				# Declare image style
+				rounding = 10;
+				border_size = 0;
+				zindex = 1; # Render above the placeholder shape
+			})
+		];
 
-			# Declare image style
-			rounding = 5;
-			border_size = 0;
-		};
+		# Declare shapes
+		shape = [
+			# Display a placeholder of the media album art if the image is empty
+			{
+				# Specify position and size
+				position = "-200, -200";
+				size = "150, 150";
+				halign = "center";
+				valign = "center";
+
+				# Declare shape attributes
+				color = "rgba(808080B0)";
+				rounding = 10;
+			}
+		];
 
 		# Declare labels
 		label = let
@@ -43,7 +59,7 @@
 
 			# Utility function to construct a control button label
 			mkControlButton = xOffset: text: onClickSubcommand: {
-				# Specify position and size
+				# Specify position
 				position = "${toString xOffset}, -250";
 				halign = "center";
 				valign = "center";
@@ -61,13 +77,13 @@
 		[
 			# Display media title
 			{
-				# Specify position and size
+				# Specify position
 				position = "100, -150";
 				halign = "center";
 				valign = "center";
 
 				# Declare text style
-				text = getMediaMetadata "\\{{ title }}"; # Get media title every 5 seconds
+				text = getMediaMetadata "\\{{ trunc(title, 23) }}"; # Get media title and truncate to 23 characters
 				color = "$text_color";
 				font_family = "$font";
 				font_size = 14;
@@ -75,13 +91,13 @@
 
 			# Display media artist
 			{
-				# Specify position and size
+				# Specify position
 				position = "100, -180";
 				halign = "center";
 				valign = "center";
 
 				# Declare text style
-				text = getMediaMetadata "\\{{ artist }}"; # Get media artist every 5 seconds
+				text = getMediaMetadata "\\{{ trunc(artist, 33) }}"; # Get media artist and truncate to 33 characters
 				color = "$secondary_text_color";
 				font_family = "$font";
 				font_size = 10;
@@ -89,13 +105,13 @@
 
 			# Display media album
 			{
-				# Specify position and size
+				# Specify position
 				position = "100, -205";
 				halign = "center";
 				valign = "center";
 
 				# Declare text style
-				text = getMediaMetadata "\\{{ album }}"; # Get media album every 5 seconds
+				text = getMediaMetadata "\\{{ trunc(album, 41) }}"; # Get media album and truncate to 41 characters
 				color = "$secondary_text_color";
 				font_family = "$font";
 				font_size = 8;
@@ -103,14 +119,13 @@
 
 			# Display media position & length
 			{
-				# Specify position and size
+				# Specify position
 				position = "0, -250";
 				halign = "center";
 				valign = "center";
 
 				# Declare text style
-				# Get media position & length every second
-				text = getMediaMetadata "\\{{ duration(position) }} / \\{{ duration(mpris:length) }}";
+				text = getMediaMetadata "\\{{ duration(position) }} / \\{{ duration(mpris:length) }}"; # Get media position & length
 				color = "$secondary_text_color";
 				font_family = "$font";
 				font_size = 10;
