@@ -1,18 +1,6 @@
 { config, pkgs, ... }: {
-	# Enable hardware acceleration for graphics and videos
-	hardware.graphics = {
-		enable = true;
-		enable32Bit = true;
-	};
-
-	# Make graphics libraries discoverable by applications
-	environment.sessionVariables = let
-		driversPath = [ "/run/opengl-driver/lib" ];
-	in
-	{
-		LIBGL_DRIVERS_PATH = driversPath;
-		LD_LIBRARY_PATH = driversPath;
-	};
+	# Enable hardware acceleration for 32-bit applications
+	hardware.graphics.enable32Bit = config.hardware.graphics.enable;
 
 	# Enable Nvidia drivers
 	services.xserver.videoDrivers = [ "nvidia" ];

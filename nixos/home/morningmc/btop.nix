@@ -4,10 +4,7 @@
 		name = ".btop-wrapped";
 		paths = [ pkgs.btop ];
 		buildInputs = [ pkgs.makeWrapper ];
-		postBuild = ''
-			wrapProgram $out/bin/btop \
-			--set LD_LIBRARY_PATH "${config.environment.sessionVariables.LD_LIBRARY_PATH}"
-		'';
+		postBuild = "wrapProgram $out/bin/btop --set LD_LIBRARY_PATH /run/opengl-driver/lib";
 	};
 in
 {

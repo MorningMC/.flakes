@@ -54,9 +54,6 @@
 		appimage.binfmt = true;
 	};
 
-	# Expose shared libraries to environment variables
-	environment.sessionVariables.LD_LIBRARY_PATH = [ "/run/current-system/sw/lib" ];
-
 	# Allow passwordless wheel group
 	security.sudo.wheelNeedsPassword = false;
 }
