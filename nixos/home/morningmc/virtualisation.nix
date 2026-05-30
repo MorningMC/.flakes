@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 	# Declare encrypted secrets used
-	age.secrets.docker-windows.file = ./secrets/docker-windows.env.age;
+	age.secrets.docker-windows.file = ./_secrets/docker-windows.env.age;
 
 	# Enable Docker
 	virtualisation.docker = {
@@ -16,9 +16,6 @@
 
 	# Make the user accessible to docker containers
 	users.users.morningmc.extraGroups = [ "docker" ];
-
-	# Enable LazyDocker
-	home-manager.users.morningmc.programs.lazydocker.enable = true;
 
 	# Declare containers
 	virtualisation.oci-containers = {

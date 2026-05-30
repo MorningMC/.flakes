@@ -2,9 +2,9 @@
 	# Install agenix CLI tool
 	users.users.morningmc.packages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
-	# Declare path to recipient keys
+	# Declare path to host recipient keys
 	age.identityPaths = [
-		"${config.users.users.morningmc.home}/.ssh/id_ed25519"
-		"${config.users.users.morningmc.home}/.ssh/id_rsa"
+		"/etc/ssh/ssh_host_ed25519_key"
+		"/etc/ssh/ssh_host_rsa_key"
 	];
 }

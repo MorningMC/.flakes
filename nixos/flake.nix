@@ -5,7 +5,7 @@
 	inputs = {
 		# The Nixpkgs channel used
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-		
+
 		# Use Home Manager to manage home directories
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -43,9 +43,9 @@
 	};
 	
 	# Declare complete sets of NixOS configurations
-	outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs: {
+	outputs = inputs: {
 		# Configure system for morningmc-laptop
-		nixosConfigurations.morningmc-laptop = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.morningmc-laptop = inputs.nixpkgs.lib.nixosSystem {
 			# Declare arguments passed to modules
 			specialArgs = {
 				inherit inputs;
@@ -56,8 +56,8 @@
 
 			# Declare modules to include
 			modules = [
-				home-manager.nixosModules.default # Import Home Manager module
-				agenix.nixosModules.default # Import agenix module for secret encryption
+				inputs.home-manager.nixosModules.default # Import Home Manager module
+				inputs.agenix.nixosModules.default # Import agenix module for secret encryption
 
 				./modules # Import global modules
 				./hosts/morningmc-laptop # Import host configurations

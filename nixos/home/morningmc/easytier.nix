@@ -1,6 +1,6 @@
 { config, lib, ... }: {
 	# Declare encrypted secrets
-	age.secrets.easytier-local.file = ./secrets/easytier-local.env.age;
+	age.secrets.easytier-local.file = ./_secrets/easytier-local.env.age;
 
 	# Enable EasyTier
 	services.easytier = {

@@ -16,7 +16,7 @@
 		./mpvpaper.nix
 		./fcitx.nix
 		./fonts.nix
-		./secrets
+		./agenix.nix
 	];
 
 	# Define a user account. Don't forget to set a password with ‘passwd’
