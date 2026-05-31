@@ -1,9 +1,4 @@
 { config, lib, pkgs, ... }: {
-	imports = [
-		./settings.nix
-		./media.nix
-	];
-
 	home-manager.users.morningmc = {
 		# Enable Hyprlock
 		programs.hyprlock.enable = true;

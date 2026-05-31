@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
 	# Use NetworkManager to manage network interfaces
 	networking.networkmanager.enable = true;
 

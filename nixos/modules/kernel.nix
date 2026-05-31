@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	boot = {
 		# Specify the Linux kernel used
 		kernelPackages = pkgs.linuxPackages_zen;

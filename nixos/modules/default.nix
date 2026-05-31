@@ -3,15 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, flake, ... }: {
-	imports = [
-		./kernel.nix
-		./packages.nix
-		./networking.nix
-		./graphics.nix
-		./pipewire.nix
-		./locale.nix
-	];
-
 	nix.settings = {
 		# Enable Nix command & flakes
 		experimental-features = [ "nix-command" "flakes" ];

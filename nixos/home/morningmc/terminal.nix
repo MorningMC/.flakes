@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
 	# Enable Kitty terminal emulator
 	home-manager.users.morningmc.programs.kitty = {
 		enable = true;

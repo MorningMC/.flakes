@@ -1,10 +1,6 @@
-{ config, pkgs, flake, inputs, ... }: {
+{ flake, inputs, ... }: {
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
-
-	# List packages installed in system profile. To search, run:
-	# $ nix search <package>
-	environment.systemPackages = with pkgs; [ ];
 
 	services = {
 		# Use modern broker D-Bus implementation

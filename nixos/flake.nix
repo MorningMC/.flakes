@@ -6,6 +6,9 @@
 		# The Nixpkgs channel used
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		# Use import-tree to recursively import Nix files
+		import-tree.url = "github:denful/import-tree";
+
 		# Use Home Manager to manage home directories
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -56,12 +59,9 @@
 
 			# Declare modules to include
 			modules = [
-				inputs.home-manager.nixosModules.default # Import Home Manager module
-				inputs.agenix.nixosModules.default # Import agenix module for secret encryption
-
-				./modules # Import global modules
-				./hosts/morningmc-laptop # Import host configurations
-				./home/morningmc # Import user configurations
+				(inputs.import-tree ./modules) # Import global modules
+				(inputs.import-tree ./hosts/morningmc-laptop) # Import host configurations
+				(inputs.import-tree ./home/morningmc) # Import user configurations
 			];
 		};
 	};

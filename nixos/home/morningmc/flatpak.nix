@@ -1,4 +1,4 @@
-{ config, inputs, ... }: {
+{ inputs, ... }: {
 	# Enable Flatpak
 	services.flatpak.enable = true;
 

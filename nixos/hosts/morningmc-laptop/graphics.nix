@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ lib, ... }: let
 	# Utility function to convert standard PCI format to Nix format
 	toNixPci = standardPci: let
 		parts = builtins.filter builtins.isString (builtins.split "[:.]" standardPci);

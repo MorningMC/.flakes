@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	# Enable Fcitx5
 	home-manager.users.morningmc.i18n.inputMethod = {
 		enable = true;

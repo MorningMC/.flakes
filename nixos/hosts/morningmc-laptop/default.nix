@@ -1,9 +1,4 @@
-{ config, ... }: {
-	imports = [
-		./hardware.nix
-		./graphics.nix
-	];
-
+{
 	# Bootloader configurations
 	boot.loader = {
 		systemd-boot.enable = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{
 	# Enable PipeWire
 	services.pipewire = {
 		enable = true;

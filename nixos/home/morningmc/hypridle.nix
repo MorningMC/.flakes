@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
 	# Enable Hypridle
 	home-manager.users.morningmc.services.hypridle = {
 		enable = true;

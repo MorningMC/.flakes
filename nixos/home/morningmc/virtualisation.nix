@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, ... }: {
 	# Declare encrypted secrets used
 	age.secrets.docker-windows.file = ./_secrets/docker-windows.env.age;
 

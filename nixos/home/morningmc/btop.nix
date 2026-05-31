@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: let
+{ pkgs, ... }: let
 	# Create wrapper to pass environment variables
 	btop-wrapped = pkgs.symlinkJoin {
 		name = ".btop-wrapped";
