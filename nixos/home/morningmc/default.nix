@@ -1,30 +1,26 @@
-{ config, pkgs, ... }: {
-	# Define a user account. Don't forget to set a password with ‘passwd’
+{ config, ... }: {
+	# Declare encrypted secrets used
+	age.secrets.password.file = ./_secrets/password.age;
+
+	# Define a user account
 	users.users.morningmc = {
+		# Declare an account for normal users
 		isNormalUser = true;
+
+		# The description of the user
 		description = "MorningMC";
+
+		# Declare the user’s additional groups besides 'users'
 		extraGroups = [ "networkmanager" "wheel" ];
+
+		# Declare the password of the user
+		hashedPasswordFile = config.age.secrets.password.path;
 	};
-	
+
 	home-manager.users.morningmc = {
 		# Let Home Manager install and manage itself
 		programs.home-manager.enable = true;
 
-		# Enable XDG user directories
-		xdg.userDirs = {
-			enable = true;
-
-			# Export environment variables to session
-			setSessionVariables = true;
-
-			# Disable unused directories
-			desktop = null;
-			publicShare = null;
-
-			# Add custom directories
-			extraConfig.WORKSPACES = "${config.users.users.morningmc.home}/Workspaces";
-		};
-		
 		# This value determines the Home Manager release that your configuration is
 		# compatible with. This helps avoid breakage when a new Home Manager release
 		# introduces backwards incompatible changes.

@@ -15,6 +15,7 @@ let
 in
 {
 	# Declare secret files to encrypt
-	"easytier-local.env.age".publicKeys = hostKeys;
-	"docker-windows.env.age".publicKeys = hostKeys;
+	"password.age".publicKeys = hostKeys; # Hashed user password
+	"easytier-local.env.age".publicKeys = hostKeys; # EasyTier local instance network secret
+	"docker-windows.env.age".publicKeys = hostKeys; # Windows Docker container secret
 }

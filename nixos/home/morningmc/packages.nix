@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
 	# List packages installed in user profile. To search, run:
 	# $ nix search <package>
 	users.users.morningmc.packages = with pkgs; [
@@ -82,6 +82,21 @@
 					postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
 				};
 			};
+		};
+
+		# Enable XDG user directories
+		xdg.userDirs = {
+			enable = true;
+
+			# Export environment variables to session
+			setSessionVariables = true;
+
+			# Disable unused directories
+			desktop = null;
+			publicShare = null;
+
+			# Add custom directories
+			extraConfig.WORKSPACES = "${config.users.users.morningmc.home}/Workspaces";
 		};
 	};
 

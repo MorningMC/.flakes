@@ -32,7 +32,4 @@
 		appimage.enable = true;
 		appimage.binfmt = true;
 	};
-
-	# Allow passwordless wheel group
-	security.sudo.wheelNeedsPassword = false;
 }
