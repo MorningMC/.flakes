@@ -1,6 +1,6 @@
 { config, lib, ... }: {
 	# Declare encrypted secrets
-	age.secrets.easytier-local.file = ./_secrets/easytier-local.env.age;
+	age.secrets.easytier-adventurers.file = ./_secrets/easytier-adventurers.env.age;
 
 	# Enable EasyTier
 	services.easytier = {
@@ -9,10 +9,10 @@
 		# Allow forwarding
 		allowSystemForward = true;
 
-		# Define instance configurations
-		instances.local = {
+		# Define adventurers instance configurations
+		instances.adventurers = {
 			# Includes network secrets
-			environmentFiles = [ config.age.secrets.easytier-local.path ];
+			environmentFiles = [ config.age.secrets.easytier-adventurers.path ];
 
 			# Automatically allocate IP
 			settings.dhcp = true;
@@ -33,5 +33,5 @@
 	};
 
 	# Prevent starting on machine boot
-	systemd.services.easytier-local.wantedBy = lib.mkForce [ ];
+	systemd.services.easytier-adventurers.wantedBy = lib.mkForce [ ];
 }

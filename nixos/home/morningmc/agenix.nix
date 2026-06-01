@@ -6,8 +6,5 @@
 	users.users.morningmc.packages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
 	# Declare path to host recipient keys
-	age.identityPaths = [
-		"/etc/ssh/ssh_host_ed25519_key"
-		"/etc/ssh/ssh_host_rsa_key"
-	];
+	age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
 }
