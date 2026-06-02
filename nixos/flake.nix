@@ -55,7 +55,7 @@
 			modules = [
 				(inputs.import-tree ./modules) # Import global modules
 				(inputs.import-tree ./hosts/morningmc-laptop) # Import host configurations
-				(inputs.import-tree ./home/morningmc) # Import user configurations
+				(inputs.import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
 			];
 		};
 	};

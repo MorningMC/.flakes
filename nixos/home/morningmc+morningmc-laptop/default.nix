@@ -1,6 +1,6 @@
 { config, ... }: {
 	# Declare encrypted secrets used
-	age.secrets.password.file = ./_secrets/password.age;
+	age.secrets.morningmc-password.file = ./_secrets/password.age;
 
 	# Define a user account
 	users.users.morningmc = {
@@ -14,7 +14,7 @@
 		extraGroups = [ "networkmanager" "wheel" ];
 
 		# Declare the password of the user
-		hashedPasswordFile = config.age.secrets.password.path;
+		hashedPasswordFile = config.age.secrets.morningmc-password.path;
 	};
 
 	home-manager.users.morningmc = {

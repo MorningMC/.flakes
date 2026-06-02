@@ -39,10 +39,8 @@
 		lazygit.enable = true;
 
 		# Enable latest JDK as default Java (currently 25)
-		java = {
-			enable = true;
-			package = pkgs.jdk25;
-		};
+		java.enable = true;
+		java.package = pkgs.jdk25;
 
 		# Enable Gradle
 		gradle.enable = true;

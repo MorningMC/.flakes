@@ -1,6 +1,6 @@
 { config, ... }: {
 	# Declare encrypted secrets used
-	age.secrets.docker-windows.file = ./_secrets/docker-windows.env.age;
+	age.secrets.morningmc-docker-windows.file = ./_secrets/docker-windows.env.age;
 
 	# Enable Docker
 	virtualisation.docker = {
@@ -34,7 +34,7 @@
 			};
 
 			# Include secrets
-			environmentFiles = [ config.age.secrets.docker-windows.path ];
+			environmentFiles = [ config.age.secrets.morningmc-docker-windows.path ];
 
 			# Declare devices mapped to the container
 			devices = [ "/dev/kvm" "/dev/net/tun" ];
