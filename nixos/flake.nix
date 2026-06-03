@@ -58,5 +58,23 @@
 				(inputs.import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
 			];
 		};
+
+		# Configure system for adventurers-server
+		nixosConfigurations.adventurers-server = inputs.nixpkgs.lib.nixosSystem {
+			# Declare arguments passed to modules
+			specialArgs = {
+				inherit inputs;
+
+				# Specify current flake's path on filesystem
+				flake = "/home/morningmc/.flakes/nixos";
+			};
+
+			# Declare modules to include
+			modules = [
+				(inputs.import-tree ./modules) # Import global modules
+				(inputs.import-tree ./hosts/adventurers-server) # Import host configurations
+				(inputs.import-tree ./home/morningmc+adventurers-server) # Import user configurations
+			];
+		};
 	};
 }
