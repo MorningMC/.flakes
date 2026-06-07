@@ -11,6 +11,7 @@
 		weechat # IRC client
 		qq
 		wechat
+		webcamoid # Webcam capture
 
 		# Command-line helpers
 		curl

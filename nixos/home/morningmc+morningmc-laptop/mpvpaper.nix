@@ -4,7 +4,7 @@
 		homeConfig = config.home-manager.users.morningmc;
 
 		# Declare wallpaper path
-		wallpaperPath = "${homeConfig.xdg.userDirs.pictures}/Saved/desktop/nighttime.mp4";
+		wallpaperPath = "${homeConfig.xdg.userDirs.pictures}/desktop/nighttime.mp4";
 
 		# Specify required graphical session target
 		sessionTarget = [ homeConfig.wayland.systemd.target ];

@@ -14,9 +14,7 @@
 			packages = [
 				"org.gnome.clocks"
 				"org.gnome.Calculator"
-				"org.gnome.Snapshot"
 				"org.gnome.SoundRecorder"
-				"com.github.tchx84.Flatseal"
 				"com.usebottles.bottles"
 			];
 
