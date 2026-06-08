@@ -2,7 +2,7 @@
 	# Declare encrypted secrets used
 	age.secrets.morningmc-password.file = ./_secrets/password.age;
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
+	# Define a user account
 	users.users.morningmc = {
 		# Declare an account for normal users
 		isNormalUser = true;

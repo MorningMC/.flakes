@@ -26,6 +26,12 @@
 		# Use nix-flatpak to manage Flatpak declaratively
 		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
+		# Use nix-minecraft to manage Minecraft servers declaratively
+		nix-minecraft = {
+			url = "github:Infinidoge/nix-minecraft";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		# Use nix-index-database to enable comma and its required database
 		nix-index-database = {
 			url = "github:nix-community/nix-index-database";

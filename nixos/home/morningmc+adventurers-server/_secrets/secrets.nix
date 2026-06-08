@@ -1,3 +1,5 @@
+# This file should not be imported into the flake as it is only used for the agenix CLI tool to know which public keys to use for encryption
+
 let
 	# Declare public keys used to encrypt secret files
 	publicKeys = [
@@ -13,4 +15,5 @@ in
 	"password.age".publicKeys = publicKeys; # Hashed user password
 	"frp-adventurers.env.age".publicKeys = publicKeys; # FRP adventurers instance network secret
 	"easytier-adventurers.env.age".publicKeys = publicKeys; # EasyTier adventurers instance network secret
+	"minecraft-server.env.age".publicKeys = publicKeys; # Minecraft server RCON secret
 }
