@@ -44,8 +44,5 @@
 
 		# Enable Gradle
 		gradle.enable = true;
-
-		# Enable Gemini command-line client
-		gemini-cli.enable = true;
 	};
 }
