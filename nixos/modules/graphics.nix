@@ -16,13 +16,15 @@
 		# Enable power management through systemd
 		powerManagement = {
 			enable = true;
-			finegrained = true; # Enable for PRIME offload
+			finegrained = config.hardware.nvidia.prime.offload.enable; # Enable for PRIME offload
 		};
 
 		# Enable PRIME render offload support if hardware acceleration is enabled. PCI addresses is declared in specific host configurations.
 		prime.offload = {
 			enable = config.hardware.graphics.enable;
-			enableOffloadCmd = config.hardware.graphics.enable;
+
+			# Add a convenience script for offloading programs to an Nvidia device
+			enableOffloadCmd = config.hardware.nvidia.prime.offload.enable;
 			offloadCmdMainProgram = "prime-run"; # Follows conventional name
 		};
 	};

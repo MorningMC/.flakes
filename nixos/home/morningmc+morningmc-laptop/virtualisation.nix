@@ -12,7 +12,7 @@
 	};
 
 	# Enable dynamic CDI configuration for Nvidia devices
-	hardware.nvidia-container-toolkit.enable = true;
+	hardware.nvidia-container-toolkit.enable = config.hardware.nvidia.enabled;
 
 	# Make the user accessible to docker containers
 	users.users.morningmc.extraGroups = [ "docker" ];
