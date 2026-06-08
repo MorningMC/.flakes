@@ -11,6 +11,9 @@
 			# Include network secrets
 			environmentFiles = [ config.age.secrets.morningmc-easytier-adventurers.path ];
 
+			# Specify IPv4 address allocated
+			settings.ipv4 = "10.144.144.1/24";
+
 			# Specify peer nodes to connect on service start
 			settings.peers = [
 				"tcp://public.easytier.top:11010"
