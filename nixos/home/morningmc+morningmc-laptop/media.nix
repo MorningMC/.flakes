@@ -14,18 +14,18 @@
 	home-manager.users.morningmc.services = {
 		# Enable Music Player Daemon
 		mpd = let
-			finalAttrs = config.home-manager.users.morningmc.services.mpd;
+			inherit (config.home-manager.users.morningmc.services.mpd) musicDirectory dataDir;
 		in
 		{
 			enable = true;
 			network.startWhenNeeded = true; # Activate through socket
 
 			# Declare playlist directory
-			playlistDirectory = "${finalAttrs.musicDirectory}/Playlists";
+			playlistDirectory = musicDirectory + "/Playlists";
 
 			# Configure audio output & state file
 			extraConfig = ''
-				state_file "${finalAttrs.dataDir}/state"
+				state_file "${dataDir}/state"
 
 				audio_output {
 					type "pulse"

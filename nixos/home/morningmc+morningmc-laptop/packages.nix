@@ -99,7 +99,7 @@
 			publicShare = null;
 
 			# Add custom directories
-			extraConfig.WORKSPACES = "${config.users.users.morningmc.home}/Workspaces";
+			extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";
 		};
 	};
 

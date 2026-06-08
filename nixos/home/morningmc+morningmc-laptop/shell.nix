@@ -10,7 +10,7 @@
 		enable = true;
 
 		# Specify configuration locations
-		dotDir = "${config.home-manager.users.morningmc.xdg.configHome}/zsh"; # Default after Home Manager state version 26.05
+		dotDir = config.home-manager.users.morningmc.xdg.configHome + "/zsh"; # Default after Home Manager state version 26.05
 
 		# Automatically enter into a directory if typed directly into shell
 		autocd = true;
