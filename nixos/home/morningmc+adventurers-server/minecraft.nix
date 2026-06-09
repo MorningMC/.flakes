@@ -1,10 +1,7 @@
-{ config, pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: {
 	# Import nix-minecraft module and its corresponding Nixpkgs overlay
 	imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 	nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-
-	# Declare encrypted secrets
-	age.secrets.morningmc-minecraft-server.file = ./_secrets/minecraft-server.env.age;
 
 	# Allow current user to manage Minecraft servers
 	users.users.morningmc.extraGroups = [ "minecraft" ];
@@ -18,9 +15,6 @@
 
 		# Open firewall ports
 		openFirewall = true;
-
-		# Include RCON secrets
-		environmentFile = config.age.secrets.morningmc-minecraft-server.path;
 
 		# Declare adventurers-update server instance
 		servers.adventurers-update = {
@@ -51,10 +45,6 @@
 
 				# Minimize operator permissions. An operator must use the console to execute commands.
 				op-permission-level = 0;
-
-				# Configure RCON
-				enable-rcon = true;
-				"rcon.password" = "%ADVENTURERS_UPDATE_RCON_PASSWORD%"; # Refer to the environment file
 			};
 		};
 	};

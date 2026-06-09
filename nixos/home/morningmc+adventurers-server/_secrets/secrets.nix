@@ -15,5 +15,4 @@ in
 	"password.age".publicKeys = publicKeys; # Hashed user password
 	"frp-adventurers.env.age".publicKeys = publicKeys; # FRP adventurers instance network secret
 	"easytier-adventurers.env.age".publicKeys = publicKeys; # EasyTier adventurers instance network secret
-	"minecraft-server.env.age".publicKeys = publicKeys; # Minecraft server RCON secret
 }

@@ -28,7 +28,6 @@
 
 		# Gaming
 		hmcl # Minecraft launcher
-		mcrcon # Minecraft RCON client
 	];
 
 	# Enable Clash Verge Rev
