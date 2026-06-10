@@ -25,15 +25,15 @@
 
 			# Declare additional JVM optopns
 			jvmOpts = [
-				"-Xmx20G" # Allow a maximum of 20 GiB memory usage
+				"-Xmx24G" # Allow a maximum of 24 GiB memory usage
 				"-XX:+UseZGC" "-XX:+ZGenerational" # Use ZGC as garbage cleaner
 			];
 
 			# Declare server configurations
 			serverProperties = {
 				# Specify Message of the Day
-				motd = "\\u00A7aAdventurers' Update \\u00A7b2 \\u00A7aServer\\u00A7r Experimental Period 2\\u00A7r\\n" +
-					"Currently running modpack version \\u00A762.0.0-unstable-2026-06-10";
+				motd = "\\u00A7aAdventurers' Update \\u00A7b2 \\u00A7aServer\\u00A7r Experimental Period \\u00A7f2\\u00A7r\\n" +
+					"Running modpack version \\u00A762.0.0-unstable-2026-06-10";
 
 				# Use offline authentication. Players are identified only by their names.
 				online-mode = false;
