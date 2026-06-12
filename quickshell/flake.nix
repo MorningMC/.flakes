@@ -5,6 +5,9 @@
 	inputs = {
 		# The Nixpkgs channel used
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+		# Distributed framework for writing Nix flakes
+		flake-parts.url = "github:hercules-ci/flake-parts";
 		
 		# Quickshell in Nixpkgs is outdated. Use flake from git repository.
 		quickshell = {
@@ -20,20 +23,17 @@
 	};
 
 	# Declare the outputs
-	outputs = { self, nixpkgs, quickshell, dots-hyprland, ... }: let
-		# Declare hardware architecture
-		system = "x86_64-linux";
+	outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+		# Declare architectures to generate outputs for
+		systems = [ "x86_64-linux" ]; # Only generate for x86_64-linux as this is hardcoded to dots-hyprland script
 
-		pkgs = nixpkgs.legacyPackages.${system};
-	in
-	{
-		# Use package defined in default.nix
-		packages.${system}.default = pkgs.callPackage ./default.nix {
-			# Pass build script
-			script = import "${dots-hyprland}/sdata/dist-nix/home-manager/quickshell.nix";
-
-			# Pass Quickshell package to default.nix as a dependency
-			inherit quickshell;
+		# Generate flake for every architecture in systems
+		perSystem = { pkgs, ... }: let
+			script = import "${inputs.dots-hyprland}/sdata/dist-nix/home-manager/quickshell.nix";
+		in
+		{
+			# Use package defined in dots-hyprland & pass Quickshell package as a dependency
+			packages.default = pkgs.callPackage script { inherit (inputs) quickshell; };
 		};
 	};
 }

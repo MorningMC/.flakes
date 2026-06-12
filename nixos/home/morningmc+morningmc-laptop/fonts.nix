@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	fonts = {
 		# Enable backward portability
 		fontDir.enable = true;
