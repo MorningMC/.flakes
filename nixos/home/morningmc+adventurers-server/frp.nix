@@ -25,7 +25,7 @@
 				# Create proxy for Minecraft server port
 				{
 					name = "minecraft-server";
-					type = "tcp";
+					type = "kcp"; # Replace TCP to reduce latency in an unstable network environment
 					localIP = "127.0.0.1";
 					localPort = 25565;
 					remotePort = 25565;
