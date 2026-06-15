@@ -20,12 +20,15 @@
 			auth.method = "token";
 			auth.token = "{{ .Envs.AUTH_TOKEN }}"; # Refer to the environment file
 
+			# Reduce latency in an unstable network environment
+			transport.protocol = "kcp";
+
 			# Declare proxy tunnels
 			proxies = [
 				# Create proxy for Minecraft server port
 				{
 					name = "minecraft-server";
-					type = "kcp"; # Replace TCP to reduce latency in an unstable network environment
+					type = "tcp";
 					localIP = "127.0.0.1";
 					localPort = 25565;
 					remotePort = 25565;
