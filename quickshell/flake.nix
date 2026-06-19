@@ -8,7 +8,7 @@
 
 		# Distributed framework for writing Nix flakes
 		flake-parts.url = "github:hercules-ci/flake-parts";
-		
+
 		# Quickshell in Nixpkgs is outdated. Use flake from git repository.
 		quickshell = {
 			url = "git+https://git.outfoxxed.me/quickshell/quickshell";

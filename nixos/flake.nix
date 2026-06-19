@@ -38,7 +38,13 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		# Use Quickshell derivation flake as Quickshell is outdated in Nixpkgs
+		# Use Minecraft fonts extracted from latest snapshot
+		minecraft-ttf = {
+			url = "path:../minecraft-ttf";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		# Use Quickshell derivation flake with packaged dependencies
 		quickshell = {
 			url = "path:../quickshell";
 			inputs.nixpkgs.follows = "nixpkgs";
