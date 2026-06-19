@@ -36,8 +36,7 @@ stdenvNoCC.mkDerivation {
 		description = "Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition, " +
 			"generated automatically from the latest version of the game";
 		homepage = "https://github.com/tryashtar/minecraft-ttf";
-		#license = lib.licenses.unfreeRedistributable; # This derivation extracts proprietary Mojang game assets
-		license = lib.licenses.mit;
+		license = lib.licenses.unfreeRedistributable; # This derivation extracts proprietary Mojang game assets
 		platforms = lib.platforms.all;
 	};
 

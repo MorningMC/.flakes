@@ -34,7 +34,15 @@
 		systems = inputs.nixpkgs.lib.systems.flakeExposed; # Build for all supported architectures
 
 		# Generate flake for every architecture in systems
-		perSystem = { pkgs, ... }: {
+		perSystem = { system, pkgs, ... }: {
+			# Override the pkgs argument to inject custom Nixpkgs configuration
+			_module.args.pkgs = import inputs.nixpkgs {
+				inherit system;
+
+				# Allow building derivations with unfree licenses
+				config.allowUnfree = true;
+			};
+
 			# Pass inputs to the derivation
 			packages.default = pkgs.callPackage ./default.nix { inherit (inputs) minecraft-ttf version-menifest agl-aglfn; };
 		};
