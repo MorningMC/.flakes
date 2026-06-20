@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, ... }: {
 	# Declare encrypted secrets
 	age.secrets.morningmc-easytier-adventurers.file = ./_secrets/easytier-adventurers.env.age;
 
@@ -30,7 +30,4 @@
 			];
 		};
 	};
-
-	# Prevent starting on machine boot
-	systemd.services.easytier-adventurers.wantedBy = lib.mkForce [ ];
 }

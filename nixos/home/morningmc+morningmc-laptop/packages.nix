@@ -71,18 +71,19 @@
 
 			# Enable OBS Studio
 			obs-studio.enable = true;
+			obs-studio.plugins = with pkgs.obs-studio-plugins; [
+				obs-pipewire-audio-capture # PipeWire Audio Capture Plugin
+			];
 
 			# Enable Thunderbird
-			thunderbird = {
-				enable = true;
+			thunderbird.enable = true;
+			thunderbird.package = pkgs.symlinkJoin {
+				name = ".thunderbird-wrapper";
+				paths = [ pkgs.thunderbird ];
+				buildInputs = [ pkgs.makeWrapper ];
 
 				# Fix environment leak when launched from Quickshell.
-				package = pkgs.symlinkJoin {
-					name = ".thunderbird-wrapper";
-					paths = [ pkgs.thunderbird ];
-					buildInputs = [ pkgs.makeWrapper ];
-					postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
-				};
+				postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
 			};
 		};
 
