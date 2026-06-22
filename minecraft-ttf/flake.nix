@@ -1,5 +1,5 @@
 {
-	description = "Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition";
+	description = "Nix flake port of tryashtar/minecraft-ttf";
 
 	# Declare external dependencies
 	inputs = {
