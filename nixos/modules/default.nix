@@ -1,8 +1,16 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ pkgs, ... }: {
+	boot = {
+		# Specify the Linux kernel used
+		kernelPackages = pkgs.linuxPackages_zen;
 
-{ config, pkgs, flake, ... }: {
+		# Enable SysRq functions
+		kernel.sysctl."kernel.sysrq" = true;
+
+		# Mount tmpfs on /tmp
+		tmp.useTmpfs = true;
+	};
+
+	# Configure Nix settings
 	nix.settings = {
 		# Enable Nix command & flakes
 		experimental-features = [ "nix-command" "flakes" ];
