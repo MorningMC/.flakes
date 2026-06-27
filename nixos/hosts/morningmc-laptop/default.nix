@@ -22,8 +22,8 @@
 	# Define the hostname of the machine
 	networking.hostName = "morningmc-laptop";
 
-	# Specify time zone.
-	time.timeZone = "Asia/Shanghai";
+	# Automatically adjust timezone in terms of geographic location
+	services.automatic-timezoned.enable = true;
 
 	# Ignore power key action. This prevents others pressing my power key >:(
 	services.logind.settings.Login = {

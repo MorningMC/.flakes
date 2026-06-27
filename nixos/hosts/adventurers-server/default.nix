@@ -22,7 +22,7 @@
 	# Define the hostname of the machine
 	networking.hostName = "adventurers-server";
 
-	# Specify time zone.
+	# Specify time zone
 	time.timeZone = "Asia/Shanghai";
 
 	# Ignore lid close action to ensure the server runs continously even if the lid is closed
