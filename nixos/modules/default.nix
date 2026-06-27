@@ -1,14 +1,9 @@
 { pkgs, ... }: {
-	boot = {
-		# Specify the Linux kernel used
-		kernelPackages = pkgs.linuxPackages_zen;
+	# Specify the Linux kernel used
+	boot.kernelPackages = pkgs.linuxPackages_zen;
 
-		# Enable SysRq functions
-		kernel.sysctl."kernel.sysrq" = true;
-
-		# Mount tmpfs on /tmp
-		tmp.useTmpfs = true;
-	};
+	# Enable SysRq functions
+	boot.kernel.sysctl."kernel.sysrq" = true;
 
 	# Configure Nix settings
 	nix.settings = {
