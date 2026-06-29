@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }: {
-	# Import nix-minecraft module and its corresponding Nixpkgs overlay
+	# Import nix-minecraft module
 	imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
-	nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
 	# Allow current user to manage Minecraft servers
 	users.users.morningmc.extraGroups = [ "minecraft" ];

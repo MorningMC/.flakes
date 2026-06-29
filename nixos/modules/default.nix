@@ -5,18 +5,14 @@
 	# Enable SysRq functions
 	boot.kernel.sysctl."kernel.sysrq" = true;
 
-	# Configure Nix settings
-	nix.settings = {
-		# Enable Nix command & flakes
-		experimental-features = [ "nix-command" "flakes" ];
+	# Specify Nix experimental features
+	nix.settings.experimental-features = [
+		"nix-command" # Allow nix commands
+		"flakes" # Enable flakes
+	];
 
-		# Optimise Nix store after building system
-		auto-optimise-store = true;
-
-		# Enable Cachix community cache
-		substituters = [ "https://nix-community.cachix.org" ];
-		trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-	};
+	# Optimise Nix store after building system
+	nix.settings.auto-optimise-store = true;
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
