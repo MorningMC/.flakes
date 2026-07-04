@@ -1,4 +1,4 @@
-{ flake, ... }: {
+{ config, lib, ... }: {
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
@@ -10,22 +10,13 @@
 		nano.enable = false;
 		neovim = {
 			enable = true;
-			defaultEditor = true; # Set as default text editor
+
+			# Set as default text editor. This configures EDITOR environment variable.
+			defaultEditor = true;
+
+			# Symlink vi & vim to nvim binary
 			viAlias = true;
 			vimAlias = true;
-		};
-
-		# Enable NH command helper
-		nh = {
-			enable = true;
-			inherit flake; # Use current flake
-
-			# Setup garbage cleaner (this makes nix.gc obsolete)
-			clean = {
-				enable = true;
-				dates = "daily";
-				extraArgs = "--keep 3 --keep-since 7d";
-			};
 		};
 
 		# Enable AppImage support

@@ -22,6 +22,9 @@
 	# Define the hostname of the machine
 	networking.hostName = "morningmc-laptop";
 
+	# Specify default location provider
+	location.provider = "geoclue2";
+
 	# Automatically adjust timezone in terms of geographic location
 	services.automatic-timezoned.enable = true;
 

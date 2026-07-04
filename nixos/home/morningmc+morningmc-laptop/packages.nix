@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, flake, ... }: {
 	# List packages installed in user profile. To search, run:
 	# $ nix search <package>
 	users.users.morningmc.packages = with pkgs; [
@@ -29,6 +29,19 @@
 		# Gaming
 		hmcl # Minecraft launcher
 	];
+
+	# Enable NH command helper
+	programs.nh = {
+		enable = true;
+		inherit flake; # Use current flake
+
+		# Setup garbage cleaner (this makes nix.gc obsolete)
+		clean = {
+			enable = true;
+			dates = "daily";
+			extraArgs = "--keep 3 --keep-since 7d";
+		};
+	};
 
 	# Enable Clash Verge Rev
 	programs.clash-verge = {
@@ -82,7 +95,7 @@
 				paths = [ pkgs.thunderbird ];
 				buildInputs = [ pkgs.makeWrapper ];
 
-				# Fix environment leak when launched from Quickshell.
+				# Fix environment leak when launched from Quickshell
 				postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
 			};
 		};
