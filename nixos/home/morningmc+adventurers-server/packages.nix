@@ -21,23 +21,18 @@
 		};
 	};
 
-	home-manager.users.morningmc.programs = {
-		# Enable Git
-		git = {
-			enable = true;
-			lfs.enable = true; # Enable Large File Support
+	# Enable Git
+	home-manager.users.morningmc.programs.git = {
+		enable = true;
+		lfs.enable = true; # Enable Large File Support
 
-			# Manage Git config with Home Manager
-			settings = {
-				user.name = "MorningMC";
-				user.email = "github@momc.qzz.io";
+		# Manage Git config with Home Manager
+		settings = {
+			user.name = "MorningMC";
+			user.email = "github@momc.qzz.io";
 
-				init.defaultBranch = "main";
-				pull.rebase = false;
-			};
+			init.defaultBranch = "main";
+			pull.rebase = false;
 		};
-
-		# Enable LazyGit
-		lazygit.enable = true;
 	};
 }

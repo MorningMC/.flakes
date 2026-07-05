@@ -8,7 +8,7 @@
 		isNormalUser = true;
 
 		# The description of the user
-		description = "Adventurers' Update";
+		description = "Adventurers' Update 2 Server Administrator";
 
 		# Declare the user’s additional groups besides 'users'
 		extraGroups = [ "networkmanager" "wheel" ];
