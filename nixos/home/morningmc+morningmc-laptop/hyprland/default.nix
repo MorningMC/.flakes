@@ -21,7 +21,7 @@
 
 		# Declare enabled plugins
 		plugins = with pkgs.hyprlandPlugins; [
-			hyprsplit
+			#hyprsplit
 		];
 	};
 }
