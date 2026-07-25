@@ -20,9 +20,9 @@
 			enable = true;
 
 			# Use 1.21.1 latest NeoForge server
-			package = pkgs.minecraftServers.neoforge-1_21_1;
+			package = inputs.nix-minecraft.legacyPackages.${pkgs.stdenv.hostPlatform.system}.minecraftServers.neoforge-1_21_1;
 
-			# Declare additional JVM optopns
+			# Declare additional JVM options
 			jvmOpts = [
 				"-Xmx24G" # Allow a maximum of 24 GiB memory usage
 				"-XX:+UseZGC" "-XX:+ZGenerational" # Use ZGC as garbage cleaner
