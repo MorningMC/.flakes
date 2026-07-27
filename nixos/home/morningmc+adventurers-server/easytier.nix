@@ -23,7 +23,10 @@
 			"tcp://v4.adventurers.morningmc.qzz.io:11010"
 			"udp://v4.adventurers.morningmc.qzz.io:11010"
 
-			# Third-party servers (partially collected from https://ruixuan.online/uptime/easytier)
+			# Third-party servers
+			# Nodes partially collected from:
+			# - https://ruixuan.online/uptime/easytier
+			# - https://uptime.lctn.site/status/easytier
 			"tcp://easytier.weiai.org.cn:11010"
 			"tcp://103.184.47.79:11010"
 			"tcp://c.oee.icu:60006"
@@ -44,6 +47,7 @@
 			"udp://et.basd1.de:22020"
 			"tcp://qwe.p8.ink:11010"
 			"tcp://37.221.197.17:11010"
+			"wss://et.vv1234.cn"
 		];
 	};
 }
