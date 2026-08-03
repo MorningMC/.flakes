@@ -9,6 +9,7 @@
 		# Controllers
 		pwvucontrol # Volume controller
 		crosspipe # PipeWire device controller
+		playerctl # MPRIS CLI controller
 	];
 
 	home-manager.users.morningmc.services = {

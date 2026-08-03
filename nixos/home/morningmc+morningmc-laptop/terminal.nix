@@ -4,10 +4,8 @@
 		enable = true;
 
 		# Declare font used
-		font = {
-			name = "JetBrainsMonoNL Nerd Font";
-			size = 10;
-		};
+		font.name = "JetBrainsMonoNL Nerd Font";
+		font.size = 10;
 
 		# Enable Git integration
 		enableGitIntegration = true;

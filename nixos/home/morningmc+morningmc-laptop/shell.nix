@@ -45,12 +45,10 @@
 		};
 
 		# Manage plugins with Zplug
-		zplug = {
-			enable = true;
-			plugins = [
-				{ name = "Aloxaf/fzf-tab"; }
-			];
-		};
+		zplug.enable = true;
+		zplug.plugins = [
+			{ name = "Aloxaf/fzf-tab"; }
+		];
 
 		# Launch Fastfetch in an interactive shell and not already marked
 		initContent = lib.mkAfter ''

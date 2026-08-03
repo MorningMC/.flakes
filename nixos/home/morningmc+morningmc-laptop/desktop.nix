@@ -10,7 +10,6 @@
 		wl-clipboard # Wayland clipboard service
 		fuzzel # Application launcher
 		cliphist # Clipboard manager
-		playerctl # MPRIS controller
 		imagemagick # Used when screenshotting
 		kdePackages.kdialog # Used when choosing desktop
 		ddcutil

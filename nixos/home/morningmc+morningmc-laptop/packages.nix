@@ -88,17 +88,6 @@
 		# Import nix-index database Home Manager module required by comma
 		imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-		services = {
-			# Enable OpenSSH private key agent
-			ssh-agent.enable = true;
-
-			# Automatically start GNOME Keyring
-			gnome-keyring.enable = true;
-
-			# Enable Policykit agent
-			polkit-gnome.enable = true;
-		};
-
 		programs = {
 			# Enable command-line JSON processor
 			jq.enable = true;
@@ -143,10 +132,4 @@
 			extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";
 		};
 	};
-
-	# Enable Policykit daemon
-	security.polkit.enable = true;
-
-	# Enable GNOME Keyring
-	services.gnome.gnome-keyring.enable = true;
 }

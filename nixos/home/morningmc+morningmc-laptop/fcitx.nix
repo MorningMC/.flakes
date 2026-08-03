@@ -3,6 +3,8 @@
 	home-manager.users.morningmc.i18n.inputMethod = {
 		enable = true;
 		type = "fcitx5";
+
+		# Use the Wayland input method frontend
 		fcitx5.waylandFrontend = true;
 
 		# Define enabled addons
