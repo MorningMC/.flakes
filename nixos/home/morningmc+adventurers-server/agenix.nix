@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }: {
-	# Import agenix module for secret encryption
+	# Import agenix NixOS module for secret encryption
 	imports = [ inputs.agenix.nixosModules.default ];
 
 	# Declare path to host recipient keys
