@@ -30,24 +30,58 @@
 		hmcl # Minecraft launcher
 	];
 
-	# Enable NH command helper
-	programs.nh = {
-		enable = true;
-		inherit flake; # Use current flake
-
-		# Setup garbage cleaner (this makes nix.gc obsolete)
-		clean = {
+	programs = {
+		# Enable NH command helper
+		nh = {
 			enable = true;
-			dates = "daily";
-			extraArgs = "--keep 3 --keep-since 7d";
-		};
-	};
+			inherit flake; # Use current flake
 
-	# Enable Clash Verge Rev
-	programs.clash-verge = {
-		enable = true;
-		tunMode = true;
-		serviceMode = true;
+			# Setup garbage cleaner (this makes nix.gc obsolete)
+			clean = {
+				enable = true;
+
+				# Perform a clean every day
+				dates = "daily";
+
+				# Options given to nh clean
+				extraArgs = "--keep 3 --keep-since 7d";
+			};
+		};
+
+		# Enable Clash Verge Rev
+		clash-verge = {
+			enable = true;
+
+			# Create XDG autostart desktop entry
+			#autoStart = true;
+
+			# Enable Setcap for TUN mode
+			tunMode = true;
+
+			# Enable service mode
+			serviceMode = true;
+		};
+
+		# Enable OBS Studio
+		obs-studio = {
+			enable = true;
+
+			# Enable CUDA support
+			package = pkgs.obs-studio.override { cudaSupport = true; };
+
+			# Setup OBS virtual camera
+			enableVirtualCamera = true;
+
+			# Declare installed plugins
+			plugins = with pkgs.obs-studio-plugins; [
+				# Compat layers
+				obs-vaapi # VAAPI support
+
+				# Capture source extension
+				obs-pipewire-audio-capture # PipeWire audio device and application capture
+				obs-vkcapture # Vulkan/OpenGL game capture
+			];
+		};
 	};
 
 	home-manager.users.morningmc = {
@@ -81,12 +115,6 @@
 			# Enable comma & nix-index
 			nix-index-database.comma.enable = true;
 			nix-index.enable = true;
-
-			# Enable OBS Studio
-			obs-studio.enable = true;
-			obs-studio.plugins = with pkgs.obs-studio-plugins; [
-				obs-pipewire-audio-capture # PipeWire Audio Capture Plugin
-			];
 
 			# Enable Thunderbird
 			thunderbird.enable = true;
