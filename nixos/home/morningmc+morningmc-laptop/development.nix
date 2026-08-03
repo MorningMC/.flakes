@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
-		# JDK 21 & 17 (latest JDK should be enabled by program.java.enabled)
+		# JDK 21 & 17 (latest JDK should be enabled by program.java.enabled in Home Manager module)
 		jdk21
 		jdk17
 
@@ -38,11 +38,8 @@
 		# Enable LazyGit
 		lazygit.enable = true;
 
-		# Enable latest JDK as default Java (currently 25)
+		# Enable latest JDK as default
 		java.enable = true;
-		java.package = pkgs.jdk25;
-
-		# Enable Gradle
-		gradle.enable = true;
+		java.package = pkgs.jdk25; # JDK 25 is the current latest
 	};
 }
