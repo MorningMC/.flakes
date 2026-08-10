@@ -5,14 +5,20 @@
 	# Enable SysRq functions
 	boot.kernel.sysctl."kernel.sysrq" = true;
 
-	# Specify Nix experimental features
-	nix.settings.experimental-features = [
-		"nix-command" # Allow nix commands
-		"flakes" # Enable flakes
-	];
+	nix.settings = {
+		# Specify Nix experimental features
+		experimental-features = [
+			"nix-command" # Allow nix commands
+			"flakes" # Enable flakes
+		];
 
-	# Optimise Nix store after building system
-	nix.settings.auto-optimise-store = true;
+		# Optimise Nix store after building system
+		auto-optimise-store = true;
+
+		# Enable Noctalia Cachix cache
+		extra-substituters = [ "https://noctalia.cachix.org" ];
+		extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+	};
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

@@ -10,45 +10,34 @@
 		import-tree.url = "github:denful/import-tree";
 
 		# Use Home Manager to manage home directories
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		home-manager.url = "github:nix-community/home-manager";
+		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
 		# Use agenix to encrypt secrets in flake
-		agenix = {
-			url = "github:ryantm/agenix";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.home-manager.follows = "home-manager";
-			inputs.darwin.follows = ""; # Not to download darwin dependencies
+		agenix.url = "github:ryantm/agenix";
+		agenix.inputs = {
+			nixpkgs.follows = "nixpkgs";
+			home-manager.follows = "home-manager";
+			darwin.follows = ""; # Not to download darwin dependencies
 		};
 
 		# Use nix-flatpak to manage Flatpak declaratively
 		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
+		# Use Noctalia shell as Hyprland's desktop shell
+		noctalia.url = "github:noctalia-dev/noctalia/cachix"; # Overriding nixpkgs input breaks Cachix cache
+
 		# Use nix-minecraft to manage Minecraft servers declaratively
-		nix-minecraft = {
-			url = "github:Infinidoge/nix-minecraft";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+		nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
 
 		# Use nix-index-database to enable comma and its required database
-		nix-index-database = {
-			url = "github:nix-community/nix-index-database";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		nix-index-database.url = "github:nix-community/nix-index-database";
+		nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
 		# Use Minecraft fonts extracted from latest snapshot
-		minecraft-ttf = {
-			url = "path:../minecraft-ttf";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# Use Quickshell derivation flake with packaged dependencies
-		quickshell = {
-			url = "path:../quickshell";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		minecraft-ttf.url = "path:../minecraft-ttf";
+		minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
 	};
 	
 	# Declare complete sets of NixOS configurations

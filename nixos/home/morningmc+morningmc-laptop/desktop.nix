@@ -1,30 +1,9 @@
 { config, pkgs, inputs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
-		# Quickshell from flake
-		inputs.quickshell.packages.${stdenv.hostPlatform.system}.default
-
-		# Other utilities (used by Illogical Impulse)
-		inetutils # Provides hostname, ifconfig, ping, etc.
-		libnotify # Provides notify-send
-		libqalculate # Provides calculator widget
 		wl-clipboard # Wayland clipboard service
-		fuzzel # Application launcher
-		cliphist # Clipboard manager
-		imagemagick # Used when screenshotting
-		kdePackages.kdialog # Used when choosing desktop
-		ddcutil
-		matugen
-		
-		# Cursor theme
-		bibata-cursors
+		bibata-cursors # Cursor theme
 	];
 
-	# Enable material symbols icon for Illogical Impulse
-	fonts.packages = with pkgs; [ material-symbols ];
-
-	# Enable ydotool
-	programs.ydotool.enable = true;
-	
 	# Enable Plasma 6 desktop environment
 	services.desktopManager.plasma6.enable = true;
 	environment.plasma6.excludePackages = with pkgs.kdePackages; [
