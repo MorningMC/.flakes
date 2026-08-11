@@ -10,6 +10,9 @@
 		# Use open-source kernel module
 		open = true;
 
+		# Use the latest branch of Nvidia drivers
+		branch = "latest";
+
 		# Enable kernel modesetting
 		modesetting.enable = true;
 
