@@ -1,23 +1,21 @@
 {
 	# Bootloader configurations
 	boot.loader = {
+		# Enable systemd-boot EFI boot manager
 		systemd-boot.enable = true;
-		systemd-boot.configurationLimit = 8; # Limit generation entries in boot partition
+
+		# Limit generation entries in boot partition to prevent boot partition running out of disk space
+		systemd-boot.configurationLimit = 32;
+
+		# Boot to NixOS directly without displaying the loader menu
 		timeout = 0;
+
+		# Allow the installation process to modify EFI boot variables
 		efi.canTouchEfiVariables = true;
 	};
 
-	# /tmp folder configurations
-	boot.tmp = {
-		# Mount a tmpfs on /tmp during boot
-		useTmpfs = true;
-
-		# Expand the size of tmpfs to the size of the physical memory as large Nix builds can fail if the mounted tmpfs is not large enough
-		tmpfsSize = "100%";
-
-		# Only allocate huge memory pages if it will be fully within i_size
-		tmpfsHugeMemoryPages = "within_size";
-	};
+	# Delete all files in /tmp during boot
+	boot.tmp.cleanOnBoot = true;
 
 	# Define the hostname of the machine
 	networking.hostName = "morningmc-laptop";
@@ -25,12 +23,12 @@
 	# Specify default location provider
 	location.provider = "geoclue2";
 
-	# Automatically adjust timezone in terms of geographic location
-	services.automatic-timezoned.enable = true;
+	services = {
+		# Automatically adjust timezone in terms of geographic location
+		automatic-timezoned.enable = true;
 
-	# Ignore power key action. This prevents others pressing my power key >:(
-	services.logind.settings.Login = {
-		HandlePowerKey = "ignore";
-		HandlePowerKeyLongPress = "ignore";
+		# Ignore power key action. This prevents others pressing my power key >:(
+		logind.settings.Login.HandlePowerKey = "ignore";
+		logind.settings.Login.HandlePowerKeyLongPress = "ignore";
 	};
 }
