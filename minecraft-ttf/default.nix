@@ -46,7 +46,7 @@ stdenvNoCC.mkDerivation {
 	# Declare build-time dependencies
 	nativeBuildInputs = [
 		# Python environment with bundled required Python packages
-		(python313.withPackages (ps: with ps; [ fonttools pillow pygame requests ]))
+		(python313.withPackages (ps: with ps; [ bitarray fonttools pillow requests ]))
 
 		# Automatic install fonts to the output folder
 		installFonts
@@ -64,7 +64,7 @@ stdenvNoCC.mkDerivation {
 	# Generate the font files from provided Minecraft Jar executable
 	buildPhase = ''
 		runHook preBuild
-		python main.py
+		python src/main.py
 		runHook postBuild
 	'';
 }
