@@ -23,6 +23,7 @@
 			# Minecraft fonts
 			inputs.minecraft-ttf.packages.${stdenv.hostPlatform.system}.default
 			unifont # Minecraft uniform font
+			ark-pixel-font # Alternative pixel font
 		];
 	};
 }

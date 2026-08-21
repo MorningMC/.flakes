@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		# JDK 21 & 17 (latest JDK should be enabled by program.java.enabled in Home Manager module)
 		jdk21
@@ -14,32 +14,45 @@
 		commitlint # Git commit message style check
 	];
 
-	home-manager.users.morningmc.programs = {
-		# Enable Git
-		git = {
-			enable = true;
-			lfs.enable = true; # Enable Large File Support
+	home-manager.users.morningmc = { config, ... }: {
+		programs = {
+			# Enable Git
+			git = {
+				enable = true;
+				lfs.enable = true; # Enable Large File Support
 
-			# Use full version of Git to include libsecret credential helper
-			package = pkgs.gitFull;
+				# Use full version of Git to include libsecret credential helper
+				package = pkgs.gitFull;
 
-			# Manage Git config with Home Manager
-			settings = {
-				user.name = "MorningMC";
-				user.email = "github@momc.qzz.io";
+				# Manage Git config with Home Manager
+				settings = {
+					user.name = "MorningMC";
+					user.email = "github@momc.qzz.io";
 
-				core.hooksPath = config.home-manager.users.morningmc.xdg.configHome + "/scripts/githooks";
-				credential.helper = "libsecret";
-				init.defaultBranch = "main";
-				pull.rebase = false;
+					core.hooksPath = config.xdg.configHome + "/scripts/githooks";
+					credential.helper = "libsecret";
+					init.defaultBranch = "main";
+					pull.rebase = false;
+				};
 			};
+
+			# Enable LazyGit
+			lazygit.enable = true;
+
+			# Enable latest JDK as default
+			java.enable = true;
+			java.package = pkgs.jdk25; # JDK 25 is the current latest
 		};
 
-		# Enable LazyGit
-		lazygit.enable = true;
+		# Expose all language runtimes to static paths to avoid broken paths in IDEs after system rebuilds
+		home.file = {
+			# JDKs
+			".local/lib/jdk25".source = pkgs.jdk25;
+			".local/lib/jdk21".source = pkgs.jdk21;
+			".local/lib/jdk17".source = pkgs.jdk17;
 
-		# Enable latest JDK as default
-		java.enable = true;
-		java.package = pkgs.jdk25; # JDK 25 is the current latest
+			# Python runtimes
+			".local/lib/python3".source = pkgs.python3;
+		};
 	};
 }
