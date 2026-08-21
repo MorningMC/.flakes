@@ -117,6 +117,9 @@
 			};
 		};
 
+		# Enable management of XDG base directories
+		xdg.enable = true;
+
 		# Enable XDG user directories
 		xdg.userDirs = {
 			enable = true;
@@ -127,6 +130,7 @@
 			# Disable unused directories
 			desktop = null;
 			publicShare = null;
+			templates = null;
 
 			# Add custom directories
 			extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, lib, pkgs, inputs, ... }: {
 	users.users.morningmc.packages = with pkgs; [
 		wl-clipboard # Wayland clipboard service
 		bibata-cursors # Cursor theme
@@ -25,11 +25,14 @@
 		xdg.portal = {
 			enable = true;
 
-			# Enable platform-specific portals.
+			# Enable platform-specific portals
 			extraPortals = config.xdg.portal.extraPortals;
 
-			# Use configurations provided by portals.
+			# Use configurations provided by portals
 			configPackages = config.xdg.portal.extraPortals;
+
+			# Make xdg-open use the portal to open programs
+			xdgOpenUsePortal = true;
 		};
 
 		# Setup environment variables
@@ -41,4 +44,7 @@
 			GDK_BACKEND = "wayland";
 		};
 	};
+
+	# Required by user-scope XDG desktop portals to work
+	environment.pathsToLink = lib.mkIf config.home-manager.useUserPackages [ "/share/xdg-desktop-portal" "/share/applications" ];
 }
