@@ -5,7 +5,6 @@
 		# Utilities
 		kdePackages.dolphin # File explorer
 		kdePackages.filelight # Inspect filesystem usage
-		microsoft-edge # Web browser
 		libreoffice # Office suite
 		freerdp # RDP client
 		weechat # IRC client
@@ -104,6 +103,9 @@
 			# Enable comma & nix-index
 			nix-index-database.comma.enable = true;
 			nix-index.enable = true;
+
+			# Enable Brave
+			brave.enable = true;
 
 			# Enable Thunderbird
 			thunderbird.enable = true;
