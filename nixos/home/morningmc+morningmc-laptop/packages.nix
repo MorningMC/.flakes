@@ -17,7 +17,6 @@
 		bc # Basic calculator used in scripts
 		grim # Screenshot utility
 		brightnessctl # Monitor brightness controller
-		sshfs # Mount remote SFTP file system
 
 		# Creative stuff
 		(blender.override { cudaSupport = true; })

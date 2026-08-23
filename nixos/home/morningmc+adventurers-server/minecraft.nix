@@ -3,7 +3,7 @@
 	imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
 	# Allow current user to manage Minecraft servers
-	users.users.morningmc.extraGroups = [ "minecraft" ];
+	users.users.morningmc.extraGroups = [ services.minecraft-servers.group ];
 
 	# Enable Minecraft servers
 	services.minecraft-servers = {
