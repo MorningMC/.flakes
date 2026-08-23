@@ -19,9 +19,10 @@
 		# Source configurations
 		settings.source = "${config.home-manager.users.morningmc.xdg.configHome}/hypr/hyprland/*";
 
-		# Declare enabled plugins
-		plugins = with pkgs.hyprlandPlugins; [
-			#hyprsplit
-		];
+		# Handle XDG autostart desktop entries
+		systemd.enableXdgAutostart = true;
+
+		# Do not manage XDG desktop portals
+		portalPackage = null;
 	};
 }

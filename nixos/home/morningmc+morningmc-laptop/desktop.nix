@@ -20,31 +20,15 @@
 		kwalletmanager
 	];
 
-	home-manager.users.morningmc = {
-		# Enable XDG desktop portals
-		xdg.portal = {
-			enable = true;
+	# Enable XDG desktop portals
+	xdg.portal.enable = true;
 
-			# Enable platform-specific portals
-			extraPortals = config.xdg.portal.extraPortals;
-
-			# Use configurations provided by portals
-			configPackages = config.xdg.portal.extraPortals;
-
-			# Make xdg-open use the portal to open programs
-			xdgOpenUsePortal = true;
-		};
-
-		# Setup environment variables
-		home.sessionVariables = {
-			NIXOS_OZONE_WL = 1;
-			QT_QPA_PLATFORM = "wayland;xcb";
-			QT_QPA_PLATFORMTHEME = "kde";
-			XDG_MENU_PREFIX = "plasma-";
-			GDK_BACKEND = "wayland";
-		};
+	# Setup environment variables
+	home-manager.users.morningmc.home.sessionVariables = {
+		NIXOS_OZONE_WL = 1;
+		QT_QPA_PLATFORM = "wayland;xcb";
+		QT_QPA_PLATFORMTHEME = "kde";
+		XDG_MENU_PREFIX = "plasma-";
+		GDK_BACKEND = "wayland";
 	};
-
-	# Required by user-scope XDG desktop portals to work
-	environment.pathsToLink = lib.mkIf config.home-manager.useUserPackages [ "/share/xdg-desktop-portal" "/share/applications" ];
 }

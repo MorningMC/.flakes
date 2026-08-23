@@ -52,7 +52,7 @@
 			enable = true;
 
 			# Create XDG autostart desktop entry
-			#autoStart = true;
+			autoStart = true;
 
 			# Enable Setcap for TUN mode
 			tunMode = true;
