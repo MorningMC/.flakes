@@ -1,6 +1,6 @@
 { config, ... }: {
 	# Declare encrypted secrets
-	age.secrets.morningmc-frp-adventurers.file = ./_secrets/frp-adventurers.env.age;
+	age.secrets.morningmc_frp-adventurers.file = ./_secrets/frp-adventurers.env.age;
 
 	# Define FRP adventurers instance configurations
 	services.frp.instances.adventurers = {
@@ -8,7 +8,7 @@
 		role = "client";
 
 		# Include network secrets
-		environmentFiles = [ config.age.secrets.morningmc-frp-adventurers.path ];
+		environmentFiles = [ config.age.secrets.morningmc_frp-adventurers.path ];
 
 		# Declare instance configurations
 		settings = {
