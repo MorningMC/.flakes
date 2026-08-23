@@ -109,14 +109,10 @@
 
 			# Enable Thunderbird
 			thunderbird.enable = true;
-			thunderbird.package = pkgs.symlinkJoin {
-				name = ".thunderbird-wrapper";
-				paths = [ pkgs.thunderbird ];
-				buildInputs = [ pkgs.makeWrapper ];
 
-				# Fix environment leak when launched from Quickshell
-				postBuild = "wrapProgram $out/bin/thunderbird --unset NIXPKGS_QT6_QML_IMPORT_PATH";
-			};
+			# Enable Qalculate!
+			qalculate.enable = true;
+			qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
 		};
 
 		# Enable management of XDG base directories

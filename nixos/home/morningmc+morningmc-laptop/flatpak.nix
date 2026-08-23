@@ -12,7 +12,6 @@
 		# Declare packages to install
 		packages = [
 			"org.gnome.clocks"
-			"org.gnome.Calculator"
 			"org.gnome.SoundRecorder"
 			"com.usebottles.bottles"
 		];
