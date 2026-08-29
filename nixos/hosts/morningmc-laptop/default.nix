@@ -31,4 +31,7 @@
 		logind.settings.Login.HandlePowerKey = "ignore";
 		logind.settings.Login.HandlePowerKeyLongPress = "ignore";
 	};
+
+	# Enable oomd on user slices to prevent memory outage
+	systemd.oomd.enableUserSlices = true;
 }

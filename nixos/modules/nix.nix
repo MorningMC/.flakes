@@ -48,4 +48,7 @@
 		Host nix.qqxnkrut.top
 			ProxyCommand ${lib.getExe pkgs.cloudflared} access ssh --hostname %h
 	'';
+
+	# Prevent large Nix builds consuming all memories
+	systemd.services.nix-daemon.serviceConfig.MemoryHigh = "90%";
 }
