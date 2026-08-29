@@ -1,9 +1,9 @@
-{ pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
 	# Import nix-minecraft module
 	imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
 	# Allow current user to manage Minecraft servers
-	users.users.morningmc.extraGroups = [ services.minecraft-servers.group ];
+	users.users.morningmc.extraGroups = [ config.services.minecraft-servers.group ];
 
 	# Enable Minecraft servers
 	services.minecraft-servers = {
