@@ -24,8 +24,6 @@
 	time.timeZone = "Asia/Shanghai";
 
 	# Ignore lid close action to ensure the server runs continously even if the lid is closed
-	services.logind.settings.Login = {
-		HandleLidSwitch = "ignore";
-		HandleLidSwitchExternalPower = "ignore";
-	};
+	services.logind.settings.Login.HandleLidSwitch = "ignore";
+	services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
 }

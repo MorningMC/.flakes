@@ -1,9 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 	# Specify the Linux kernel used
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 
 	# Enable SysRq functions
 	boot.kernel.sysctl."kernel.sysrq" = true;
+
+	# Import agenix NixOS module for secret encryption
+	imports = [ inputs.agenix.nixosModules.default ];
+
+	# Declare path to host recipient keys
+	age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
