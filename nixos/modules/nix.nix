@@ -3,20 +3,14 @@
 	age.secrets.builder-qqxnkrut.file = ./_secrets/builder-qqxnkrut.pem.age;
 
 	nix = {
-		settings = {
-			# Specify Nix experimental features
-			experimental-features = [
-				"nix-command" # Enable nix commands
-				"flakes" # Enable flakes
-			];
+		# Specify Nix experimental features
+		settings.experimental-features = [
+			"nix-command" # Enable nix commands
+			"flakes" # Enable flakes
+		];
 
-			# Optimise Nix store after building system
-			auto-optimise-store = true;
-
-			# Enable Noctalia Cachix cache
-			extra-substituters = [ "https://noctalia.cachix.org" ];
-			extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
-		};
+		# Optimise Nix store after building system
+		settings.auto-optimise-store = true;
 
 		# Enable remote builds
 		distributedBuilds = true;
@@ -34,7 +28,7 @@
 				# Declare the SSH private key
 				sshKey = config.age.secrets.builder-qqxnkrut.path;
 
-				# Specify the architecturess the builder can execute derivations on
+				# Specify the architectures the builder can execute derivations on
 				systems = [ "x86_64-linux" ];
 
 				# Use more efficient protocol over SSH

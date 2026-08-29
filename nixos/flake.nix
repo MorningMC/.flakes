@@ -24,9 +24,6 @@
 		# Use nix-flatpak to manage Flatpak declaratively
 		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
-		# Use Noctalia shell as Hyprland's desktop shell
-		noctalia.url = "github:noctalia-dev/noctalia/cachix"; # Overriding nixpkgs input breaks Cachix cache
-
 		# Use nix-minecraft to manage Minecraft servers declaratively
 		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 		nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
