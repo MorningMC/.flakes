@@ -48,12 +48,4 @@
 			};
 		};
 	};
-
-	home-manager.users.morningmc.programs = {
-		# Enable tmux to connect to Minecraft console socket
-		tmux.enable = true;
-
-		# Enable Java Development Kit
-		java.enable = true;
-	};
 }

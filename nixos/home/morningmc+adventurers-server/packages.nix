@@ -39,4 +39,7 @@
 			pull.rebase = false;
 		};
 	};
+
+	# Enable tmux to connect to Minecraft console socket
+	home-manager.users.morningmc.programs.tmux.enable = true;
 }

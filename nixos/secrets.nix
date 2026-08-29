@@ -62,6 +62,7 @@ in
 
 # Secret files in hosts/adventurers-server
 (mkSecrets "hosts/adventurers-server" [ "adventurers-server" ] [
+	"frp-adventurers.env.age" # FRP adventurers instance network secret
 	"cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
 ]) //
 
@@ -75,6 +76,5 @@ in
 # Secret files in home/morningmc+adventurers-server
 (mkSecrets "home/morningmc+adventurers-server" [ "adventurers-server" ] [
 	"password.age" # Hashed user password
-	"frp-adventurers.env.age" # FRP adventurers instance network secret
 	"easytier-adventurers.env.age" # EasyTier adventurers instance network secret
 ])
