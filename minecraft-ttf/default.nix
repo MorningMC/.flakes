@@ -3,7 +3,7 @@
 	stdenvNoCC,
 	fetchurl,
 
-	python313,
+	pythonBuildEnv,
 	installFonts,
 
 	minecraft-ttf,
@@ -45,8 +45,8 @@ stdenvNoCC.mkDerivation {
 
 	# Declare build-time dependencies
 	nativeBuildInputs = [
-		# Python environment with bundled required Python packages
-		(python313.withPackages (ps: with ps; [ bitarray fonttools pillow requests ]))
+		# Python build environment generated from pyproject.toml and uv.lock
+		pythonBuildEnv
 
 		# Automatic install fonts to the output folder
 		installFonts
