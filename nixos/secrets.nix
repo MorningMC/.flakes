@@ -2,7 +2,7 @@
 
 let
 	# Declare all public keys created for each machine
-	publicKeys = {
+	hostKeys = {
 		# The master key. This key will be used to encrypt all files
 		master = "age1pq1eukzmgam0lk8s8wc689tj6r3jn4p3lavf6rscc4drzvdt6enslrk779knzk7se3yt3gr45fe0k2uenvr84k5vwfraj4ndpmek4zt07g9say9vvljn9aqtw3333jtsqq32q9q8nsrlyrgju3rdgsf4x0pxgcr5473sf2araeq90e9sqmyp5e7dqe72uzf8wwvhxmrss84n6d24ryueg6x65zdpctx6k0q4rpy4wzs742ym2gcvcvvjxgyr7eug79ydtq2vg4auknfzyg9wrf7jpccvh99ydju9tqtw269rkmtj58r663nzcxw7tqqqtu8ghrkfxa2dzkl2acc9krcq5ktfvf9zjyjc29edaur8pquqkygs9k40y7g028k0c9ueyx83229g92tvr0q5wfl2ge3q9z3cdexh8jcr9hu6739jvc8z7g6vvtu0mveerg84gsw52pgdh2jeyrgt3ca48mmtymcpauvhdvfvs3cd2dm0fmjerx3fegyg3g3wxhp3swaqfx7ywumauf84wttjvsfs59nwdpnsun3kve5ruzpexmv9ukf52nm6f87kpn3jpwrdj3qy635e0n803qnj7v772fu4xcvgrywswy74pfj0ywdhxe3z0nys5mmpd6fks4kq9vtpsm5s9ufqtv3quedjenm3g58amxvdgg94ea3cj3myunrqxz55pfs59fpjmlvprh3y4fte7uhn6wtjyfsqdtwpza2zzlzctq9pfm3w5pe3gwkpdrljklx2jvgjujs7hlkkt6u8zptzw64gkeqe3mygtr9zvhzc0rumxt8svguuvvn006m4ed8qxxfc7jd0jfegqgx6pt5y89awxdftptcfqgmke98qxc326m3zfl2tfe9qpua9um2cqd3j6tf9y6rsn8sxke8fy2qhqkfq04vkr4my3h6839vsy6vwd5e9kjqc7m2a0qdfqu44ejucfwfftmpg7gsdwd2tkc3f65f4ryfhjyftxt3l20z5g6r3z3qaqjtwdlrsrntu7aap74syvz35jkynuh8g3l6m2y399ujn53gllhzrshps59yrdh80e36wfrpz3yt4lh5k89guux6eznpgwe2mjwvvl8q4g7dqau896yj9rmymx46fsyrynx243asjuujr8m8f20545vttr7esgg9dup5gratcenz92rnefet6era009wnu5vdawk9stdfv403yw8ykglzcd9mefpzzms56883yp6hdewd4rgdgs8sc5hnf3pcjflq24vaxqjnmzexu4m38vwk097zlqcdhe32lgn4s4qesk63v2x6g4nwe6kfflx308gezd93sdeary4mfc4n3texp7h26segqld2nygm4u5hyy6fkx79340sgl747r5qp9rkyrqqgd64jlqckprffa5zgupjpejh7xgypyfvxg65h9lweujsger44vyjw3rt9jc0y5tcevj75ggfzh2erhdq2mjuptqwjth4psht2ea3xc7ulzesq90s83qcwhknap6wv33p9wdkdewv2jpr74x5e25zgsc59zwqq4ryv687s8vh7lr4vs47y8veerjsvcyl5yzc7adt9agefphx2dmtkgjjy6904c4qwljt3r2cuc02e6zvkgxk84ev6geryldgqf424p2njzh9h48cu8pup0wlv7pzwy2pq48qy3pkf2yeyugx3ryufkxnfteq6kwqgzhzeda73xghnqf9n3kvyx70y5rdr96a7q6f3mqyr23rwfdgtlf2tp7vuavj3t9azgvjdqq4g082xz5xfnnxcyxp6tmfcmcs769u6hrde97gs3zrgdmejrjksn6cqhlfsa3kzp93rswdv9v3zp627l2ff2l5w5fk5nqn85zx075fs7jlem84r0y40uslsqvnjzmuhmkv5adl4xusgqsta709umtjkpr74rwgq0esyk3";
 
@@ -16,65 +16,43 @@ let
 	# The folder name used to store secret files. Should start with a underscore as the secrets should not be included in any flake.
 	secretsDir = "_secrets";
 
-	# Constructor of the public keys to encrypt a secret file according to the hosts it will be distributed on
-	# Accept a literal string "all" to include all public keys, or a list of host names
-	mkPublicKeys = hosts: if hosts == "all" then
-		# Return all possible keys
-		builtins.attrValues publicKeys
-
-	else let
-		# Include the master key in the searched index
-		keyIndex = hosts ++ [ "master" ];
-		
-		# Perform a dynamic attribute lookup
-		keyOf = index: publicKeys.${index};
-	in
-	# Return the master key alongside the respective host keys
-	# There are simpler approaches that involves nixpkgs.lib, but we don't have that
-	map keyOf keyIndex;
-
-	# Construct a secret file definition
-	# homeDir: accepts a string points the directory that includes secrets (parent directory of _secrets, eg. home/morningmc+morningmc-laptop)
-	# hosts: same as mkPublicKeys
-	# fileNames: accepts a list of file names of secrets that is referred by other parts of this directory
-	mkSecrets = homeDir: hosts: fileNames: let
-		# Construct the file paths
-		filePaths = map (fileName: "${homeDir}/${secretsDir}/${fileName}") fileNames;
-
-		# Construct the secret file definition
-		secretDefinition = {
-			publicKeys = mkPublicKeys hosts;
-			armor = true; # Ensure files are output in Base64 PEM text (useful for more readable diffs)
-		};
-
-		# Construct a list of key-value pairs
-		keyValuePairs = map (key: { name = key; value = secretDefinition; }) filePaths;
-	in
-	# Unfold the list into a attribute set
-	builtins.listToAttrs keyValuePairs;
+	# Import helper functions
+	inherit (import ./lib/secrets.nix) mkKeys mkSecrets;
 in
 
 # Declare secret files to encrypt
 # Secret files in modules
-(mkSecrets "modules" "all" [
-	"builder-qqxnkrut.pem.age" # SSH private key used to access frsFallingSand's Nix builder
-]) //
+(mkSecrets "modules/${secretsDir}"
+	(mkKeys hostKeys "all")
+	[
+		"builder-qqxnkrut.pem.age" # SSH private key used to access frsFallingSand's Nix builder
+	]
+) //
 
 # Secret files in hosts/adventurers-server
-(mkSecrets "hosts/adventurers-server" [ "adventurers-server" ] [
-	"frp-adventurers.env.age" # FRP adventurers instance network secret
-	"cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
-]) //
+(mkSecrets "hosts/adventurers-server/${secretsDir}"
+	(mkKeys hostKeys [ "adventurers-server" ])
+	[
+		"frp-adventurers.env.age" # FRP adventurers instance network secret
+		"cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
+	]
+) //
 
 # Secret files in home/morningmc+morningmc-laptop
-(mkSecrets "home/morningmc+morningmc-laptop" [ "morningmc-laptop" ] [
-	"password.age" # Hashed user password
-	"easytier-adventurers.env.age" # EasyTier adventurers instance network secret
-	"docker-windows.env.age" # Windows Docker container secret
-]) //
+(mkSecrets "home/morningmc+morningmc-laptop/${secretsDir}"
+	(mkKeys hostKeys [ "morningmc-laptop" ])
+	[
+		"password.age" # Hashed user password
+		"easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+		"docker-windows.env.age" # Windows Docker container secret
+	]
+) //
 
 # Secret files in home/morningmc+adventurers-server
-(mkSecrets "home/morningmc+adventurers-server" [ "adventurers-server" ] [
-	"password.age" # Hashed user password
-	"easytier-adventurers.env.age" # EasyTier adventurers instance network secret
-])
+(mkSecrets "home/morningmc+adventurers-server/${secretsDir}"
+	(mkKeys hostKeys [ "adventurers-server" ])
+	[
+		"password.age" # Hashed user password
+		"easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+	]
+)

@@ -22,6 +22,8 @@ is organized in the following way:
   folder name, e.g. `morningmc+morningmc-laptop`. Each of the subfolders contains a series of `*.nix` files or folders, which represents
   options related to a user, including its used software packages, desktops, or Home Manager configurations. In most cases, if your desired
   changes does not belong to any of the category above, you should perform the change in your respective folder in `home`.
+- `lib`: This folder contains a series of any files or folders, which represents reusable or duplicated data or functions that can be
+  referred by other parts of this flake. This folder should not be included in the flake directly.
 
 Note that this flake is **not** capable to build in traditional `/etc/nixos` way since it lacks required `configuration.nix` and requires
 [import-tree](https://github.com/denful/import-tree) to recursively include modules or configurations. The entry module in each folder is
