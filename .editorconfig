@@ -1,0 +1,17 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+# Apply POSIX compliance rules
+end_of_line = lf
+insert_final_newline = true
+
+# Use UTF-8 encoding
+charset = utf-8
+
+[*.nix]
+# Use spaces as tab indents will have issues with Nix indented strings
+indent_style = space
+
+# Still using 4-space indents since I was never comfortable with Nix's 2-space default
+indent_size = 4

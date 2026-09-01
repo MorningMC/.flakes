@@ -1,58 +1,58 @@
 { pkgs, ... }: {
-	users.users.morningmc.packages = with pkgs; [
-		# JDK 21 & 17 (latest JDK should be enabled by program.java.enabled in Home Manager module)
-		jdk21
-		jdk17
+    users.users.morningmc.packages = with pkgs; [
+        # JDK 21 & 17 (latest JDK should be enabled by program.java.enabled in Home Manager module)
+        jdk21
+        jdk17
 
-		# Python runtimes
-		python3
+        # Python runtimes
+        python3
 
-		# JetBrains IDEs
-		jetbrains.idea
-		jetbrains.webstorm
+        # JetBrains IDEs
+        jetbrains.idea
+        jetbrains.webstorm
 
-		commitlint # Git commit message style check
-	];
+        commitlint # Git commit message style check
+    ];
 
-	home-manager.users.morningmc = { config, ... }: {
-		programs = {
-			# Enable Git
-			git = {
-				enable = true;
-				lfs.enable = true; # Enable Large File Support
+    home-manager.users.morningmc = { config, ... }: {
+        programs = {
+            # Enable Git
+            git = {
+                enable = true;
+                lfs.enable = true; # Enable Large File Support
 
-				# Use full version of Git to include libsecret credential helper
-				package = pkgs.gitFull;
+                # Use full version of Git to include libsecret credential helper
+                package = pkgs.gitFull;
 
-				# Manage Git config with Home Manager
-				settings = {
-					user.name = "MorningMC";
-					user.email = "github@momc.qzz.io";
+                # Manage Git config with Home Manager
+                settings = {
+                    user.name = "MorningMC";
+                    user.email = "github@momc.qzz.io";
 
-					core.hooksPath = config.xdg.configHome + "/scripts/githooks";
-					credential.helper = "libsecret";
-					init.defaultBranch = "main";
-					pull.rebase = false;
-				};
-			};
+                    core.hooksPath = config.xdg.configHome + "/scripts/githooks";
+                    credential.helper = "libsecret";
+                    init.defaultBranch = "main";
+                    pull.rebase = false;
+                };
+            };
 
-			# Enable LazyGit
-			lazygit.enable = true;
+            # Enable LazyGit
+            lazygit.enable = true;
 
-			# Enable latest JDK as default
-			java.enable = true;
-			java.package = pkgs.jdk25; # JDK 25 is the current latest
-		};
+            # Enable latest JDK as default
+            java.enable = true;
+            java.package = pkgs.jdk25; # JDK 25 is the current latest
+        };
 
-		# Expose all language runtimes to static paths to avoid broken paths in IDEs after system rebuilds
-		home.file = {
-			# JDKs
-			".local/lib/jdk25".source = pkgs.jdk25;
-			".local/lib/jdk21".source = pkgs.jdk21;
-			".local/lib/jdk17".source = pkgs.jdk17;
+        # Expose all language runtimes to static paths to avoid broken paths in IDEs after system rebuilds
+        home.file = {
+            # JDKs
+            ".local/lib/jdk25".source = pkgs.jdk25;
+            ".local/lib/jdk21".source = pkgs.jdk21;
+            ".local/lib/jdk17".source = pkgs.jdk17;
 
-			# Python runtimes
-			".local/lib/python3".source = pkgs.python3;
-		};
-	};
+            # Python runtimes
+            ".local/lib/python3".source = pkgs.python3;
+        };
+    };
 }

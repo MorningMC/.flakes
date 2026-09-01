@@ -1,78 +1,78 @@
 {
-	description = "NixOS System Flake";
-	
-	# Declare external dependencies
-	inputs = {
-		# The Nixpkgs channel used
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    description = "NixOS System Flake";
+    
+    # Declare external dependencies
+    inputs = {
+        # The Nixpkgs channel used
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-		# Use import-tree to recursively import Nix files
-		import-tree.url = "github:denful/import-tree";
+        # Use import-tree to recursively import Nix files
+        import-tree.url = "github:denful/import-tree";
 
-		# Use Home Manager to manage home directories
-		home-manager.url = "github:nix-community/home-manager";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        # Use Home Manager to manage home directories
+        home-manager.url = "github:nix-community/home-manager";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-		# Use agenix to encrypt secrets in flake
-		agenix.url = "github:ryantm/agenix";
-		agenix.inputs = {
-			nixpkgs.follows = "nixpkgs";
-			home-manager.follows = "home-manager";
-			darwin.follows = ""; # Not to download darwin dependencies
-		};
+        # Use agenix to encrypt secrets in flake
+        agenix.url = "github:ryantm/agenix";
+        agenix.inputs = {
+            nixpkgs.follows = "nixpkgs";
+            home-manager.follows = "home-manager";
+            darwin.follows = ""; # Not to download darwin dependencies
+        };
 
-		# Use nix-flatpak to manage Flatpak declaratively
-		nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
+        # Use nix-flatpak to manage Flatpak declaratively
+        nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
-		# Use nix-minecraft to manage Minecraft servers declaratively
-		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-		nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
+        # Use nix-minecraft to manage Minecraft servers declaratively
+        nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+        nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
 
-		# Use nix-index-database to enable comma and its required database
-		nix-index-database.url = "github:nix-community/nix-index-database";
-		nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+        # Use nix-index-database to enable comma and its required database
+        nix-index-database.url = "github:nix-community/nix-index-database";
+        nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-		# Use Minecraft fonts extracted from latest snapshot
-		minecraft-ttf.url = "path:../minecraft-ttf";
-		minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
-	};
-	
-	# Declare complete sets of NixOS configurations
-	outputs = inputs: {
-		# Configure system for morningmc-laptop
-		nixosConfigurations.morningmc-laptop = inputs.nixpkgs.lib.nixosSystem {
-			# Declare arguments passed to modules
-			specialArgs = {
-				inherit inputs;
+        # Use Minecraft fonts extracted from latest snapshot
+        minecraft-ttf.url = "path:../minecraft-ttf";
+        minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # Declare complete sets of NixOS configurations
+    outputs = inputs: {
+        # Configure system for morningmc-laptop
+        nixosConfigurations.morningmc-laptop = inputs.nixpkgs.lib.nixosSystem {
+            # Declare arguments passed to modules
+            specialArgs = {
+                inherit inputs;
 
-				# Specify current flake's path on filesystem
-				flake = "/home/morningmc/.flakes/nixos";
-			};
+                # Specify current flake's path on filesystem
+                flake = "/home/morningmc/.flakes/nixos";
+            };
 
-			# Declare modules to include
-			modules = [
-				(inputs.import-tree ./modules) # Import global modules
-				(inputs.import-tree ./hosts/morningmc-laptop) # Import host configurations
-				(inputs.import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
-			];
-		};
+            # Declare modules to include
+            modules = [
+                (inputs.import-tree ./modules) # Import global modules
+                (inputs.import-tree ./hosts/morningmc-laptop) # Import host configurations
+                (inputs.import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
+            ];
+        };
 
-		# Configure system for adventurers-server
-		nixosConfigurations.adventurers-server = inputs.nixpkgs.lib.nixosSystem {
-			# Declare arguments passed to modules
-			specialArgs = {
-				inherit inputs;
+        # Configure system for adventurers-server
+        nixosConfigurations.adventurers-server = inputs.nixpkgs.lib.nixosSystem {
+            # Declare arguments passed to modules
+            specialArgs = {
+                inherit inputs;
 
-				# Specify current flake's path on filesystem
-				flake = "/home/morningmc/.flakes/nixos";
-			};
+                # Specify current flake's path on filesystem
+                flake = "/home/morningmc/.flakes/nixos";
+            };
 
-			# Declare modules to include
-			modules = [
-				(inputs.import-tree ./modules) # Import global modules
-				(inputs.import-tree ./hosts/adventurers-server) # Import host configurations
-				(inputs.import-tree ./home/morningmc+adventurers-server) # Import user configurations
-			];
-		};
-	};
+            # Declare modules to include
+            modules = [
+                (inputs.import-tree ./modules) # Import global modules
+                (inputs.import-tree ./hosts/adventurers-server) # Import host configurations
+                (inputs.import-tree ./home/morningmc+adventurers-server) # Import user configurations
+            ];
+        };
+    };
 }

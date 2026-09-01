@@ -1,28 +1,28 @@
 { config, pkgs, ... }: {
-	users.users.morningmc.packages = with pkgs; [
-		# Hypr ecosystem
-		hyprpicker # Color picker
-		hyprshutdown # Graceful shutdown
-	];
+    users.users.morningmc.packages = with pkgs; [
+        # Hypr ecosystem
+        hyprpicker # Color picker
+        hyprshutdown # Graceful shutdown
+    ];
 
-	# Enable Hyprland
-	programs.hyprland.enable = true;
+    # Enable Hyprland
+    programs.hyprland.enable = true;
 
-	# Manage Hyprland by Home Manager
-	home-manager.users.morningmc.wayland.windowManager.hyprland = {
-		enable = true;
-		package = null; # Using system Hyprland package
+    # Manage Hyprland by Home Manager
+    home-manager.users.morningmc.wayland.windowManager.hyprland = {
+        enable = true;
+        package = null; # Using system Hyprland package
 
-		# Specify configuration type
-		configType = "hyprlang"; # Default before Home Manager state version 26.05
+        # Specify configuration type
+        configType = "hyprlang"; # Default before Home Manager state version 26.05
 
-		# Source configurations
-		settings.source = "${config.home-manager.users.morningmc.xdg.configHome}/hypr/hyprland/*";
+        # Source configurations
+        settings.source = "${config.home-manager.users.morningmc.xdg.configHome}/hypr/hyprland/*";
 
-		# Handle XDG autostart desktop entries
-		systemd.enableXdgAutostart = true;
+        # Handle XDG autostart desktop entries
+        systemd.enableXdgAutostart = true;
 
-		# Do not manage XDG desktop portals
-		portalPackage = null;
-	};
+        # Do not manage XDG desktop portals
+        portalPackage = null;
+    };
 }

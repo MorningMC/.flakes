@@ -1,137 +1,137 @@
 { config, pkgs, inputs, flake, ... }: {
-	# List packages installed in user profile. To search, run:
-	# $ nix search <package>
-	users.users.morningmc.packages = with pkgs; [
-		# Utilities
-		kdePackages.dolphin # File explorer
-		kdePackages.filelight # Inspect filesystem usage
-		libreoffice # Office suite
-		freerdp # RDP client
-		weechat # IRC client
-		qq
-		wechat
-		webcamoid # Webcam capture
+    # List packages installed in user profile. To search, run:
+    # $ nix search <package>
+    users.users.morningmc.packages = with pkgs; [
+        # Utilities
+        kdePackages.dolphin # File explorer
+        kdePackages.filelight # Inspect filesystem usage
+        libreoffice # Office suite
+        freerdp # RDP client
+        weechat # IRC client
+        qq
+        wechat
+        webcamoid # Webcam capture
 
-		# Command-line helpers
-		curl
-		bc # Basic calculator used in scripts
-		grim # Screenshot utility
-		brightnessctl # Monitor brightness controller
+        # Command-line helpers
+        curl
+        bc # Basic calculator used in scripts
+        grim # Screenshot utility
+        brightnessctl # Monitor brightness controller
 
-		# Creative stuff
-		(blender.override { cudaSupport = true; })
-		blockbench
-		gimp # Image Editor
-		kdePackages.kdenlive # Video editor
+        # Creative stuff
+        (blender.override { cudaSupport = true; })
+        blockbench
+        gimp # Image Editor
+        kdePackages.kdenlive # Video editor
 
-		# Gaming
-		hmcl # Minecraft launcher
-		lunar-client # Minecraft PVP client
-	];
+        # Gaming
+        hmcl # Minecraft launcher
+        lunar-client # Minecraft PVP client
+    ];
 
-	programs = {
-		# Enable NH command helper
-		nh = {
-			enable = true;
-			inherit flake; # Use current flake
+    programs = {
+        # Enable NH command helper
+        nh = {
+            enable = true;
+            inherit flake; # Use current flake
 
-			# Setup garbage cleaner (this makes nix.gc obsolete)
-			clean = {
-				enable = true;
+            # Setup garbage cleaner (this makes nix.gc obsolete)
+            clean = {
+                enable = true;
 
-				# Perform a clean every day
-				dates = "daily";
+                # Perform a clean every day
+                dates = "daily";
 
-				# Options given to nh clean
-				extraArgs = "--keep 3 --keep-since 7d";
-			};
-		};
+                # Options given to nh clean
+                extraArgs = "--keep 3 --keep-since 7d";
+            };
+        };
 
-		# Enable Clash Verge Rev
-		clash-verge = {
-			enable = true;
+        # Enable Clash Verge Rev
+        clash-verge = {
+            enable = true;
 
-			# Create XDG autostart desktop entry
-			autoStart = true;
+            # Create XDG autostart desktop entry
+            autoStart = true;
 
-			# Enable Setcap for TUN mode
-			tunMode = true;
+            # Enable Setcap for TUN mode
+            tunMode = true;
 
-			# Enable service mode
-			serviceMode = true;
-		};
+            # Enable service mode
+            serviceMode = true;
+        };
 
-		# Enable OBS Studio
-		obs-studio = {
-			enable = true;
+        # Enable OBS Studio
+        obs-studio = {
+            enable = true;
 
-			# Enable CUDA support
-			package = pkgs.obs-studio.override { cudaSupport = true; };
+            # Enable CUDA support
+            package = pkgs.obs-studio.override { cudaSupport = true; };
 
-			# Setup OBS virtual camera
-			enableVirtualCamera = true;
+            # Declare installed plugins
+            plugins = with pkgs.obs-studio-plugins; [
+                # Compat layers
+                obs-vaapi # VAAPI support
 
-			# Declare installed plugins
-			plugins = with pkgs.obs-studio-plugins; [
-				# Compat layers
-				obs-vaapi # VAAPI support
+                # Capture source extension
+                obs-pipewire-audio-capture # PipeWire audio device and application capture
+                obs-vkcapture # Vulkan/OpenGL game capture
+            ];
 
-				# Capture source extension
-				obs-pipewire-audio-capture # PipeWire audio device and application capture
-				obs-vkcapture # Vulkan/OpenGL game capture
-			];
-		};
-	};
+            # Setup OBS virtual camera
+            enableVirtualCamera = true;
+        };
+    };
 
-	home-manager.users.morningmc = {
-		# Import nix-index database Home Manager module required by comma
-		imports = [ inputs.nix-index-database.homeModules.nix-index ];
+    home-manager.users.morningmc = {
+        # Import nix-index database Home Manager module required by comma
+        imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-		programs = {
-			# Enable command-line JSON processor
-			jq.enable = true;
+        programs = {
+            # Enable command-line JSON processor
+            jq.enable = true;
 
-			# Enable Ripgrep
-			ripgrep.enable = true;
+            # Enable Ripgrep
+            ripgrep.enable = true;
 
-			# Enable Fuzzy Finder
-			fzf.enable = true;
+            # Enable Fuzzy Finder
+            fzf.enable = true;
 
-			# Enable Fastfetch
-			fastfetch.enable = true;
+            # Enable Fastfetch
+            fastfetch.enable = true;
 
-			# Enable comma & nix-index
-			nix-index-database.comma.enable = true;
-			nix-index.enable = true;
+            # Enable comma & nix-index
+            nix-index-database.comma.enable = true;
+            nix-index.enable = true;
 
-			# Enable Brave
-			brave.enable = true;
+            # Enable Brave
+            brave.enable = true;
 
-			# Enable Thunderbird
-			thunderbird.enable = true;
+            # Enable Thunderbird
+            thunderbird.enable = true;
 
-			# Enable Qalculate!
-			qalculate.enable = true;
-			qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
-		};
+            # Enable Qalculate!
+            qalculate.enable = true;
+            qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
+        };
 
-		# Enable management of XDG base directories
-		xdg.enable = true;
+        # Enable management of XDG base directories
+        xdg.enable = true;
 
-		# Enable XDG user directories
-		xdg.userDirs = {
-			enable = true;
+        # Enable XDG user directories
+        xdg.userDirs = {
+            enable = true;
 
-			# Export environment variables to session
-			setSessionVariables = true;
+            # Export environment variables to session
+            setSessionVariables = true;
 
-			# Disable unused directories
-			desktop = null;
-			publicShare = null;
-			templates = null;
+            # Disable unused directories
+            desktop = null;
+            publicShare = null;
+            templates = null;
 
-			# Add custom directories
-			extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";
-		};
-	};
+            # Add custom directories
+            extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";
+        };
+    };
 }
