@@ -26,6 +26,7 @@
 
 		# Gaming
 		hmcl # Minecraft launcher
+		lunar-client # Minecraft PVP client
 	];
 
 	programs = {
