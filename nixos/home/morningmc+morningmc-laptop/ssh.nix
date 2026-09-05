@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
     # Enable SSHFS to mount remote SFTP file system
     users.users.morningmc.packages = [ pkgs.sshfs ];
 
@@ -16,7 +16,6 @@
         settings = {
             # Shortcut for Adventurers' Update 2 Server
             adventurers-server.HostName = "10.144.144.10";
-            adventurers-server.User = "morningmc";
 
             # Shortcut for the FRP proxy of Adventurers' Update 2 Server
             adventurers-proxy.HostName = "v4.adventurers.morningmc.qzz.io";

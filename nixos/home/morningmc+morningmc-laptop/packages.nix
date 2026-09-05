@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, flake, ... }: {
+{ pkgs, inputs, flake, ... }: {
     # List packages installed in user profile. To search, run:
     # $ nix search <package>
     users.users.morningmc.packages = with pkgs; [

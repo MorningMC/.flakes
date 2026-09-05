@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }: {
+{ pkgs, ... }: {
     users.users.morningmc.packages = with pkgs; [
         wl-clipboard # Wayland clipboard service
         bibata-cursors # Cursor theme
