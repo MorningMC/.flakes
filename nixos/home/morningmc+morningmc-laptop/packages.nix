@@ -83,55 +83,34 @@
         };
     };
 
-    home-manager.users.morningmc = {
-        # Import nix-index database Home Manager module required by comma
-        imports = [ inputs.nix-index-database.homeModules.nix-index ];
+    # Import nix-index database Home Manager module required by comma
+    home-manager.users.morningmc.imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-        programs = {
-            # Enable command-line JSON processor
-            jq.enable = true;
+    home-manager.users.morningmc.programs = {
+        # Enable command-line JSON processor
+        jq.enable = true;
 
-            # Enable Ripgrep
-            ripgrep.enable = true;
+        # Enable Ripgrep
+        ripgrep.enable = true;
 
-            # Enable Fuzzy Finder
-            fzf.enable = true;
+        # Enable Fuzzy Finder
+        fzf.enable = true;
 
-            # Enable Fastfetch
-            fastfetch.enable = true;
+        # Enable Fastfetch
+        fastfetch.enable = true;
 
-            # Enable comma & nix-index
-            nix-index-database.comma.enable = true;
-            nix-index.enable = true;
+        # Enable comma & nix-index
+        nix-index-database.comma.enable = true;
+        nix-index.enable = true;
 
-            # Enable Brave
-            brave.enable = true;
+        # Enable Brave
+        brave.enable = true;
 
-            # Enable Thunderbird
-            thunderbird.enable = true;
+        # Enable Thunderbird
+        thunderbird.enable = true;
 
-            # Enable Qalculate!
-            qalculate.enable = true;
-            qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
-        };
-
-        # Enable management of XDG base directories
-        xdg.enable = true;
-
-        # Enable XDG user directories
-        xdg.userDirs = {
-            enable = true;
-
-            # Export environment variables to session
-            setSessionVariables = true;
-
-            # Disable unused directories
-            desktop = null;
-            publicShare = null;
-            templates = null;
-
-            # Add custom directories
-            extraConfig.WORKSPACES = config.users.users.morningmc.home + "/Workspaces";
-        };
+        # Enable Qalculate!
+        qalculate.enable = true;
+        qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
     };
 }

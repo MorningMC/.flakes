@@ -20,9 +20,6 @@
         kwalletmanager
     ];
 
-    # Enable XDG desktop portals
-    xdg.portal.enable = true;
-
     # Setup environment variables
     home-manager.users.morningmc.home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
