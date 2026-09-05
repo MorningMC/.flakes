@@ -9,6 +9,9 @@ insert_final_newline = true
 # Use UTF-8 encoding
 charset = utf-8
 
+# No trailing spaces or tabs at the end of lines
+trim_trailing_whitespace = true
+
 [*.nix]
 # Use spaces as tab indents will have issues with Nix indented strings
 indent_style = space

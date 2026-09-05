@@ -1,6 +1,6 @@
 {
     description = "NixOS System Flake";
-    
+
     # Declare external dependencies
     inputs = {
         # The Nixpkgs channel used
@@ -36,7 +36,7 @@
         minecraft-ttf.url = "path:../minecraft-ttf";
         minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # Declare complete sets of NixOS configurations
     outputs = inputs: {
         # Configure system for morningmc-laptop

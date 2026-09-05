@@ -6,7 +6,7 @@
         initrd.kernelModules = [ ];
         kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
-        
+
         # Specify the swap device used for hibernation
         resumeDevice = "/dev/disk/by-uuid/6eb5dd68-dfa0-400c-8e3e-1470849d272b";
     };
