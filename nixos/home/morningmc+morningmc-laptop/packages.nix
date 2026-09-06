@@ -98,9 +98,9 @@
         # Enable Fastfetch
         fastfetch.enable = true;
 
-        # Enable comma & nix-index
+        # Enable comma & nix-index with small database variant
         nix-index-database.comma.enable = true;
-        nix-index.enable = true;
+        nix-index.package = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system}.nix-index-with-small-db;
 
         # Enable Brave
         brave.enable = true;

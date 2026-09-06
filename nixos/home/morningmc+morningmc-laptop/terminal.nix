@@ -7,6 +7,9 @@
         font.name = "JetBrainsMonoNL Nerd Font";
         font.size = 10;
 
+        # Specify color theme
+        themeFile = "Farin";
+
         # Enable Git integration
         enableGitIntegration = true;
 
