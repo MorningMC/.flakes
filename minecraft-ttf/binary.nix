@@ -1,5 +1,6 @@
 {
     lib,
+    fetchpatch,
     rustPlatform,
 
     minecraft-ttf,
@@ -31,4 +32,13 @@
 
     # Specify Cargo lock file
     cargoLock.lockFile = "${minecraft-ttf}/${manifestPath}/Cargo.lock";
+
+    # Temporarily fix tryashtar/minecraft-ttf#6
+    patches = [
+        # Apply patch in Pull Request tryashtar/minecraft-ttf#7 before it merges to upstream
+        (fetchpatch {
+            url = "https://github.com/tryashtar/minecraft-ttf/pull/7.patch";
+            hash = "sha256-z4qG4ygOtVT1t6V/Pc1JkSvbXye7ZSiJ9btj9OonPgw=";
+        })
+    ];
 }
