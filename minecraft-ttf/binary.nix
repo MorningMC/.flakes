@@ -1,7 +1,11 @@
 {
     lib,
     rustPlatform,
+
     minecraft-ttf,
+
+    # Override options
+    manifestPath ? "minecraft-ttf", # Specify the path to the Cargo.toml & Cargo.lock file relative to repository root
     ...
 }: rustPlatform.buildRustPackage {
     # Specify package name and version
@@ -20,8 +24,11 @@
 
     # Declare the source code of the derivation
     src = minecraft-ttf;
-    sourceRoot = "source/minecraft-ttf";
 
-    # Provide the hash for the Cargo dependencies
-    cargoHash = "sha256-RMbj/fyQKOPj/BlToAORvslTaz4yfSFyzj049szId1w=";
+    # Specify the path to the Cargo manifest
+    cargoRoot = manifestPath;
+    buildAndTestSubdir = manifestPath;
+
+    # Specify Cargo lock file
+    cargoLock.lockFile = "${minecraft-ttf}/${manifestPath}/Cargo.lock";
 }
