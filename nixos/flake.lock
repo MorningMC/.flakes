@@ -59,6 +59,22 @@
         "type": "github"
       }
     },
+    "headline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760472229,
+        "narHash": "sha256-FATv0Qags1/w6f13FfAkiLwp6X3TgEj0toV3RgGUdrI=",
+        "owner": "Moarram",
+        "repo": "headline",
+        "rev": "eabc85636f4dbf23927d2f2f6890af715c7e94a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Moarram",
+        "repo": "headline",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -221,6 +237,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "headline": "headline",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "minecraft-ttf": "minecraft-ttf",

@@ -6,14 +6,14 @@
         # The Nixpkgs channel used
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-        # Use import-tree to recursively import Nix files
-        import-tree.url = "github:denful/import-tree";
+        # Recursively import Nix modules from a directory
+        import-tree.url = "github:denful/import-tree"; # import-tree does not use any input
 
-        # Use Home Manager to manage home directories
+        # Basic system for managing a user environment
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-        # Use agenix to encrypt secrets in flake
+        # age-encrypted secrets for NixOS and Home manager
         agenix.url = "github:ryantm/agenix";
         agenix.inputs = {
             nixpkgs.follows = "nixpkgs";
@@ -21,20 +21,24 @@
             darwin.follows = ""; # Not to download darwin dependencies
         };
 
-        # Use nix-flatpak to manage Flatpak declaratively
+        # Declarative Flatpak manager for NixOS
         nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
 
-        # Use nix-minecraft to manage Minecraft servers declaratively
+        # Package and manage Minecraft servers declaratively
         nix-minecraft.url = "github:Infinidoge/nix-minecraft";
         nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
 
-        # Use nix-index-database to enable comma and its required database
+        # nix-index database with comma and integration with command-not-found
         nix-index-database.url = "github:nix-community/nix-index-database";
         nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-        # Use Minecraft fonts extracted from latest snapshot
+        # Nix flake port of tryashtar/minecraft-ttf
         minecraft-ttf.url = "path:../minecraft-ttf";
         minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
+
+        # A stylish Zsh theme with deliberate use of space
+        headline.url = "github:Moarram/headline";
+        headline.flake = false; # The repository does not contain a flake.nix
     };
 
     # Declare complete sets of NixOS configurations
