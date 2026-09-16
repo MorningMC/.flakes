@@ -47,8 +47,8 @@
         runHook preBuild
 
         minecraft-ttf vanilla generate ${lib.escapeShellArg version} \
-            --identifiers ${lib.escapeShellArgs identifiers} \
-            --styles ${lib.escapeShellArgs styles} \
+            --identifiers ${lib.escapeShellArg (lib.concatStringsSep "," identifiers)} \
+            --styles ${lib.escapeShellArg (lib.concatStringsSep "," styles)} \
             --color ${lib.escapeShellArg color} \
             --chars ${lib.escapeShellArg char-range} \
             --unifont-chars ${lib.escapeShellArg unifont-chars} \
