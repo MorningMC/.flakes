@@ -29,7 +29,7 @@
                 styles = [ "regular" "bold" "italic" "bold-italic" ];
 
                 # Include printable characters on Unicode plane 0 in uniform font
-                unifont-chars = "0200-d7ff,e000-fffd";
+                unifont-chars = "0020-d7ff,e000-fffd";
             })
 
             # Alternative pixel fonts
