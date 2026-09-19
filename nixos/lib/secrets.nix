@@ -17,13 +17,12 @@
         mkKeys :: AttrSet -> (ListOf String | "all") -> ListOf String
         ```
     */
-    mkKeys = publicKeys: keys: if keys == "all" then
+    mkKeys = publicKeys: keys: if keys == "all"
         # Return all possible keys
-        builtins.attrValues publicKeys
-    else
+        then builtins.attrValues publicKeys
         # Return the master key alongside the respective host keys
         # There are simpler approaches that involves nixpkgs.lib, but we don't have that
-        map (index: publicKeys.${index}) (keys ++ [ "master" ]);
+        else map (index: publicKeys.${index}) (keys ++ [ "master" ]);
 
     /**
         # Description

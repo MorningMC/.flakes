@@ -11,10 +11,9 @@
             enable = true;
 
             # Specify configuration locations based on XDG directories preference
-            dotDir = if config.home.preferXdgDirectories then
-                config.xdg.configHome + "/zsh" # Default after Home Manager state version 26.05
-            else
-                config.home.homeDirectory; # Default before Home Manager state version 26.05
+            dotDir = if config.home.preferXdgDirectories
+                then config.xdg.configHome + "/zsh" # Default after Home Manager state version 26.05
+                else config.home.homeDirectory; # Default before Home Manager state version 26.05
 
             # Automatically enter into a directory if typed directly into shell
             autocd = true;
