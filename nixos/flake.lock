@@ -132,11 +132,11 @@
     "minecraft-ttf_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1788581166,
-        "narHash": "sha256-sAxu9QtCkjqCQjKI4F9txBUZK/07cAF5LmzD0QyAnMU=",
+        "lastModified": 1789666504,
+        "narHash": "sha256-+CbR0RfDbTG+TTpJrVxnH79WJ9U/F6mOpEzPVahNECs=",
         "owner": "tryashtar",
         "repo": "minecraft-ttf",
-        "rev": "f60e65cfae3531ec8b708ea6b8f6a3be4cb2d82d",
+        "rev": "d4f1cb94e7242ed8fbe829299b4c3d6f46ba3eb0",
         "type": "github"
       },
       "original": {
