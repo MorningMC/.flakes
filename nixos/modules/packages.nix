@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, ... }: {
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
@@ -24,10 +24,8 @@
         appimage.binfmt = true;
     };
 
-    # Enable PipeWire
+    # Configure PipeWire sound server (enabled in host- or user-specific configurations)
     services.pipewire = {
-        enable = true;
-
         # Enable PulseAudio support
         pulse.enable = true;
 
@@ -39,6 +37,6 @@
         jack.enable = true;
     };
 
-    # Enable RealtimeKit system service
-    security.rtkit.enable = true;
+    # Enable RealtimeKit system service if PipeWire is enabled
+    security.rtkit.enable = config.services.pipewire.enable;
 }
