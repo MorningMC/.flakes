@@ -11,7 +11,7 @@
         description = "Adventurers' Update 2 Server Administrator";
 
         # Declare the user’s additional groups besides 'users'
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "wheel" "networkmanager" ];
 
         # Declare the password of the user
         hashedPasswordFile = config.age.secrets.morningmc_password.path;
