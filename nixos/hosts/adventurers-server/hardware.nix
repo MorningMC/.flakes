@@ -16,10 +16,8 @@
 
     # Declare mount points
     fileSystems = {
-        "/" = {
-            device = "/dev/disk/by-uuid/151296a2-5a83-47ea-b811-cad97d6455ad";
-            fsType = "ext4";
-        };
+        "/".device = "/dev/disk/by-uuid/151296a2-5a83-47ea-b811-cad97d6455ad";
+        "/".fsType = "ext4";
 
         "/boot" = {
             device = "/dev/disk/by-uuid/A39C-F21F";
