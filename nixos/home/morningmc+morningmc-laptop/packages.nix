@@ -38,8 +38,8 @@
             clean = {
                 enable = true;
 
-                # Perform a clean every day
-                dates = "daily";
+                # Perform a clean every week
+                dates = "weekly";
 
                 # Options given to nh clean
                 extraArgs = "--keep 3 --keep-since 7d";
