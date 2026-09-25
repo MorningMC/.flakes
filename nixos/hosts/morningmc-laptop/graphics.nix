@@ -15,7 +15,7 @@
     discreteCardPci = "0000:02:00.0";
 in
 {
-    # Specify Intel & Nvidia PCI address (required by Nvidia PRIME)
+    # Specify Intel & NVIDIA PCI address (required by NVIDIA PRIME)
     hardware.nvidia.prime = {
         intelBusId = toNixPci integratedCardPci;
         nvidiaBusId = toNixPci discreteCardPci;

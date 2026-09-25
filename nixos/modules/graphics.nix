@@ -5,12 +5,12 @@
     # Declare video drivers
     services.xserver.videoDrivers = [ "nvidia" "modesetting" "fbdev" ];
 
-    # Configure Nvidia driver on-demand
+    # Configure NVIDIA driver on-demand
     hardware.nvidia = {
         # Use open-source kernel module
         open = true;
 
-        # Use the latest branch of Nvidia drivers
+        # Use the latest branch of NVIDIA drivers
         branch = "latest";
 
         # Enable kernel modesetting
@@ -24,7 +24,7 @@
         prime.offload = {
             enable = config.hardware.graphics.enable;
 
-            # Add a convenience script for offloading programs to an Nvidia device
+            # Add a convenience script for offloading programs to an NVIDIA device
             enableOffloadCmd = config.hardware.nvidia.prime.offload.enable;
             offloadCmdMainProgram = "prime-run"; # Follows conventional name
         };

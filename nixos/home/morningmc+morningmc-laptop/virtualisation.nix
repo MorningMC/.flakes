@@ -11,7 +11,7 @@
         rootless.setSocketVariable = true;
     };
 
-    # Enable dynamic CDI configuration for Nvidia devices
+    # Enable dynamic CDI configuration for NVIDIA devices
     hardware.nvidia-container-toolkit.enable = config.hardware.nvidia.enabled;
 
     # Make the user accessible to docker containers
