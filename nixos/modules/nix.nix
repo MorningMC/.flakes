@@ -50,5 +50,5 @@
     '';
 
     # Prevent large Nix builds consuming all memories
-    systemd.services.nix-daemon.serviceConfig.MemoryHigh = "90%";
+    systemd.services.nix-daemon.serviceConfig.MemoryHigh = "80%";
 }

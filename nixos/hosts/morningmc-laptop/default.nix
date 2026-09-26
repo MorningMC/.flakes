@@ -32,6 +32,10 @@
         logind.settings.Login.HandlePowerKeyLongPress = "ignore";
     };
 
-    # Enable oomd on user slices to prevent memory outage
-    systemd.oomd.enableUserSlices = true;
+    # Enable systemd-oomd on all slices to prevent memory outage
+    systemd.oomd = {
+        enableRootSlice = true;
+        enableSystemSlice = true;
+        enableUserSlices = true;
+    };
 }
