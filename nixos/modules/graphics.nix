@@ -2,10 +2,7 @@
     # Enable hardware acceleration for 32-bit applications
     hardware.graphics.enable32Bit = config.hardware.graphics.enable;
 
-    # Declare video drivers
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" "fbdev" ];
-
-    # Configure NVIDIA driver on-demand
+    # Configure NVIDIA driver on-demand (enabled in host-specific configurations)
     hardware.nvidia = {
         # Use open-source kernel module
         open = true;

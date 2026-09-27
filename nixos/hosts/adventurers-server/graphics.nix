@@ -15,9 +15,10 @@
     discreteCardPci = "0000:01:00.0";
 in
 {
+    # Declare video drivers
+    services.xserver.videoDrivers = [ "nvidia" "modesetting" "fbdev" ];
+
     # Specify Intel & NVIDIA PCI address (required by NVIDIA PRIME)
-    hardware.nvidia.prime = {
-        intelBusId = toNixPci integratedCardPci;
-        nvidiaBusId = toNixPci discreteCardPci;
-    };
+    hardware.nvidia.prime.intelBusId = toNixPci integratedCardPci;
+    hardware.nvidia.prime.nvidiaBusId = toNixPci discreteCardPci;
 }

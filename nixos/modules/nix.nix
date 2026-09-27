@@ -3,14 +3,32 @@
     age.secrets.builder-qqxnkrut.file = ./_secrets/builder-qqxnkrut.pem.age;
 
     nix = {
-        # Specify Nix experimental features
-        settings.experimental-features = [
-            "nix-command" # Enable nix commands
-            "flakes" # Enable flakes
-        ];
+        # Configure Nix
+        settings = lib.mkMerge [
+            {
+                # Specify Nix experimental features
+                experimental-features = [ "nix-command" "flakes" ];
 
-        # Optimise Nix store after building system
-        settings.auto-optimise-store = true;
+                # Optimise Nix store after building system
+                auto-optimise-store = true;
+
+                # Allow remote builders to use caches
+                builders-use-substitutes = true;
+            }
+
+            # Enable CUDA caches if CUDA support is enabled
+            (lib.mkIf config.nixpkgs.config.cudaSupport {
+                substituters = [
+                    "https://cache.nixos-cuda.org" # Nix Community CUDA Cache
+                    "https://cache.flox.dev" # Flox CUDA Binary Cache
+                ];
+
+                trusted-public-keys = [
+                    "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+                    "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+                ];
+            })
+        ];
 
         # Enable remote builds
         distributedBuilds = true;

@@ -19,7 +19,7 @@
         brightnessctl # Monitor brightness controller
 
         # Creative stuff
-        (blender.override { cudaSupport = true; })
+        blender
         blockbench
         gimp # Image Editor
         kdePackages.kdenlive # Video editor
@@ -63,9 +63,6 @@
         # Enable OBS Studio
         obs-studio = {
             enable = true;
-
-            # Enable CUDA support
-            package = pkgs.obs-studio.override { cudaSupport = true; };
 
             # Declare installed plugins
             plugins = with pkgs.obs-studio-plugins; [

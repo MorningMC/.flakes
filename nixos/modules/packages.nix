@@ -2,6 +2,9 @@
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
+    # Enable CUDA support if NVIDIA driver is enabled
+    nixpkgs.config.cudaSupport = config.hardware.nvidia.enabled;
+
     # Use modern broker D-Bus implementation
     services.dbus.implementation = "broker";
 
@@ -24,7 +27,7 @@
         appimage.binfmt = true;
     };
 
-    # Configure PipeWire sound server (enabled in host- or user-specific configurations)
+    # Configure PipeWire sound server (enabled in host-specific configurations)
     services.pipewire = {
         # Enable PulseAudio support
         pulse.enable = true;
