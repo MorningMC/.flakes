@@ -9,6 +9,9 @@
                 # Specify Nix experimental features
                 experimental-features = [ "nix-command" "flakes" ];
 
+                # Make users in wheel group trusted by Nix
+                trusted-users = [ "@wheel" ];
+
                 # Optimise Nix store after building system
                 auto-optimise-store = true;
 
