@@ -11,7 +11,10 @@
     # Manage Hyprland by Home Manager
     home-manager.users.morningmc.wayland.windowManager.hyprland = {
         enable = true;
-        package = null; # Using system Hyprland package
+
+        # Use system packages. Don't let Home Manager manage them.
+        package = null;
+        portalPackage = null;
 
         # Specify configuration type
         configType = "lua"; # Default after Home Manager state version 26.05
@@ -29,9 +32,6 @@
 
         # Handle XDG autostart desktop entries
         systemd.enableXdgAutostart = true;
-
-        # Do not manage XDG desktop portals
-        portalPackage = null;
     };
 
     # Configure environment variables for Hyprland if NVIDIA support is enabled

@@ -29,16 +29,11 @@ hl.config({
 
 		-- Configure window opacity
 		active_opacity = 0.9,
-		inactive_opacity = 0.8,
+		inactive_opacity = 0.9,
 
 		-- Enables dimming of inactive windows
 		dim_inactive = true,
-		dim_strength = 0.1,
-
-		blur = {
-			-- Specify blur variant
-			--variant = "fluid_jar",
-		},
+		dim_strength = 0.15,
 	},
 
 	input = {
