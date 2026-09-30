@@ -68,6 +68,7 @@
     programs.ssh.extraConfig = ''
         Host nix.qqxnkrut.top
             ProxyCommand ${lib.getExe pkgs.cloudflared} access ssh --hostname %h
+            Compression yes
     '';
 
     # Prevent large Nix builds consuming all memories

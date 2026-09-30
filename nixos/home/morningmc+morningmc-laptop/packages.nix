@@ -79,34 +79,39 @@
         };
     };
 
-    # Import nix-index database Home Manager module required by comma
-    home-manager.users.morningmc.imports = [ inputs.nix-index-database.homeModules.nix-index ];
+    home-manager.users.morningmc = { config, ... }: {
+        # Import nix-index database Home Manager module required by comma
+        imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-    home-manager.users.morningmc.programs = {
-        # Enable command-line JSON processor
-        jq.enable = true;
+        programs = {
+            # Enable command-line JSON processor
+            jq.enable = true;
 
-        # Enable Ripgrep
-        ripgrep.enable = true;
+            # Enable Ripgrep
+            ripgrep.enable = true;
 
-        # Enable Fuzzy Finder
-        fzf.enable = true;
+            # Enable Fuzzy Finder
+            fzf.enable = true;
 
-        # Enable Fastfetch
-        fastfetch.enable = true;
+            # Enable Fastfetch
+            fastfetch.enable = true;
 
-        # Enable comma & nix-index with small database variant
-        nix-index-database.comma.enable = true;
-        nix-index.package = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system}.nix-index-with-small-db;
+            # Enable comma & nix-index with small database variant
+            nix-index-database.comma.enable = true;
+            nix-index.package = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system}.nix-index-with-small-db;
 
-        # Enable Brave
-        brave.enable = true;
+            # Enable Brave
+            brave.enable = true;
 
-        # Enable Thunderbird
-        thunderbird.enable = true;
+            # Enable Thunderbird
+            thunderbird.enable = true;
 
-        # Enable Qalculate!
-        qalculate.enable = true;
-        qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
+            # Enable Qalculate!
+            qalculate.enable = true;
+            qalculate.package = pkgs.qalculate-qt; # Install the Qt variant
+        };
+
+        # Make user Nix profiles respect XDG base directories
+        nix.assumeXdg = config.home.preferXdgDirectories;
     };
 }
