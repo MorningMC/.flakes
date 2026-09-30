@@ -42,6 +42,10 @@
         # A stylish Zsh theme with deliberate use of space
         headline.url = "github:Moarram/headline";
         headline.flake = false; # The repository does not contain a flake.nix
+
+        # A lua package for Hyprland to provide awesome/dwm-like behavior with workspaces
+        split-monitor-workspaces.url = "github:zjeffer/split-monitor-workspaces";
+        split-monitor-workspaces.flake = false; # Only Lua scripts are used. We don't need an entire flake.
     };
 
     # Declare complete sets of NixOS configurations

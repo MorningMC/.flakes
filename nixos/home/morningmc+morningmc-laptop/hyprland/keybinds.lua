@@ -149,21 +149,33 @@ hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true }) --
 local group_size = 10
 local keypad_keys = { "87", "88", "89", "83", "84", "85", "79", "80", "81", "90" }
 
+-- Import split-monitor-workspaces library
+local smw = require("plugins.split-monitor-workspaces")
+
+-- Initialize the library
+smw.setup({
+	-- Number of workspaces assigned to each monitor
+	workspace_count = group_size,
+
+	-- Do not create persistent workspaces
+	enable_persistent_workspaces = false,
+})
+
 for workspace = 1, group_size do
 	-- Number keys
-	hl.bind(main_mod .. " + " .. workspace % group_size, dispatch_workspace(workspace, hl.dsp.focus, group_size))
-	hl.bind(main_mod .. " + SHIFT + " .. workspace % group_size, dispatch_workspace(workspace, hl.dsp.window.move, group_size))
+	hl.bind(main_mod .. " + " .. workspace % group_size, smw.workspace(workspace))
+	hl.bind(main_mod .. " + SHIFT + " .. workspace % group_size, smw.move_to_workspace(workspace))
 
 	-- Keypad numbers
-	hl.bind(main_mod .. " + code:" .. keypad_keys[workspace], dispatch_workspace(workspace, hl.dsp.focus, group_size))
-	hl.bind(main_mod .. " + SHIFT + code:" .. keypad_keys[workspace], dispatch_workspace(workspace, hl.dsp.window.move, group_size))
+	hl.bind(main_mod .. " + code:" .. keypad_keys[workspace], smw.workspace(workspace))
+	hl.bind(main_mod .. " + SHIFT + code:" .. keypad_keys[workspace], smw.move_to_workspace(workspace))
 end
 
 -- Scroll through workspaces
-hl.bind(main_mod .. " + mouse_down", hl.dsp.focus({ workspace = "-1" })) -- Scroll to previous workspace
-hl.bind(main_mod .. " + mouse_up", hl.dsp.focus({ workspace = "+1" })) -- Scroll to next workspace
-hl.bind(main_mod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "-1" })) -- Move window to previous workspace
-hl.bind(main_mod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "+1" })) -- Move window to next workspace
+hl.bind(main_mod .. " + mouse_down", smw.workspace("-1")) -- Scroll to previous workspace
+hl.bind(main_mod .. " + mouse_up", smw.workspace("+1")) -- Scroll to next workspace
+hl.bind(main_mod .. " + SHIFT + mouse_down", smw.move_to_workspace("-1")) -- Move window to previous workspace
+hl.bind(main_mod .. " + SHIFT + mouse_up", smw.move_to_workspace("+1")) -- Move window to next workspace
 
 -- Switch between workspace groups
 hl.bind(main_mod .. " + minus", hl.dsp.focus({ workspace = "-10" })) -- Switch to previous workspace group
@@ -171,7 +183,11 @@ hl.bind(main_mod .. " + equal", hl.dsp.focus({ workspace = "+10" })) -- Switch t
 hl.bind(main_mod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "-10" })) -- Move window to previous workspace group
 hl.bind(main_mod .. " + SHIFT + equal", hl.dsp.window.move({ workspace = "+10" })) -- Move window to next workspace group
 
--- Special Workspace
+-- Empty workspace
+hl.bind(main_mod .. " + BACKSPACE", smw.workspace("empty"))
+hl.bind(main_mod .. " + SHIFT + BACKSPACE", smw.move_to_workspace("empty"))
+
+-- Special workspace
 local special_name = "scratch"
 
 hl.bind(main_mod .. " + grave", hl.dsp.workspace.toggle_special(special_name)) -- Toggle special workspace
