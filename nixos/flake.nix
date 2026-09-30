@@ -15,11 +15,7 @@
 
         # age-encrypted secrets for NixOS and Home manager
         agenix.url = "github:ryantm/agenix";
-        agenix.inputs = {
-            nixpkgs.follows = "nixpkgs";
-            home-manager.follows = "home-manager";
-            darwin.follows = ""; # Not to download darwin dependencies
-        };
+        agenix.inputs.nixpkgs.follows = "nixpkgs";
 
         # Declarative Flatpak manager for NixOS
         nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
