@@ -1,12 +1,26 @@
 { pkgs, inputs, ... }: {
+    imports = [
+        # Import Home Manager module
+        inputs.home-manager.nixosModules.default
+
+        # Import agenix NixOS module for secret encryption
+        inputs.agenix.nixosModules.default
+    ];
+
     # Specify the Linux kernel used
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     # Enable SysRq functions
     boot.kernel.sysctl."kernel.sysrq" = true;
 
-    # Import agenix NixOS module for secret encryption
-    imports = [ inputs.agenix.nixosModules.default ];
+    # Make user settings fully declarative
+    users.mutableUsers = false;
+
+    # Install Home Manager home.packages to /etc/profiles
+    home-manager.useUserPackages = true;
+
+    # Inherit Home Manager Nixpkgs settings from global Nixpkgs
+    home-manager.useGlobalPkgs = true;
 
     # Declare path to host recipient keys
     age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
