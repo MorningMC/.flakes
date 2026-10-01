@@ -72,6 +72,9 @@
                 # Capture source extension
                 obs-pipewire-audio-capture # PipeWire audio device and application capture
                 obs-vkcapture # Vulkan/OpenGL game capture
+
+                # Visual filters
+                pixel-art # Create retro-inspired pixel art visuals
             ];
 
             # Setup OBS virtual camera
