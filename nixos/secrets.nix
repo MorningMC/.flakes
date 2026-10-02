@@ -35,6 +35,7 @@ in
     [
         "frp-adventurers.env.age" # FRP adventurers instance network secret
         "cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
+        "playit-adventurers-server.toml.age" # Playit adventurers-server tunnel secret key
     ]
 ) //
 

@@ -3,7 +3,7 @@
         # Import Home Manager module
         inputs.home-manager.nixosModules.default
 
-        # Import agenix NixOS module for secret encryption
+        # Import agenix module for secret encryption
         inputs.agenix.nixosModules.default
     ];
 

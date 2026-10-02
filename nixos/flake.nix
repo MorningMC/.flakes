@@ -24,6 +24,10 @@
         nix-minecraft.url = "github:Infinidoge/nix-minecraft";
         nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
 
+        # NixOS module for Playit Agent
+        playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+        playit-nixos-module.inputs.nixpkgs.follows = "nixpkgs";
+
         # nix-index database with comma and integration with command-not-found
         nix-index-database.url = "github:nix-community/nix-index-database";
         nix-index-database.inputs.nixpkgs.follows = "nixpkgs";

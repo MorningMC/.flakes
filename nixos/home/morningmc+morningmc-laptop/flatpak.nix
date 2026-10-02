@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ config, inputs, ... }: {
     # Enable Flatpak
     services.flatpak.enable = true;
 
@@ -7,7 +7,7 @@
 
     # Manage Flatpak by Home Manager
     home-manager.users.morningmc.services.flatpak = {
-        enable = true;
+        enable = config.services.flatpak.enable;
 
         # Declare packages to install
         packages = [
