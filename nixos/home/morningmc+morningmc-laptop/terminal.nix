@@ -24,6 +24,7 @@
             # Window settings
             window_padding_width = 8;
             confirm_os_window_close = 0; # Do not confirm when closing
+            remember_window_size = "no"; # Prevents fullscreen on startup
 
             # Cursor settings
             cursor_shape = "underline";
