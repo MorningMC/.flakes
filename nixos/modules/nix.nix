@@ -1,7 +1,4 @@
 { config, lib, pkgs, ... }: {
-    # Declare encrypted secrets used
-    age.secrets.builder-qqxnkrut.file = ./_secrets/builder-qqxnkrut.pem.age;
-
     # Configure Nix
     nix.settings = lib.mkMerge [
         {

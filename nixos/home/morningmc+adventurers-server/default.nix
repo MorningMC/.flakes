@@ -11,7 +11,10 @@
         description = "Adventurers' Update 2 Server Administrator";
 
         # Declare the user’s additional groups besides 'users'
-        extraGroups = [ "wheel" "networkmanager" ];
+        extraGroups = [
+            "wheel" "networkmanager"
+            config.services.minecraft-servers.group # Allow current user to manage Minecraft servers
+        ];
 
         # Declare the password of the user
         hashedPasswordFile = config.age.secrets.morningmc_password.path;
