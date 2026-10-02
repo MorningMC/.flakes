@@ -2,8 +2,10 @@
     # Enable Flatpak
     services.flatpak.enable = true;
 
-    # Import nix-flatpak Home Manager module
-    home-manager.users.morningmc.imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
+    home-manager.users.morningmc.imports = [
+        # Import nix-flatpak Home Manager module
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    ];
 
     # Manage Flatpak by Home Manager
     home-manager.users.morningmc.services.flatpak = {

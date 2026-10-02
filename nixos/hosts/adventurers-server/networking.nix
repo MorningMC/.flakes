@@ -1,6 +1,8 @@
 { config, inputs, ... }: {
-    # Import Playit Agent module
-    imports = [ inputs.playit-nixos-module.nixosModules.default ];
+    imports = [
+        # Import Playit Agent module
+        inputs.playit-nixos-module.nixosModules.default
+    ];
 
     # Declare encrypted secrets used
     age.secrets.cloudflare-token-adventurers-server-ddns.file = ./_secrets/cloudflare-token-adventurers-server-ddns.age;

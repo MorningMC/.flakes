@@ -83,8 +83,10 @@
     };
 
     home-manager.users.morningmc = { config, ... }: {
-        # Import nix-index database Home Manager module required by comma
-        imports = [ inputs.nix-index-database.homeModules.nix-index ];
+        imports = [
+            # Import nix-index database Home Manager module required by comma
+            inputs.nix-index-database.homeModules.nix-index
+        ];
 
         programs = {
             # Enable command-line JSON processor
