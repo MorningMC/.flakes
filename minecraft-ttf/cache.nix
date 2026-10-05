@@ -57,9 +57,23 @@
         lib.hasPrefix "minecraft/font/" path || # Font provider definition JSONs
         lib.hasPrefix "minecraft/textures/font/" path # Font textures and Unicode bitmap sheets
     ) assetIndexContent.objects;
+
+    # Sanitize Minecraft version
+    packageVersion = lib.strings.sanitizeDerivationName targetVersion;
 in
 # Populate the cache derivation
-runCommand "minecraft-ttf-cache" { } (
+runCommand "minecraft-ttf-cache-${packageVersion}" {
+    # Specify package name and version
+    pname = "minecraft-ttf-cache";
+    version = packageVersion;
+
+    # Declare derivation metadatas
+    meta = {
+        homepage = "https://minecraft.net";
+        license = lib.licenses.unfree; # This derivation extracts proprietary Mojang game assets
+        platforms = lib.platforms.all;
+    };
+} (
     lib.concatMapStrings installAsset (builtins.attrValues fontObjects)
     + install version-menifest "versions/version_manifest_v2.json"
     + install clientJson "versions/${targetVersion}/${targetVersion}.json"
