@@ -93,6 +93,9 @@
                 HL_GIT_STATUS_SYMBOLS[CLEAN]="%{$green%}✔"
                 HL_CLOCK_MODE='on'
                 HL_ERR_MODE='detail'
+
+                # Restore EOL mark removed by Headline theme
+                PROMPT_EOL_MARK='%K{red}%F{black}%#%k%f'
             '';
         };
     };
