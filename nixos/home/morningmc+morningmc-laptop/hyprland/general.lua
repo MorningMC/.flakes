@@ -81,6 +81,9 @@ hl.config({
 		-- Configure global font
 		font_family = "JetBrainsMonoNL Nerd Font",
 
+		-- Focus an app that requests to be focused
+		focus_on_activate = true,
+
 		-- Wake up the monitors on mouse move or key press
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
