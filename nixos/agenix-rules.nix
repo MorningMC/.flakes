@@ -3,7 +3,7 @@
 let
     # Declare all public keys created for each machine
     hostKeys = {
-        # The master key. This key will be used to encrypt all files
+        # The master key. This key will be used to encrypt all files.
         master = "age1pq1eukzmgam0lk8s8wc689tj6r3jn4p3lavf6rscc4drzvdt6enslrk779knzk7se3yt3gr45fe0k2uenvr84k5vwfraj4ndpmek4zt07g9say9vvljn9aqtw3333jtsqq32q9q8nsrlyrgju3rdgsf4x0pxgcr5473sf2araeq90e9sqmyp5e7dqe72uzf8wwvhxmrss84n6d24ryueg6x65zdpctx6k0q4rpy4wzs742ym2gcvcvvjxgyr7eug79ydtq2vg4auknfzyg9wrf7jpccvh99ydju9tqtw269rkmtj58r663nzcxw7tqqqtu8ghrkfxa2dzkl2acc9krcq5ktfvf9zjyjc29edaur8pquqkygs9k40y7g028k0c9ueyx83229g92tvr0q5wfl2ge3q9z3cdexh8jcr9hu6739jvc8z7g6vvtu0mveerg84gsw52pgdh2jeyrgt3ca48mmtymcpauvhdvfvs3cd2dm0fmjerx3fegyg3g3wxhp3swaqfx7ywumauf84wttjvsfs59nwdpnsun3kve5ruzpexmv9ukf52nm6f87kpn3jpwrdj3qy635e0n803qnj7v772fu4xcvgrywswy74pfj0ywdhxe3z0nys5mmpd6fks4kq9vtpsm5s9ufqtv3quedjenm3g58amxvdgg94ea3cj3myunrqxz55pfs59fpjmlvprh3y4fte7uhn6wtjyfsqdtwpza2zzlzctq9pfm3w5pe3gwkpdrljklx2jvgjujs7hlkkt6u8zptzw64gkeqe3mygtr9zvhzc0rumxt8svguuvvn006m4ed8qxxfc7jd0jfegqgx6pt5y89awxdftptcfqgmke98qxc326m3zfl2tfe9qpua9um2cqd3j6tf9y6rsn8sxke8fy2qhqkfq04vkr4my3h6839vsy6vwd5e9kjqc7m2a0qdfqu44ejucfwfftmpg7gsdwd2tkc3f65f4ryfhjyftxt3l20z5g6r3z3qaqjtwdlrsrntu7aap74syvz35jkynuh8g3l6m2y399ujn53gllhzrshps59yrdh80e36wfrpz3yt4lh5k89guux6eznpgwe2mjwvvl8q4g7dqau896yj9rmymx46fsyrynx243asjuujr8m8f20545vttr7esgg9dup5gratcenz92rnefet6era009wnu5vdawk9stdfv403yw8ykglzcd9mefpzzms56883yp6hdewd4rgdgs8sc5hnf3pcjflq24vaxqjnmzexu4m38vwk097zlqcdhe32lgn4s4qesk63v2x6g4nwe6kfflx308gezd93sdeary4mfc4n3texp7h26segqld2nygm4u5hyy6fkx79340sgl747r5qp9rkyrqqgd64jlqckprffa5zgupjpejh7xgypyfvxg65h9lweujsger44vyjw3rt9jc0y5tcevj75ggfzh2erhdq2mjuptqwjth4psht2ea3xc7ulzesq90s83qcwhknap6wv33p9wdkdewv2jpr74x5e25zgsc59zwqq4ryv687s8vh7lr4vs47y8veerjsvcyl5yzc7adt9agefphx2dmtkgjjy6904c4qwljt3r2cuc02e6zvkgxk84ev6geryldgqf424p2njzh9h48cu8pup0wlv7pzwy2pq48qy3pkf2yeyugx3ryufkxnfteq6kwqgzhzeda73xghnqf9n3kvyx70y5rdr96a7q6f3mqyr23rwfdgtlf2tp7vuavj3t9azgvjdqq4g082xz5xfnnxcyxp6tmfcmcs769u6hrde97gs3zrgdmejrjksn6cqhlfsa3kzp93rswdv9v3zp627l2ff2l5w5fk5nqn85zx075fs7jlem84r0y40uslsqvnjzmuhmkv5adl4xusgqsta709umtjkpr74rwgq0esyk3";
 
         # The host key of morningmc-laptop
@@ -13,47 +13,58 @@ let
         adventurers-server = "age1pq1mzc6w0syg6kyr8gl7lqrv2ngzay4uxguqnxckj70x6a9weugl76jl0g9czrpsdjtnxuqxkxy6cy3f5wyqe65wnl0tskfh9kr37rkjmtxe8g5s74rxcke05ev9njklm7tvm5h4skvunpdg2n26wf6kaf58ffhyjj56szs0ugs75s4klv6npftdrjyxxfskcjqglmy6crvdpfl32hm7eydy5efl6skqaugc3mq9nyv7xtnp9gj7v7z672e8c7h9spre292s5qf9ms90nfjn43tnpyvh23vazd2mpcputl8csreg707vzu7eznpvvsztj66hza7x69w32650pyh0tj28pz3vl9r40p26pqywy3l4845f6jrclvdxwmqp8ynt4jwulfmw4u5369hsfc6y9hfnwyg8qgzhk0cqpms2dpr0z9xa4xraw7rf748wy7sw2cqjqk0l5q4zpj86rpf43rwhp3qu3nsw8q94zu383le449tdpt2yj0rys5mrmckky98dgx70qne6yange9gh7ept3rv0tghy50kvauvh67tsx49nzqq0qgskdngjelqqtfyfgeqnncffl94djn499v0cdculwf3n6z5dkj3ytvpvjgauqzr7zz2m5v3npz3qlnur3yd9jt7ywprnshj4slrg6sx7cc80qjqptsmgwwxr3p0wfpy25zyfnzlz7nzghgu2wplr3wy55uezga2zud4lqc6kpex3jslwjauzmrmdxv5kgmnhx7s5ej4wgxnpwsm2w3rqyx5cgt29vxkuq49u6mc9vu405w4v8l42mqp4trzk6q20f2clhgz9yfwex8az93jdar2xut2q3zgcmqcve733y4tdqsajvxfzqc6cv3fwpp8a98v74vrca3qal5pz76gf97lazn5w7msthshm84rxlp2k8cuccp755fvmezcyamnvt4fy4ws4vg3ej3va2an4gjtk9kxqgkattxhmuu6kspq6cgy8whe2hlds38akf97wu9k8fmszxcx8p2aevx4ga5zkayfexdjt2eqkayjmv66wfe8z8rxp2ty396ghpxgmxlw9gqndcgfy3jr48es3j327x5hqkgngycpew8hng3ak30026um9jjgm4dr92s6kqt62e5u2wa099cm06ut7jn2082uzm3fwqvu4d9hk03y7fj8g83zxr56r3t4qp69p2pxnk6q2fta570klywah229f95u0su4q04fxx4srzzaj9qkuyqe53ksnmqxcnumtsyeya4y7vfqle6sg6u2cj0xuxu4gvuhgret5hskv044xcaqkcaz4su843ucnanxywwqxwfyg6fg0y3j0zwrcvrfxg2fvxgsuag9726eqx9mr5dr07d9v52wu6raafeyyzn25wtejh3cnj9ze9eu58qgven8k8u2px0myjf32ahtxqx0s8artkryqwre0rmky5jzklyyh4d4h49mj2tyxunnujpgzcaetknfklpxv5v0rd04us6cectejpr9jpyryy2nzn5zxq9wec5ju9xfw844kv8wnrjnjkhxlxvzxezcm3cug6qe27zpkx5pa9rnxlsh526tcyn93ry9x2qfhj2jphckxd84v6r9zl82ydtteeqwq693x6pqng49xvj7jqxda9nk26nth3jgns4j82w6xk960ffkwvn34ehcqd3vwm96knzhkkajk4xz2l3h9m2c2q22njjf99dua4e4cknxvq2egaze56ndzufy8a3x29rg0f3ej4lw4x34me5qvwqkml7hradxwv7ysaufwusgnn48fgnucn8w8vtq7zr3q45fpmmmm2q5hgre9v455de0t6k8uwn44n32y4k2dntxjcvx5mfmtqg7pkt3460yc3f9jdrd9kp9pp4nz7wlxk63anq7qgntm88vwfue9p5e5j8a0lmcfm62ll49ggs8vshd";
     };
 
+    # Declare all public keys created for each user
+    userKeys = {
+        # The master key. This key will be used to encrypt all files.
+        master = "age1pq1fpd5m9r65mwkt9uyuvwl4e6fdy95cgxrnmwy4gdqkf26acvvyxqmn6mnycacw23ydzexvcr5cqsrc60ry05rc28y3dnw2eypmn6p7k76glm85y5cwxfywu2p7mf2ncupcqvesvk3nxrnyx2ccdskmw6xrdt78th0kfq3ecrdnhaynlfj5cwkd8up4xnx049cnqpn9kt5kmaaq5gmz4248k7dd3pp0sa3y6wxwd6jclx3pjtnlep3agcjy5xg5rk32nz9vqfwvk4x6ueexh9ag4lm547ctqdtrucmgnmnqcuxyw90pdpawzrpec589k7492q8smvsxv2lde9ul02s44lyhvnhvme3k4rervs955c64j2tehz3d8exu3crnznras2jxf4k3ggmwqgcdx47y254hdpq8yc5dchujemqsk9mug37vgeh74x996sfhpcrg4d96928jad6chph4depr9cyqxkcpnp0rea4qaf6ej9jp8lpqj68a5ck4l5cx6vm3v2ectn27uxg3jqmfmjpvxu88yf5vftaqwgjryj09d4tnrp3r95m5pn3rg8n8zv63tskd0wfq9mrymjkz3r3djg5ecqfr94t4qy42txqz5u5szm8che4eq74whzl4qv75c9vqujyz5mgc6rt2clq038mg6p6c63xlfpqna4z5vwhfzfxe22n6sxxvxpv8nz24dnxpv3prslarf2ccqnhs7kesrvpw4u0yd8f6c6uhe4mw2jn838qzvmzucrs59cz7ps2p2n355jkhwyux2s8vz5udrs8c6jztup3xjsvx4wzdfsq9trtpx2zny4pfytfsja0zjfys7zepz8ht7jmz4qdxj766w52gxq8zevsyk37sp873ycpty47rvqj5amh9wmahyf6pvn3akp5pnrrrgn5sttnsfdfmjzt2yyls9pxwcseew4kq92wukq3pcffcfyeye7n5ddnv25vjvg7eye38rmscle8w2lfk6vv2z4rkpfywxztzxr3t7dd5zja9p85qtzqegmc9gwk8t5kgzdcj9ptr09h2hsqds5qk80eccz2sdtktjsd3048yxy98tcrsv49qctw6q6ktudmg3eveurkjs2swv3np6zp5nsxjdmz29nyckfakk5jckjz37k9nv3rxtmdvw6kkuermnpnmut4jxp29ftsxr7pwqws5p7p0qpms092qml8nvxyesw4nxep9aarsk3uf7l3jvq8f27wx26hwsjjsfwyk49vwe9k8jad79evly5ut982wpv05q0e93h3w7d9j8k88yqmg7lqk959s7e6sg94yf5908dvghuz30szzz4hrc58pyag5unjc5whcx2dc3lng9nkvrcrccyk9rskgquexarhtfad7gdmqqygrj86hpnpg2dvj09xz7v3d8zjkzc4w0seskpdkz259gmrffzksdxaw963ykh2djqn9x6m6um9cywcvvspyws3w3vy9wymnlvs0sl2ddggewc79wv6zlj8mgyqv6fynndx02cfncdctcmcxesjsh9eznp9tz48u9estn7rfz3nctwjj3gtnge4fv9aqya2j42j09ymcdrh9347t6susqyny94jfks4nxe8xdyglc9uw8gkh3zhva7neq0tsg3zf6e8tftky68588kdcm0eu3h6034flf2rff3yja4y5ay0w6deupy7jy2hqksfjpflwv8clq6aj5dc64z26nazrewuz8kvz0q55q5l4uz49w39xsz72pen3j4fxzc4cpqvp3ttyvuqcalxhqy9sufn6ymks5jq8jweca8fj5gh5vyj2lghh8nvxqcgzvs9mpgrnsu2q9njhf2m0dyy6ypf838vvzqy04kdlm8r20lt6z08kaalnalkpl8mcecc5gkmhj4rquzau0y5ma8766s44xnu03fmdu43m7uzpgr57v8z";
+
+        # The user key of morningmc+morningmc-laptop
+        morningmc_morningmc-laptop = "age1pq1ax7rtv7rpjvcsvasavp9wajj8k69c5tzxshqnggrr24tkmrm65fj9scv5n68wmx0s0zu84tvasuuc5p5qyqyy3gvzhzqgj2cwt4tasgjkwwpkz6kvezwt3gk94af69l6qnrf2ewunx3egfpj7q922svmxysry3tnfwnagey596duun6vy2ufyqlxlpf23upkhqgvzfvuk2ungh5k6x5vnhzn0prqlx0nz3h2gfhj9yd69769ztek4u33vh6xkq5gg3wulgft6a4cnwxnj6udvsa69zg9tjrrw2mz406jkp3p2aspxasrljv37jy20qljcy8u42a68fewzuvtz4feql2ugdv7zds2ms0ajetysyjut7dnsq8yh345rxmgv5y5neagu9j2yn0pnz2fpgap4cygdu9rkhaujgfvy98fejpcxd4zyx3my7q3jzsvr88zqz7pfxparcn5mjpfsl8dqas3xl8u6trkv3fgnly8n50p0ndcvcfn86g5jqjk4dpq8xzyy5kh5gppm2p990zgpjagragyk9lsys9vhgv62fyq9lfhxjthexmqxgrcg96vk9zg8v35x60vqf9262526dqzta2j2849p4s6evmlndgqfa9gz2dnekkjeq8s5s6dhp877su94vrmp7e88yxj29ufc7lx6hyrphs50prukd47hj2evqumvsuqafxt9d66rc2kkypz9jt46ysdmqyehupffsxakn9qwvgz07zdcvng5xvg368j90nnnzmat6493jem39upzvva39p8u94wyxnjrdyvaakvns4q9p8xvjsf7gtzu6k2j7se56uw5g3jpvc2fj53xpv8mvypftarcugega5en2jlr23x8vd5get82d8ykzavzxv4306fdny58z3tg6d33vl5z7y0wu64tmfge0thqss4vsryyvjyycps2h86k9ya83zet2lkqpjkjy4cjvj2f35e9zw0vdmypu5dfu2f4cg4snvlf2veycldw3dz33z9prku8q5wwt9mj3dspvk9v0psqwqefgg7rper93cxv5f25psm69huvfwetdvjgz0r37d884uc3z8v2jjdw9darz5pq6rh5pvsvmj4nt9wjlxxxpx893cj84jsc4t5v5cj8vwgrxvc7pm7yx3g4m83r87wkh5afs0ag2awjm9q2ueechm2rsdjgk99lvkyejq9tujsyclkzshhfgtv5v9d08rfscqx3twexwfzdf7e726spk2ydnw30y38nfjn6eexuuvq5rsyawmuctv4xx9hcu0r0ykwm94jfx4vdfhfhsvsnq2fe3nwcs3tuvctxv4twnnmsjfju2e3hkvmqmrgv7ma2r52jctgclzass53p78sxgnavk5jmjtz49wrphtyplgcw5e2evkh4s5mqnqgd3jvksa3s685gdyyuu6y9ddcpvnkx5yy8ug72atyegd5pqyhp4p6cxt8n57jqn20a2ex3yvnp4f87cu5k98pzj5qy4g6wnqfd3m4qww3evttq4330pl0nady0drp9qdnfn4ew40as53yzera3mnck8ffq6ly2ekvk5vj7qsesafnjedkr9855g650wcm694wmj23kwq4jvrk9t8urpzzx6alvdar60r6dys6ndd0xcwn4g2e7tucpvz2cwz5tyrxr983g6y2gdzcntttwfwfsqufd3cp3szs833ca5aueaszjpvewvzwtuze9vyv8l2ttz3n9vvscaq2k8x29wrgad84zua3rvekd9czrwn24p6rhaduqpkcxxsl6qvrusv6px4pt6mzqzrxgxef5ktgrzfzp3xth983499v4guv0yeeyndgpklre840vc6tp28v5qatpdl8avkgsarhhvq30szk3xhuzthd34vevm97ev36vtamn3fq9lz3ptpaeef4y2fra8gg66tvpqrwrsv04227";
+    };
+
     # The folder name used to store secret files. Should start with a underscore as the secrets should not be included in any flake.
     secretsDir = "_secrets";
 
     # Import helper functions
-    inherit (import ./lib/secrets.nix) mkKeys mkSecrets;
+    inherit (import ./lib/secrets.nix) mkSecrets;
 in
 
 # Declare secret files to encrypt
 # Secret files in modules
-(mkSecrets "modules/${secretsDir}"
-    (mkKeys hostKeys "all")
-    [
-        "builder-qqxnkrut.pem.age" # SSH private key used to access frsFallingSand's Nix builder
-    ]
-) //
+(mkSecrets "modules/${secretsDir}" (
+    builtins.attrValues hostKeys
+) [
+    "builder-qqxnkrut.pem.age" # SSH private key used to access frsFallingSand's Nix builder
+]) //
 
 # Secret files in hosts/adventurers-server
-(mkSecrets "hosts/adventurers-server/${secretsDir}"
-    (mkKeys hostKeys [ "adventurers-server" ])
-    [
-        "frp-adventurers.env.age" # FRP adventurers instance network secret
-        "cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
-        "playit-adventurers-server.toml.age" # Playit adventurers-server tunnel secret key
-    ]
-) //
+(mkSecrets "hosts/adventurers-server/${secretsDir}" (
+    with hostKeys; [ master adventurers-server ]
+) [
+    "frp-adventurers.env.age" # FRP adventurers instance network secret
+    "cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
+    "playit-adventurers-server.toml.age" # Playit adventurers-server tunnel secret key
+]) //
 
 # Secret files in home/morningmc+morningmc-laptop
-(mkSecrets "home/morningmc+morningmc-laptop/${secretsDir}"
-    (mkKeys hostKeys [ "morningmc-laptop" ])
-    [
-        "password.age" # Hashed user password
-        "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
-        "docker-windows.env.age" # Windows Docker container secret
-    ]
-) //
+(mkSecrets "home/morningmc+morningmc-laptop/${secretsDir}" (
+    with hostKeys; [ master morningmc-laptop ]
+) [
+    "password.age" # Hashed user password
+    "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+    "docker-windows.env.age" # Windows Docker container secret
+]) //
+
+(mkSecrets "home/morningmc+morningmc-laptop/${secretsDir}" (
+    with userKeys; [ master morningmc_morningmc-laptop ]
+) [
+    "github-token-github-mcp-server.age" # GitHub PAT for GitHub MCP Server
+]) //
 
 # Secret files in home/morningmc+adventurers-server
-(mkSecrets "home/morningmc+adventurers-server/${secretsDir}"
-    (mkKeys hostKeys [ "adventurers-server" ])
-    [
-        "password.age" # Hashed user password
-        "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
-    ]
-)
+(mkSecrets "home/morningmc+adventurers-server/${secretsDir}" (
+    with hostKeys; [ master adventurers-server ]
+) [
+    "password.age" # Hashed user password
+    "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+])

@@ -1,31 +1,6 @@
 {
     /**
         # Description
-        Helper function to construct the public keys to encrypt a secret file according to the target host machine or user.
-
-        # Inputs
-        `publicKeys`
-            An attribute set where its keys represent either a host name of a machine or a user name, and its values is the public to
-            encrypt secrets. In addition to that, a master key with attribute key "master" must present, which will be used to encrypt
-            all secrets.
-
-        `keys`
-            A literal string "all" to include all public keys, or a list of attribute keys that match the keys in `publicKeys`.
-
-        # Type
-        ```
-        mkKeys :: AttrSet -> (ListOf String | "all") -> ListOf String
-        ```
-    */
-    mkKeys = publicKeys: keys: if keys == "all"
-        # Return all possible keys
-        then builtins.attrValues publicKeys
-        # Return the master key alongside the respective host keys
-        # There are simpler approaches that involves nixpkgs.lib, but we don't have that
-        else map (index: publicKeys.${index}) (keys ++ [ "master" ]);
-
-    /**
-        # Description
         Helper function to construct secret file definitions.
 
         # Inputs
