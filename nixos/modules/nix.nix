@@ -13,18 +13,23 @@
 
             # Allow remote builders to use caches
             builders-use-substitutes = true;
+
+            # Declare mirrors of the NixOS cache
+            substituters = [
+                "https://mirrors.cernet.edu.cn/nix-channels/store" # CERNET MirrorZ 302 Service
+            ];
         }
 
         # Enable CUDA caches if CUDA support is enabled
         (lib.mkIf config.nixpkgs.config.cudaSupport {
             substituters = [
-                "https://cache.nixos-cuda.org" # Nix Community CUDA Cache
                 "https://cache.flox.dev" # Flox CUDA Binary Cache
+                "https://cache.nixos-cuda.org" # Nix Community CUDA Cache
             ];
 
             trusted-public-keys = [
-                "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
                 "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+                "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
             ];
         })
     ];
