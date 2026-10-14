@@ -8,8 +8,9 @@
 
         # Additional font packages
         packages = with pkgs; [
-            # JetbrainsMono Nerd Font
+            # Monospace fonts
             nerd-fonts.jetbrains-mono
+            fixedsys-excelsior
 
             # Noto Fonts with CJK and emoji support
             noto-fonts
