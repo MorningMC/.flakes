@@ -23,6 +23,15 @@ hl.config({
 		no_focus_fallback = true,
 	},
 
+	-- Dwindle layout-specific configurations
+	dwindle = {
+		-- Split window based on the cursor’s position
+		smart_split = true,
+
+		-- Place dragged window based on the cursor's position
+		precise_mouse_move = true,
+	},
+
 	decoration = {
 		-- Declare the radius of window corner
 		rounding = 12,
