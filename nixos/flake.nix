@@ -18,7 +18,7 @@
         agenix.inputs.nixpkgs.follows = "nixpkgs";
 
         # Declarative Flatpak manager for NixOS
-        nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest"; # nix-flatpak does not use any input
+        nix-flatpak.url = "github:gmodena/nix-flatpak/latest"; # nix-flatpak does not use any input
 
         # Package and manage Minecraft servers declaratively
         nix-minecraft.url = "github:Infinidoge/nix-minecraft";
@@ -49,9 +49,9 @@
     };
 
     # Declare complete sets of NixOS configurations
-    outputs = inputs: {
+    outputs = { nixpkgs, import-tree, ... }@inputs: {
         # Configure system for morningmc-laptop
-        nixosConfigurations.morningmc-laptop = inputs.nixpkgs.lib.nixosSystem {
+        nixosConfigurations.morningmc-laptop = nixpkgs.lib.nixosSystem {
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;
 
@@ -60,14 +60,14 @@
 
             # Declare modules to include
             modules = [
-                (inputs.import-tree ./modules) # Import global modules
-                (inputs.import-tree ./hosts/morningmc-laptop) # Import host configurations
-                (inputs.import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
+                (import-tree ./modules) # Import global modules
+                (import-tree ./hosts/morningmc-laptop) # Import host configurations
+                (import-tree ./home/morningmc+morningmc-laptop) # Import user configurations
             ];
         };
 
         # Configure system for adventurers-server
-        nixosConfigurations.adventurers-server = inputs.nixpkgs.lib.nixosSystem {
+        nixosConfigurations.adventurers-server = nixpkgs.lib.nixosSystem {
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;
 
@@ -76,9 +76,9 @@
 
             # Declare modules to include
             modules = [
-                (inputs.import-tree ./modules) # Import global modules
-                (inputs.import-tree ./hosts/adventurers-server) # Import host configurations
-                (inputs.import-tree ./home/morningmc+adventurers-server) # Import user configurations
+                (import-tree ./modules) # Import global modules
+                (import-tree ./hosts/adventurers-server) # Import host configurations
+                (import-tree ./home/morningmc+adventurers-server) # Import user configurations
             ];
         };
     };
