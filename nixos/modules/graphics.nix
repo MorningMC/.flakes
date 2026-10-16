@@ -26,4 +26,7 @@
             offloadCmdMainProgram = "prime-run"; # Follows conventional name
         };
     };
+
+    # Move CUDA caches to temporary filesystem
+    environment.sessionVariables.CUDA_CACHE_PATH = lib.mkIf config.hardware.nvidia.enabled "$XDG_RUNTIME_DIR/nvidia/ComputeCache";
 }
