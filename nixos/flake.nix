@@ -32,9 +32,6 @@
         nix-index-database.url = "github:nix-community/nix-index-database";
         nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-        # ESP8266 and ESP32 packages and development environments for Nix
-        nixpkgs-esp-dev.url = "github:mirrexagon/nixpkgs-esp-dev"; # Overriding nixpkgs input will cause python3.13-ecdsa fail to build
-
         # Nix flake port of tryashtar/minecraft-ttf
         minecraft-ttf.url = "path:../minecraft-ttf";
         minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";

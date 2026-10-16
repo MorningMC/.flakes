@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
     users.users.morningmc.packages = with pkgs; [
         # Build tools
         gcc
@@ -17,8 +17,7 @@
         jetbrains.clion
 
         # Embedded software SDKs
-        platformio
-        inputs.nixpkgs-esp-dev.packages.${pkgs.stdenv.hostPlatform.system}.esp-idf-xtensa
+        arduino-cli
 
         commitlint # Git commit message style check
     ];
@@ -62,10 +61,6 @@
 
             # Python runtimes
             ".local/lib/python3".source = pkgs.python3;
-
-            # Embedded software SDKs
-            ".local/lib/platformio".source = pkgs.platformio;
-            ".local/lib/esp-idf-xtensa".source = inputs.nixpkgs-esp-dev.packages.${pkgs.stdenv.hostPlatform.system}.esp-idf-xtensa;
         };
     };
 }
