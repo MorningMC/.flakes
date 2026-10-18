@@ -69,21 +69,21 @@ hl.window_rule({ match = { class = "\\.?gimp.*" }, opaque = true })
 hl.window_rule({ match = { class = "file-svg" }, float = true })
 
 -- Make all Kdenlive windows opaque by default
-hl.window_rule({ match = { class = "org.kde.kdenlive" }, opaque = true })
+hl.window_rule({ match = { class = "org\\.kde\\.kdenlive" }, opaque = true })
 
 -- Adjust size for Kdenlive Import dialog, Title clip editor & Render dialog
 hl.window_rule({
-	match = { class = "org.kde.kdenlive", title = "Kdenlive" },
+	match = { class = "org\\.kde\\.kdenlive", title = "Kdenlive" },
 	center = true,
 	size = { "(monitor_w*.70)", "(monitor_h*.70)" },
 })
 hl.window_rule({
-	match = { class = "org.kde.kdenlive", title = "^(Title Clip — Kdenlive)$" },
+	match = { class = "org\\.kde\\.kdenlive", title = "^(Title Clip — Kdenlive)$" },
 	center = true,
 	size = { "(monitor_w*.80)", "(monitor_h*.80)" },
 })
 hl.window_rule({
-	match = { class = "org.kde.kdenlive", title = "^(Rendering — Kdenlive)$" },
+	match = { class = "org\\.kde\\.kdenlive", title = "^(Rendering — Kdenlive)$" },
 	center = true,
 	size = { "(monitor_w*.70)", "(monitor_h*.70)" },
 })
@@ -105,7 +105,7 @@ hl.window_rule({
 -- Make HMCL subwindows floating & adjust size for log window
 hl.window_rule({
 	match = {
-		class = "org.jackhuang.hmcl.Launcher",
+		class = "org\\.jackhuang\\.hmcl\\.Launcher",
 		title = "negative:.*(Hello Minecraft! Launcher).*",
 	},
 	float = true,
@@ -131,10 +131,17 @@ hl.window_rule({
 })
 
 -- Make Webcamoid window opaque by default
-hl.window_rule({ match = { class = "io.github.webcamoid." }, opaque = true })
+hl.window_rule({ match = { class = "io\\.github\\.webcamoid." }, opaque = true })
 
 -- Make Haruna window opaque by default
-hl.window_rule({ match = { class = "org.kde.haruna" }, opaque = true })
+hl.window_rule({ match = { class = "org\\.kde\\.haruna" }, opaque = true })
 
 -- Use float window for QQ subwindows
 hl.window_rule({ match = { class = "QQ", title = "negative:QQ" }, float = true })
+
+-- Make Qalculate window floating & in confortable size
+hl.window_rule({
+	match = { class = "io\\.github\\.Qalculate\\.qalculate-(qt|gtk)" },
+	float = true,
+	size = { 600, 750 }
+})
