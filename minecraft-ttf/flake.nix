@@ -19,14 +19,14 @@
     };
 
     # Declare the outputs
-    outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    outputs = { nixpkgs, flake-parts, ... }@inputs: flake-parts.lib.mkFlake { inherit inputs; } {
         # Declare architectures to generate outputs for
-        systems = inputs.nixpkgs.lib.systems.flakeExposed; # Build for all supported architectures
+        systems = nixpkgs.lib.systems.flakeExposed; # Build for all supported architectures
 
         # Generate flake for every architecture in systems
         perSystem = { self', system, pkgs, ... }: {
             # Override the pkgs argument to inject custom Nixpkgs configuration
-            _module.args.pkgs = import inputs.nixpkgs {
+            _module.args.pkgs = import nixpkgs {
                 inherit system;
 
                 # Allow building derivations with unfree licenses
