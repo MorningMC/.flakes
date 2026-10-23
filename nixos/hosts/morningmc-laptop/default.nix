@@ -23,14 +23,9 @@
     # Specify default location provider
     location.provider = "geoclue2";
 
-    services = {
-        # Automatically adjust timezone in terms of geographic location
-        automatic-timezoned.enable = true;
-
-        # Ignore power key action. This prevents others pressing my power key >:(
-        logind.settings.Login.HandlePowerKey = "ignore";
-        logind.settings.Login.HandlePowerKeyLongPress = "ignore";
-    };
+    # Ignore power key action. This prevents others pressing my power key >:(
+    services.logind.settings.Login.HandlePowerKey = "ignore";
+    services.logind.settings.Login.HandlePowerKeyLongPress = "ignore";
 
     # Enable systemd-oomd on all slices to prevent memory outage
     systemd.oomd = {
