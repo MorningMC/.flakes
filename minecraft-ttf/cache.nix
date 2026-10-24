@@ -5,8 +5,7 @@
 
     version-menifest,
     version ? "latest",
-    assetBaseUrl ? "https://resources.download.minecraft.net",
-    ...
+    assetBaseUrl ? "https://resources.download.minecraft.net"
 }: let
     # Helper function to parse a JSON file
     readJSON = file: builtins.fromJSON (builtins.readFile file);

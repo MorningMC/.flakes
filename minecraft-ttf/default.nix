@@ -17,8 +17,7 @@
     char-range ? "00000-fffff",
     unifont-chars ? "",
     option-uniform ? false,
-    option-jp ? false,
-    ...
+    option-jp ? false
 }: stdenvNoCC.mkDerivation {
     # Specify package name and version
     pname = "minecraft-ttf";
