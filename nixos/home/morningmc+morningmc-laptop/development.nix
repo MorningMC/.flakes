@@ -1,12 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
     users.users.morningmc.packages = with pkgs; [
         # Build tools
         gcc
         gnumake
 
         # JDK 21 & 17 (latest JDK should be enabled by program.java.enabled in Home Manager module)
-        jdk21
-        jdk17
+        (lib.lowPrio jdk21)
+        (lib.lowPrio jdk17)
 
         # Python runtimes
         python3
