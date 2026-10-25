@@ -53,10 +53,10 @@ hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("crosspipe")) -- Open PipeWi
 hl.bind(main_mod .. " + O", hl.dsp.exec_cmd("hyprpicker -a")) -- Pick color
 
 -- Media (Fn) keys (global keybinds)
-hl.bind("XF86AudioRaiseVolume", noctalia_msg("volume-up"), { locked = true, repeat_press = true }) -- Increase volume (repeat when held)
-hl.bind("XF86AudioLowerVolume", noctalia_msg("volume-down"), { locked = true, repeat_press = true }) -- Decrease volume (repeat when held)
-hl.bind("XF86MonBrightnessUp", noctalia_msg("brightness-up"), { locked = true, repeat_press = true }) -- Increase brightness (repeat when held)
-hl.bind("XF86MonBrightnessDown", noctalia_msg("brightness-down"), { locked = true, repeat_press = true }) -- Decrease brightness (repeat when held)
+hl.bind("XF86AudioRaiseVolume", noctalia_msg("volume-up"), { locked = true, repeating = true }) -- Increase volume (repeat when held)
+hl.bind("XF86AudioLowerVolume", noctalia_msg("volume-down"), { locked = true, repeating = true }) -- Decrease volume (repeat when held)
+hl.bind("XF86MonBrightnessUp", noctalia_msg("brightness-up"), { locked = true, repeating = true }) -- Increase brightness (repeat when held)
+hl.bind("XF86MonBrightnessDown", noctalia_msg("brightness-down"), { locked = true, repeating = true }) -- Decrease brightness (repeat when held)
 hl.bind("XF86AudioMute", noctalia_msg("volume-mute"), { locked = true }) -- Toggle speaker mute
 hl.bind("XF86AudioMicMute", noctalia_msg("mic-mute"), { locked = true }) -- Toggle microphone mute
 hl.bind("XF86WLAN", noctalia_msg("wifi-toggle"), { locked = true }) -- Toggle wifi
@@ -137,8 +137,8 @@ hl.bind(main_mod .. " + SHIFT + semicolon", hl.dsp.group.prev()) -- Switches to 
 hl.bind(main_mod .. " + SHIFT + apostrophe", hl.dsp.group.next()) -- Switches to the next window in a group
 
 -- Adjust split ratio (repeat when held)
-hl.bind(main_mod .. " + CTRL + semicolon", hl.dsp.layout("splitratio -0.01"), { repeat_press = true }) -- Decrease split ratio
-hl.bind(main_mod .. " + CTRL + apostrophe", hl.dsp.layout("splitratio +0.01"), { repeat_press = true }) -- Increase split ratio
+hl.bind(main_mod .. " + CTRL + semicolon", hl.dsp.layout("splitratio -0.01"), { repeating = true }) -- Decrease split ratio
+hl.bind(main_mod .. " + CTRL + apostrophe", hl.dsp.layout("splitratio +0.01"), { repeating = true }) -- Increase split ratio
 
 -- Move/resize windows
 hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- Move window with LMB
