@@ -14,6 +14,9 @@
             # Allow remote builders to use caches
             builders-use-substitutes = true;
 
+            # Fall back to local build if downloading a derivation from substituters fails
+            fallback = true;
+
             # Declare mirrors of the NixOS cache
             substituters = [
                 "https://mirrors.cernet.edu.cn/nix-channels/store" # CERNET MirrorZ 302 Service
