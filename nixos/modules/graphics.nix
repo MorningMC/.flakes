@@ -1,6 +1,6 @@
-{ config, lib, ... }: {
-    # Enable hardware acceleration for 32-bit applications
-    hardware.graphics.enable32Bit = config.hardware.graphics.enable;
+{ config, lib, pkgs, ... }: {
+    # Enable hardware acceleration for 32-bit applications on supported systems
+    hardware.graphics.enable32Bit = pkgs.stdenv.hostPlatform.isx86_64 && (config.boot.kernelPackages.kernel.features.ia32Emulation or false);
 
     # Configure NVIDIA driver on-demand (enabled in host-specific configurations)
     hardware.nvidia = {
