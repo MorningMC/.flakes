@@ -1,4 +1,4 @@
-{ pkgs, inputs, flake, ... }: {
+{ lib, pkgs, inputs, flake, ... }: {
     # List packages installed in user profile. To search, run:
     # $ nix search <package>
     users.users.morningmc.packages = with pkgs; [
@@ -118,5 +118,18 @@
 
         # Make user Nix profiles respect XDG base directories
         nix.assumeXdg = config.home.preferXdgDirectories;
+    };
+
+    # Create wrapper for Btop to monitor graphics cards
+    security.wrappers.btop = {
+        # Specify the target executable to be wrapped
+        source = lib.getExe pkgs.btop;
+
+        # Specify the owner & the group of the wrapper program
+        owner = "root";
+        group = "root";
+
+        # Allows Btop to monitor system performance
+        capabilities = "cap_perfmon=+ep";
     };
 }
