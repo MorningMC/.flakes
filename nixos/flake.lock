@@ -133,13 +133,15 @@
         "version-menifest": "version-menifest"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-4EVkuvIYuaZ5+Sdp0ntPRltIf7d+vOWF3g9JR7Jn5pY=",
-        "path": "../minecraft-ttf",
+        "dir": "minecraft-ttf",
+        "lastModified": 0,
+        "narHash": "sha256-ZrSD6t0AIrwoZO8Wg9MAtrLjqBdw30zieexKSpbU6PI=",
+        "path": "..",
         "type": "path"
       },
       "original": {
-        "path": "../minecraft-ttf",
+        "dir": "minecraft-ttf",
+        "path": "..",
         "type": "path"
       }
     },
