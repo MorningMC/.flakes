@@ -29,6 +29,9 @@
         # Declare path to user recipient keys
         age.identityPaths = [ "${config.users.users.morningmc.home}/.age/id_age_pq" ];
 
+        # Declare the directory where secrets are exposed
+        age.secretsDir = config.users.users.morningmc.home + "/.agenix";
+
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
         # introduces backwards incompatible changes.
