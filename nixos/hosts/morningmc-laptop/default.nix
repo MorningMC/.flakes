@@ -23,6 +23,9 @@
     # Specify default location provider
     location.provider = "geoclue2";
 
+    # Declare path to agenix host recipient keys
+    age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
+
     # Ignore power key action. This prevents others pressing my power key >:(
     services.logind.settings.Login.HandlePowerKey = "ignore";
     services.logind.settings.Login.HandlePowerKeyLongPress = "ignore";

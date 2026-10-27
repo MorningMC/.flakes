@@ -23,6 +23,9 @@
     # Specify time zone
     time.timeZone = "Asia/Shanghai";
 
+    # Declare path to agenix host recipient keys
+    age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
+
     # Ignore lid close action to ensure the server runs continously even if the lid is closed
     services.logind.settings.Login.HandleLidSwitch = "ignore";
     services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";

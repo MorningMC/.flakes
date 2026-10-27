@@ -22,9 +22,6 @@
     # Inherit Home Manager Nixpkgs settings from global Nixpkgs
     home-manager.useGlobalPkgs = true;
 
-    # Declare path to host recipient keys
-    age.identityPaths = [ "/var/lib/agenix/host_age_pq_key" ];
-
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
     # on your system were taken. It‘s perfectly fine and recommended to leave
