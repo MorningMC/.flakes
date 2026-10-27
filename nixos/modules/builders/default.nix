@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
     # Declare encrypted secrets used
-    age.secrets.builder-qqxnkrut.file = ./_secrets/builder-qqxnkrut.pem.age;
+    age.secrets.builder-qqxnkrut.file = ../_secrets/builder-qqxnkrut.pem.age;
 
     # Enable remote builds
     nix.distributedBuilds = true;
@@ -25,7 +25,7 @@
             protocol = "ssh-ng";
 
             # The base64-encoded public host key of this builder
-            publicHostKey = "c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFDQVFDZ3greURNNG9mSW83a3NiMjJsMElQNjduVmpZREpzeXNxaUdGdE9uNi9xTHhCTDVpdzEwblRITWx1dUQyRUpnVW5EUTRSY3BVdys2MmZUeldaaUFxb0V3dUxWUXdGSm5ScjZ6QnlMNnpDbE52Tk12aDdENEVGWHdmZFVKWnYwcklNNy9sNlJmVk5RRmxsaWVRMFpobklsUU1wRmcvWHZvdkdUL3h1NnlFZHZFMENyN2lqK3M3L0pQUmszaWdaZlUybVNwWHRXQXdhcmRDcWg2RkdqWXF2ck9ubFJHT1BqbVNmQ3FJc0NZSDRlNmxKeTBTY2hGMXQ4TWYxTUNJZGdpUkFjSmNWejJsUlp2K2VXSkdKRDRiYWh2TDA1eGZaSFZZSzdOWXBGZzlpeGtHYTFTYWxRaUFycEpyZnliYWJ3aEZONE1yNEdrdXpDVXdsMFhDaHh6RzQ3MGZkR2RrTUgzaVZjd2FCYXBXUnRpdG9YREcvNGN6WHB0WEZkZGVWTWZ2K0wzbE1lQno0ckFqMk0rU1Y3S1JjU3IvbThkbTYxa0FtSEt4MkVMaWE1RG5qL3hVTDNSbXVRSW51cHoxS3ZZaEdCWkp0a1hIOGIzdTVRR1V4WEQrMGYwQ3pWakhzb2QvMWJXeFVqVGlLT2hFd1hpTlNWTzZpbmI4VGFHZnNrYWxYYkFlblJ0dS9BTjgydHdMZnNZNWhNbFZXamFxRERDNmdzTmVtelZzNmN0Qy9UUDd6cHlpT3FPem4rM0NDNXMrWDdGdXpwb2FFU1VNanhJMEZkOGo3dXlaN2JmdjVkcC9XWjQ0a292YmRrRjV1NFFtWTZocGNnVTQ1cm1FU3RoNnVBT1k2RGxoMXduN05kemw0ODRVZjgrQjA3MmNJanhGRWRSNFBHbWVYTFE9PSByb290QG5peG9zCg==";
+            publicHostKey = builtins.readFile ./builder-qqxnkrut.pub;
 
             # The maximum number of concurrent jobs the builder supports
             maxJobs = 16;
