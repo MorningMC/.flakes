@@ -1,0 +1,53 @@
+# Configured according to https://github.com/marketplace/actions/semantic-pull-request
+
+name: Lint Pull Requests
+
+on:
+  # Trigger on PR update
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - edited
+
+jobs:
+  main:
+    name: Validate pull request title
+    runs-on: ubuntu-latest
+
+    # Allow reading PR contents
+    permissions:
+      pull-requests: read
+
+    steps:
+      # Check if the PR title met Conventional Commits specification
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v6
+        id: lint_pr_title
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Create a comment to notify if the specification is not met
+      - name: Create notification
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: always() && steps.lint_pr_title.outputs.error_message != null
+        with:
+          header: pr-title-lint-error
+          message: |
+            Hey there and thank you for opening this pull request!
+
+            We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
+
+            Details:
+
+            ```
+            ${{ steps.lint_pr_title.outputs.error_message }}
+            ```
+
+      # Delete the comment when the issue is resolved
+      - name: Delete notification
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: steps.lint_pr_title.outputs.error_message == null
+        with:
+          header: pr-title-lint-error
+          delete: true
