@@ -7,16 +7,12 @@
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
         # Quickshell in Nixpkgs is outdated. Use flake from git repository.
-        quickshell = {
-            url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        quickshell.url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+        quickshell.inputs.nixpkgs.follows = "nixpkgs";
 
         # Import end-4's dots-hyprland as build script
-        dots-hyprland = {
-            url = "github:end-4/dots-hyprland";
-            flake = false; # Only quickshell.nix is used. We don't need a entire flake.
-        };
+        dots-hyprland.url = "github:end-4/dots-hyprland";
+        dots-hyprland.flake = false; # Only quickshell.nix is used. We don't need a entire flake.
     };
 
     # Declare the outputs
