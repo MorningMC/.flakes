@@ -1,18 +1,4 @@
 { config, lib, pkgs, ... }: {
-    # Use Lix as the Nix implementation
-    nix.package = pkgs.lixPackageSets.latest.lix;
-
-    # Rewire other tools that depend on Nix to ensure consistency
-    nixpkgs.overlays = [
-        (final: prev: {
-            inherit (prev.lixPackageSets.latest)
-                nixpkgs-review
-                nix-eval-jobs
-                nix-fast-build
-                colmena;
-        })
-    ];
-
     # Configure Nix
     nix.settings = lib.mkMerge [
         {
