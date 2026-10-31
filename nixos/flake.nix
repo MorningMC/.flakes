@@ -33,7 +33,7 @@
         nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
         # Nix flake port of tryashtar/minecraft-ttf
-        minecraft-ttf.url = "path:../minecraft-ttf";
+        minecraft-ttf.url = "path:..?dir=minecraft-ttf";
         minecraft-ttf.inputs.nixpkgs.follows = "nixpkgs";
 
         # A stylish Zsh theme with deliberate use of space
