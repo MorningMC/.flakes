@@ -1,4 +1,4 @@
-# top-most EditorConfig file
+# Top-most EditorConfig file
 root = true
 
 [*]
@@ -18,3 +18,20 @@ indent_style = space
 
 # Still using 4-space indents since I was never comfortable with Nix's 2-space default
 indent_size = 4
+
+[*.{yml,yaml}]
+# YAML files do not accept tabs for indentation
+indent_style = space
+indent_size = 2
+
+[*.lua]
+# Use tab indents for Lua files
+indent_style = tab
+indent_size = 4
+
+[{LICENSE,COPYING,TERMS}{,-*}{,.*}]
+# Do not complain on license terms
+end_of_line = unset
+insert_final_newline = unset
+charset = unset
+trim_trailing_whitespace = unset
