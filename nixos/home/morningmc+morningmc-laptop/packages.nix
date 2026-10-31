@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, flake, ... }: {
+{ lib, pkgs, inputs, ... }: {
     # List packages installed in user profile. To search, run:
     # $ nix search <package>
     users.users.morningmc.packages = with pkgs; [
@@ -28,58 +28,39 @@
         hmcl # Minecraft launcher
     ];
 
-    programs = {
-        # Enable NH command helper
-        nh = {
-            enable = true;
-            inherit flake; # Use current flake
+    # Enable Clash Verge Rev
+    programs.clash-verge = {
+        enable = true;
 
-            # Setup garbage cleaner (this makes nix.gc obsolete)
-            clean = {
-                enable = true;
+        # Create XDG autostart desktop entry
+        autoStart = true;
 
-                # Perform a clean every week
-                dates = "weekly";
+        # Enable Setcap for TUN mode
+        tunMode = true;
 
-                # Options given to nh clean
-                extraArgs = "--keep 3 --keep-since 7d";
-            };
-        };
+        # Enable service mode
+        serviceMode = true;
+    };
 
-        # Enable Clash Verge Rev
-        clash-verge = {
-            enable = true;
+    # Enable OBS Studio
+    programs.obs-studio = {
+        enable = true;
 
-            # Create XDG autostart desktop entry
-            autoStart = true;
+        # Declare installed plugins
+        plugins = with pkgs.obs-studio-plugins; [
+            # Compat layers
+            obs-vaapi # VAAPI support
 
-            # Enable Setcap for TUN mode
-            tunMode = true;
+            # Capture source extension
+            obs-pipewire-audio-capture # PipeWire audio device and application capture
+            obs-vkcapture # Vulkan/OpenGL game capture
 
-            # Enable service mode
-            serviceMode = true;
-        };
+            # Visual filters
+            pixel-art # Create retro-inspired pixel art visuals
+        ];
 
-        # Enable OBS Studio
-        obs-studio = {
-            enable = true;
-
-            # Declare installed plugins
-            plugins = with pkgs.obs-studio-plugins; [
-                # Compat layers
-                obs-vaapi # VAAPI support
-
-                # Capture source extension
-                obs-pipewire-audio-capture # PipeWire audio device and application capture
-                obs-vkcapture # Vulkan/OpenGL game capture
-
-                # Visual filters
-                pixel-art # Create retro-inspired pixel art visuals
-            ];
-
-            # Setup OBS virtual camera
-            enableVirtualCamera = true;
-        };
+        # Setup OBS virtual camera
+        enableVirtualCamera = true;
     };
 
     home-manager.users.morningmc = { config, ... }: {
