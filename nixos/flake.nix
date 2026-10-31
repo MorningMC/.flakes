@@ -52,9 +52,6 @@
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;
 
-            # Specify current flake's path on filesystem
-            specialArgs.flake = "/home/morningmc/.flakes/nixos";
-
             # Declare modules to include
             modules = [
                 (import-tree ./modules) # Import global modules
@@ -67,9 +64,6 @@
         nixosConfigurations.adventurers-server = nixpkgs.lib.nixosSystem {
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;
-
-            # Specify current flake's path on filesystem
-            specialArgs.flake = "/home/morningmc/.flakes/nixos";
 
             # Declare modules to include
             modules = [

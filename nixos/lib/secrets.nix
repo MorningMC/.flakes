@@ -11,7 +11,7 @@
             A list of public keys used to encrypt secrets.
 
         `fileNames`
-            a list of file names of secrets in `secretDir` that is referred by other parts of this directory.
+            A list of file names of secrets in `secretDir` that is referred by other parts of this directory.
 
         # Type
         ```
