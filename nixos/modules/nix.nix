@@ -37,6 +37,18 @@
         })
     ];
 
+    # Configure Nix store garbage collector
+    nix.gc = {
+        # Automatically run the garbage collector periodically
+        automatic = lib.mkDefault true;
+
+        # Perform a clean every week
+        dates = "weekly";
+
+        # Keep generations younger than half a month
+        options = "--delete-older-than 15d";
+    };
+
     # Prevent large Nix builds consuming all memories
     systemd.services.nix-daemon.serviceConfig.MemoryHigh = "80%";
 }
