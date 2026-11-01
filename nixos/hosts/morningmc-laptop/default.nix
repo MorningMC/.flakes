@@ -14,9 +14,6 @@
         efi.canTouchEfiVariables = true;
     };
 
-    # Delete all files in /tmp during boot
-    boot.tmp.cleanOnBoot = true;
-
     # Define the hostname of the machine
     networking.hostName = "morningmc-laptop";
 
