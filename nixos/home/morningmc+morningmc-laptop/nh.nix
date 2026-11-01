@@ -11,7 +11,7 @@ in
         enable = true;
 
         # Specify flake path if it is declared above
-        flake = lib.mkIf (flakePaths ? config.networking.hostName) flakePaths.${config.networking.hostName};
+        flake = lib.mkIf (flakePaths ? ${config.networking.hostName}) flakePaths.${config.networking.hostName};
 
         # Setup garbage cleaner (this makes nix.gc obsolete)
         clean.enable = true;
