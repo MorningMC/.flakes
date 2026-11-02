@@ -1,6 +1,13 @@
 {
-    # Use NetworkManager to manage network interfaces
-    networking.networkmanager.enable = true;
+    # Enable NetworkManager to manage network interfaces
+    networking.networkmanager = {
+        enable = true;
+
+        # Use randomized MAC address for network connections
+        ethernet.macAddress = "random";
+        wifi.macAddress = "random";
+        wifi.scanRandMacAddress = true; # Also randomize MAC during Wi-Fi scanning
+    };
 
     # Use modern nftables to replace iptables
     networking.nftables.enable = true;
