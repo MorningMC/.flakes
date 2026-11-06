@@ -17,6 +17,9 @@
     # Define the hostname of the machine
     networking.hostName = "morningmc-laptop";
 
+    # Specify time zone
+    time.timeZone = "Asia/Shanghai";
+
     # Specify default location provider
     location.provider = "geoclue2";
 

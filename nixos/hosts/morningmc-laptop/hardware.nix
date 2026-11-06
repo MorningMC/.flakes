@@ -69,7 +69,6 @@
     ];
     environment.persistence."/var/persistent".files = [
         "/etc/machine-id"
-        (lib.mkIf (config.time.timeZone == null) "/etc/localtime")
     ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
