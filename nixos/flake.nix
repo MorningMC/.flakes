@@ -17,6 +17,15 @@
         agenix.url = "github:ryantm/agenix";
         agenix.inputs.nixpkgs.follows = "nixpkgs";
 
+        # Modules to help you handle persistent state on systems with ephemeral root storage
+        impermanence = {
+            url = "github:nix-community/impermanence";
+
+            # Do not fetch Nixpkgs & Home Manager as inputs
+            inputs.nixpkgs.follows = "";
+            inputs.home-manager.follows = "";
+        };
+
         # Declarative Flatpak manager for NixOS
         nix-flatpak.url = "github:gmodena/nix-flatpak/latest"; # nix-flatpak does not use any input
 
