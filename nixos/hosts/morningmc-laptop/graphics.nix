@@ -1,14 +1,6 @@
-{ lib, ... }: let
-    # Utility function to convert standard PCI format to Nix format
-    toNixPci = standardPci: let
-        parts = builtins.filter builtins.isString (builtins.split "[:.]" standardPci);
-
-        domain = toString (lib.fromHexString (builtins.elemAt parts 0));
-        bus = toString (lib.fromHexString (builtins.elemAt parts 1));
-        device = toString (lib.fromHexString (builtins.elemAt parts 2));
-        function = toString (lib.fromHexString (builtins.elemAt parts 3));
-    in
-    "PCI:${bus}@${domain}:${device}:${function}";
+{ options, lib, ... }: let
+    # Import helper functions
+    toNixPci = import ../../lib/to-nix-pci.nix { inherit lib; };
 
     # Declare PCI addresses for graphics cards
     integratedCardPci = "0000:00:02.0";
@@ -16,9 +8,14 @@
 in
 {
     # Declare video drivers
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" "fbdev" ];
+    services.xserver.videoDrivers = [ "nvidia" ];
 
-    # Specify Intel & NVIDIA PCI address (required by NVIDIA PRIME)
-    hardware.nvidia.prime.intelBusId = toNixPci integratedCardPci;
-    hardware.nvidia.prime.nvidiaBusId = toNixPci discreteCardPci;
+    # Enable PRIME render offload support
+    hardware.nvidia.prime = {
+        offload.enable = true;
+
+        # Specify Intel & NVIDIA PCI address
+        intelBusId = toNixPci integratedCardPci;
+        nvidiaBusId = toNixPci discreteCardPci;
+    };
 }
