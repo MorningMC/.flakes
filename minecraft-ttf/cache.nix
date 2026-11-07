@@ -53,8 +53,8 @@
 
     # Filter unused assets to prevent massive downloads
     fontObjects = lib.filterAttrs (path: _:
-        lib.hasPrefix "minecraft/font/" path || # Font provider definition JSONs
-        lib.hasPrefix "minecraft/textures/font/" path # Font textures and Unicode bitmap sheets
+        lib.hasPrefix "minecraft/font/" path # Font provider definition JSONs
+        || lib.hasPrefix "minecraft/textures/font/" path # Font textures and Unicode bitmap sheets
     ) assetIndexContent.objects;
 
     # Sanitize Minecraft version
