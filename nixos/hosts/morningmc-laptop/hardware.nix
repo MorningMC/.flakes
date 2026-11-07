@@ -7,10 +7,18 @@
     ];
 
     boot = {
-        initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-        initrd.kernelModules = [ ];
+        # Declare kernel modules included in the initial ramdisk
+        initrd.availableKernelModules = [
+            "xhci_pci"
+            "thunderbolt"
+            "nvme"
+            "usbhid"
+            "usb_storage"
+            "sd_mod"
+        ];
+
+        # Declare kernel modules to be loaded in the second stage of the boot process
         kernelModules = [ "kvm-intel" ];
-        extraModulePackages = [ ];
 
         # Specify the swap device used for hibernation
         resumeDevice = "/dev/disk/by-uuid/6eb5dd68-dfa0-400c-8e3e-1470849d272b";

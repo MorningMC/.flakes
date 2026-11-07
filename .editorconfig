@@ -12,6 +12,9 @@ charset = utf-8
 # No trailing spaces or tabs at the end of lines
 trim_trailing_whitespace = true
 
+# Limit maximum line length for readability
+max_line_length = 120
+
 [*.nix]
 # Use spaces as tab indents will have issues with Nix indented strings
 indent_style = space
@@ -35,3 +38,8 @@ end_of_line = unset
 insert_final_newline = unset
 charset = unset
 trim_trailing_whitespace = unset
+max_line_length = unset
+
+[*.pub]
+# Ignore line lengths on secret keys
+max_line_length = unset

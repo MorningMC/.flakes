@@ -1,4 +1,5 @@
-# This file should not be imported into the flake as it is only used for the agenix CLI tool to know which public keys to use for encryption
+# This file should not be imported into the flake as it is only used for the agenix CLI tool to know which public keys
+# to use for encryption
 
 let
     # Declare all public keys created for each machine
@@ -22,7 +23,8 @@ let
         morningmc_morningmc-laptop = builtins.readFile ./lib/agenix-user-keys/morningmc+morningmc-laptop.pub;
     };
 
-    # The folder name used to store secret files. Should start with a underscore as the secrets should not be included in any flake.
+    # The folder name used to store secret files. Should start with a underscore as the secrets should not be included
+    # in any flake.
     secretsDir = "_secrets";
 
     # Import helper functions

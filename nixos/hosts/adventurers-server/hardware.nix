@@ -2,10 +2,19 @@
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
     boot = {
-        initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-        initrd.kernelModules = [ ];
+        # Declare kernel modules included in the initial ramdisk
+        initrd.availableKernelModules = [
+            "xhci_pci"
+            "thunderbolt"
+            "vmd"
+            "nvme"
+            "usb_storage"
+            "sd_mod"
+            "rtsx_pci_sdmmc"
+        ];
+
+        # Declare kernel modules to be loaded in the second stage of the boot process
         kernelModules = [ "kvm-intel" ];
-        extraModulePackages = [ ];
 
         # Specify the swap device used for hibernation
         resumeDevice = "/dev/disk/by-uuid/04e4dd4b-f966-4a2f-a779-ff4bb65309c7";

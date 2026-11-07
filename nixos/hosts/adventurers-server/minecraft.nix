@@ -19,7 +19,8 @@
             enable = true;
 
             # Use 1.21.1 latest NeoForge server
-            package = inputs.nix-minecraft.legacyPackages.${pkgs.stdenv.hostPlatform.system}.minecraftServers.neoforge-1_21_1;
+            package =
+                inputs.nix-minecraft.legacyPackages.${pkgs.stdenv.hostPlatform.system}.minecraftServers.neoforge-1_21_1;
 
             # Declare additional JVM options
             jvmOpts = [
@@ -30,8 +31,9 @@
             # Declare server configurations
             serverProperties = {
                 # Specify Message of the Day
-                motd = "\\u00A7aAdventurers' Update \\u00A7b2 \\u00A7aServer\\u00A7r Experimental Period \\u00A7f2\\u00A7r\\n" +
-                    "Running modpack version \\u00A762.0.0-unstable-2026-06-10";
+                motd = "\\u00A7aAdventurers' Update \\u00A7b2 \\u00A7aServer\\u00A7r "
+                    + "Experimental Period \\u00A7f2\\u00A7r\\n"
+                    + "Running modpack version \\u00A762.0.0-unstable-2026-06-10";
 
                 # Use offline authentication. Players are identified only by their names.
                 online-mode = false;

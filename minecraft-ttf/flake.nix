@@ -44,7 +44,9 @@
                 minecraft-ttf-cache = pkgs.callPackage ./cache.nix { inherit (inputs) version-menifest; };
 
                 # The generated font product
-                minecraft-ttf = pkgs.callPackage ./default.nix { inherit (self'.packages) minecraft-ttf-bin minecraft-ttf-cache; };
+                minecraft-ttf = pkgs.callPackage ./default.nix {
+                    inherit (self'.packages) minecraft-ttf-bin minecraft-ttf-cache;
+                };
             };
         };
     };
