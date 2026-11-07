@@ -6,23 +6,18 @@
         inputs.impermanence.nixosModules.default
     ];
 
-    boot = {
-        # Declare kernel modules included in the initial ramdisk
-        initrd.availableKernelModules = [
-            "xhci_pci"
-            "thunderbolt"
-            "nvme"
-            "usbhid"
-            "usb_storage"
-            "sd_mod"
-        ];
+    # Declare kernel modules included in the initial ramdisk
+    boot.initrd.availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+    ];
 
-        # Declare kernel modules to be loaded in the second stage of the boot process
-        kernelModules = [ "kvm-intel" ];
-
-        # Specify the swap device used for hibernation
-        resumeDevice = "/dev/disk/by-uuid/6eb5dd68-dfa0-400c-8e3e-1470849d272b";
-    };
+    # Declare kernel modules to be loaded in the second stage of the boot process
+    boot.kernelModules = [ "kvm-intel" ];
 
     # Enable hibernation
     powerManagement.enable = true;
@@ -30,11 +25,8 @@
     # Declare mount points
     fileSystems = {
         # Impermanent root setup
-        "/" = {
-            device = "none";
-            fsType = "tmpfs";
-            options = [ "mode=755" ];
-        };
+        "/".fsType = "tmpfs";
+        "/".options = [ "mode=755" ];
 
         # Home directories
         "/home" = {
