@@ -5,7 +5,7 @@
     # Enable EasyTier
     services.easytier.enable = true;
 
-    # Define adventurers instance configurations
+    # Define `adventurers` instance configurations
     services.easytier.instances.adventurers = {
         # Include network secrets
         environmentFiles = [ config.age.secrets.morningmc_easytier-adventurers.path ];

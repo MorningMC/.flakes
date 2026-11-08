@@ -14,10 +14,10 @@
         neovim = {
             enable = true;
 
-            # Set as default text editor. This configures EDITOR environment variable.
+            # Set as default text editor. This configures `EDITOR` environment variable.
             defaultEditor = true;
 
-            # Symlink vi & vim to nvim binary
+            # Symlink `vi` & `vim` to `nvim` binary
             viAlias = true;
             vimAlias = true;
         };

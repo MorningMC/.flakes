@@ -56,7 +56,7 @@
 
     # Declare complete sets of NixOS configurations
     outputs = { nixpkgs, import-tree, ... }@inputs: {
-        # Configure system for morningmc-laptop
+        # Configure system for `morningmc-laptop`
         nixosConfigurations.morningmc-laptop = nixpkgs.lib.nixosSystem {
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;
@@ -69,7 +69,7 @@
             ];
         };
 
-        # Configure system for adventurers-server
+        # Configure system for `adventurers-server`
         nixosConfigurations.adventurers-server = nixpkgs.lib.nixosSystem {
             # Pass flake inputs to modules
             specialArgs.inputs = inputs;

@@ -10,7 +10,7 @@
         # The description of the user
         description = "Adventurers' Update 2 Server Administrator";
 
-        # Declare the user’s additional groups besides 'users'
+        # Declare the user’s additional groups besides `users`
         extraGroups = [
             "wheel" "networkmanager"
             config.services.minecraft-servers.group # Allow current user to manage Minecraft servers

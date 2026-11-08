@@ -10,7 +10,7 @@
         # The description of the user
         description = "MorningMC";
 
-        # Declare the user’s additional groups besides 'users'
+        # Declare the user’s additional groups besides `users`
         extraGroups = [ "wheel" "networkmanager" "dialout" ];
 
         # Declare the password of the user

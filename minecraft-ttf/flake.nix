@@ -25,7 +25,7 @@
 
         # Generate flake for every architecture in systems
         perSystem = { self', system, pkgs, ... }: {
-            # Override the pkgs argument to inject custom Nixpkgs configuration
+            # Override the `pkgs` argument to inject custom Nixpkgs configuration
             _module.args.pkgs = import nixpkgs {
                 inherit system;
 

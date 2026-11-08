@@ -13,7 +13,7 @@ in
         # Specify flake path if it is declared above
         flake = flakePaths.${config.networking.hostName} or options.programs.nh.flake.default;
 
-        # Setup garbage cleaner (this makes nix.gc obsolete)
+        # Setup garbage cleaner (this makes `nix.gc` obsolete)
         clean.enable = true;
 
         # Keep the latest 3 generations & generations younger than half a month

@@ -7,10 +7,10 @@ let
         # The master key. This key will be used to encrypt all files.
         master = builtins.readFile ./lib/agenix-host-keys/master.pub;
 
-        # The host key of morningmc-laptop
+        # The host key of `morningmc-laptop`
         morningmc-laptop = builtins.readFile ./lib/agenix-host-keys/morningmc-laptop.pub;
 
-        # The host key of adventurers-server
+        # The host key of `adventurers-server`
         adventurers-server = builtins.readFile ./lib/agenix-host-keys/adventurers-server.pub;
     };
 
@@ -19,7 +19,7 @@ let
         # The master key. This key will be used to encrypt all files.
         master = builtins.readFile ./lib/agenix-user-keys/master.pub;
 
-        # The user key of morningmc+morningmc-laptop
+        # The user key of `morningmc+morningmc-laptop`
         morningmc_morningmc-laptop = builtins.readFile ./lib/agenix-user-keys/morningmc+morningmc-laptop.pub;
     };
 
@@ -45,7 +45,7 @@ in
 ) [
     "frp-adventurers.env.age" # FRP adventurers instance network secret
     "cloudflare-token-adventurers-server-ddns.age" # Cloudflare account token for DDNS
-    "playit-adventurers-server.toml.age" # Playit adventurers-server tunnel secret key
+    "playit-adventurers-server.toml.age" # Playit `adventurers-server` tunnel secret key
 ]) //
 
 # Secret files in home/morningmc+morningmc-laptop
@@ -53,7 +53,7 @@ in
     with hostKeys; [ master morningmc-laptop ]
 ) [
     "password.age" # Hashed user password
-    "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+    "easytier-adventurers.env.age" # EasyTier `adventurers` instance network secret
     "docker-windows.env.age" # Windows Docker container secret
 ]) //
 
@@ -68,5 +68,5 @@ in
     with hostKeys; [ master adventurers-server ]
 ) [
     "password.age" # Hashed user password
-    "easytier-adventurers.env.age" # EasyTier adventurers instance network secret
+    "easytier-adventurers.env.age" # EasyTier `adventurers` instance network secret
 ])

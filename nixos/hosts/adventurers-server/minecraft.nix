@@ -14,7 +14,7 @@
         # Open firewall ports
         openFirewall = true;
 
-        # Declare adventurers-update server instance
+        # Declare `adventurers-update` server instance
         servers.adventurers-update = {
             enable = true;
 
