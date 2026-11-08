@@ -14,9 +14,6 @@
 
         # Command-line helpers
         curl
-        bc # Basic calculator used in scripts
-        grim # Screenshot utility
-        brightnessctl # Monitor brightness controller
 
         # Creative stuff
         blender
