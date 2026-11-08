@@ -1,52 +1,58 @@
 { config, lib, pkgs, ... }: {
-    # Configure Nix
-    nix.settings = lib.mkMerge [
-        {
-            # Specify Nix experimental features
-            experimental-features = [ "nix-command" "flakes" ];
+    nix = {
+        # Configure Nix
+        settings = lib.mkMerge [
+            {
+                # Specify Nix experimental features
+                experimental-features = [ "nix-command" "flakes" ];
 
-            # Make users in wheel group trusted by Nix
-            trusted-users = [ "@wheel" ];
+                # Make users in wheel group trusted by Nix
+                trusted-users = [ "@wheel" ];
 
-            # Optimise Nix store after building system
-            auto-optimise-store = true;
+                # Optimise Nix store after building system
+                auto-optimise-store = true;
 
-            # Allow remote builders to use caches
-            builders-use-substitutes = true;
+                # Allow remote builders to use caches
+                builders-use-substitutes = true;
 
-            # Fall back to local build if downloading a derivation from substituters fails
-            fallback = true;
+                # Fall back to local build if downloading a derivation from substituters fails
+                fallback = true;
 
-            # Declare mirrors of the NixOS cache
-            substituters = [
-                "https://mirrors.cernet.edu.cn/nix-channels/store" # CERNET MirrorZ 302 Service
-            ];
-        }
+                # Declare mirrors of the NixOS cache
+                substituters = [
+                    "https://mirrors.cernet.edu.cn/nix-channels/store" # CERNET MirrorZ 302 Service
+                ];
+            }
 
-        # Enable CUDA caches if CUDA support is enabled
-        (lib.mkIf config.nixpkgs.config.cudaSupport {
-            substituters = [
-                "https://cache.flox.dev" # Flox CUDA Binary Cache
-                "https://cache.nixos-cuda.org" # Nix Community CUDA Cache
-            ];
+            # Enable CUDA caches if CUDA support is enabled
+            (lib.mkIf config.nixpkgs.config.cudaSupport {
+                substituters = [
+                    "https://cache.flox.dev" # Flox CUDA Binary Cache
+                    "https://cache.nixos-cuda.org" # Nix Community CUDA Cache
+                ];
 
-            trusted-public-keys = [
-                "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
-                "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
-            ];
-        })
-    ];
+                trusted-public-keys = [
+                    "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+                    "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+                ];
+            })
+        ];
 
-    # Configure Nix store garbage collector
-    nix.gc = {
-        # Automatically run the garbage collector periodically
-        automatic = lib.mkDefault true;
+        # Configure Nix store garbage collector
+        gc = {
+            # Automatically run the garbage collector periodically
+            automatic = lib.mkDefault true;
 
-        # Perform a clean every week
-        dates = "weekly";
+            # Perform a clean every week
+            dates = "weekly";
 
-        # Keep generations younger than half a month
-        options = "--delete-older-than 15d";
+            # Keep generations younger than half a month
+            options = "--delete-older-than 15d";
+        };
+
+        # Remove legacy Nix channel management. This flake already handles dependency resolution, locking, and inputs
+        # explicitly.
+        channel.enable = false;
     };
 
     # Prevent large Nix builds consuming all memories
