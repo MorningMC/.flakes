@@ -1,10 +1,11 @@
-{ config, lib, modulesPath, inputs, ... }: {
+{ config, lib, inputs, ... }: {
     imports = [
-        (modulesPath + "/installer/scan/not-detected.nix")
-
         # Import impermanence module
         inputs.impermanence.nixosModules.default
     ];
+
+    # Declare host platform
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     # Declare kernel modules included in the initial ramdisk
     boot.initrd.availableKernelModules = [
@@ -71,6 +72,7 @@
         "/etc/machine-id"
     ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    # Enable non-free firmware on devices not recognized by `nixos-generate-config`
+    hardware.enableRedistributableFirmware = lib.mkDefault true;
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

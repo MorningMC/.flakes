@@ -1,5 +1,6 @@
-{ config, lib, modulesPath, ... }: {
-    imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+{ config, lib, ... }: {
+    # Declare host platform
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     # Declare kernel modules included in the initial ramdisk
     boot.initrd.availableKernelModules = [
@@ -38,6 +39,7 @@
     # Declare video drivers
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    # Enable non-free firmware on devices not recognized by `nixos-generate-config`
+    hardware.enableRedistributableFirmware = lib.mkDefault true;
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
