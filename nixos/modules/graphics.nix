@@ -25,7 +25,12 @@
         prime.offload.offloadCmdMainProgram = "prime-run"; # Follows conventional name
     };
 
-    # Move CUDA caches to temporary filesystem
-    environment.sessionVariables.CUDA_CACHE_PATH =
-        lib.mkIf config.hardware.nvidia.enabled "$XDG_RUNTIME_DIR/nvidia/ComputeCache";
+    # Configure environment variables for NVIDIA drivers
+    environment.sessionVariables = lib.mkIf config.hardware.nvidia.enabled {
+        # Configure NVIDIA VA-API driver to interface directly with the kernel driver backend
+        NVD_BACKEND = "direct";
+
+        # Move CUDA caches to temporary filesystem
+        CUDA_CACHE_PATH = "$XDG_RUNTIME_DIR/nvidia/ComputeCache";
+    };
 }

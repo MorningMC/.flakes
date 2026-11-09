@@ -1,4 +1,4 @@
-{ options, lib, ... }: let
+{ lib, pkgs, ... }: let
     # Import helper functions
     toNixPci = import ../../lib/to-nix-pci.nix { inherit lib; };
 
@@ -9,6 +9,16 @@ in
 {
     # Declare video drivers
     services.xserver.videoDrivers = [ "nvidia" ];
+
+    # Enable Intel graphics drivers
+    hardware.graphics.extraPackages = with pkgs; [
+        intel-media-driver # VA-API media driver
+        intel-compute-runtime # OpenCL & Level Zero compute runtime
+        vpl-gpu-rt # Intel VPL GPU Runtime
+    ];
+    hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [
+        intel-media-driver # 32-bit VA-API media driver
+    ];
 
     # Enable PRIME render offload support
     hardware.nvidia.prime = {
