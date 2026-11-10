@@ -11,7 +11,7 @@ local file_manager = "dolphin"
 ------------ Helper functions ------------
 -- Construct Noctalia IPC dispatcher
 local noctalia_msg = function(command)
-	return hl.dsp.exec_cmd("noctalia msg " .. command)
+	return hl.dsp.exec_cmd("@noctalia@ msg " .. command)
 end
 
 -- Construct dispatcher that configures the active workspace's layout
@@ -77,7 +77,7 @@ hl.bind(main_mod .. " + P", hl.dsp.exec_cmd("pwvucontrol"))
 hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("crosspipe"))
 
 -- Pick color
-hl.bind(main_mod .. " + O", hl.dsp.exec_cmd("hyprpicker -a"))
+hl.bind(main_mod .. " + O", hl.dsp.exec_cmd("@hyprpicker@ -a"))
 
 ------ Media (Fn) keys (global keybinds)
 -- Increase volume (repeat when held)
@@ -107,11 +107,30 @@ hl.bind(main_mod .. " + F2", hl.dsp.submap("screenshot"))
 
 -- Declare screenshot submap
 hl.define_submap("screenshot", "reset", function()
-	-- Take regional screenshot (ignore modifiers)
-	hl.bind("E", noctalia_msg("screenshot-region"), { ignore_mods = true })
+	-- Take regional screenshot
+	hl.bind("E", noctalia_msg("screenshot-region"))
 
-	-- Take full-screen screenshot (ignore modifiers)
-	hl.bind("F", noctalia_msg("screenshot-fullscreen"), { ignore_mods = true })
+	-- Take screenshot of the current window
+	hl.bind("SHIFT + E", noctalia_msg("screenshot-window"))
+
+	-- Take regional screenshot & search on Google Lens
+	hl.bind("R", noctalia_msg(
+		"screenshot-region "
+		.. "--no-save-to-file --no-copy-to-clipboard " -- Do not pollute the screenshot anywhere
+		.. "--pipe-to-command --pipe-command @googleLensSearch@" -- Only pipe to the search script
+	))
+
+	-- Take full-screen screenshot for current monitor
+	hl.bind("F", noctalia_msg("screenshot-fullscreen"))
+
+	-- Take full-screen screenshot for all monitors
+	hl.bind("SHIFT + F", noctalia_msg("screenshot-fullscreen all"))
+
+	-- Annotate live screen
+	hl.bind("A", noctalia_msg("annotate"))
+
+	-- Annotate frozen screen
+	hl.bind("SHIFT + A", noctalia_msg("screenshot-annotate"))
 
 	-- Escape from screenshot submap (trigger when key release)
 	hl.bind("catchall", hl.dsp.submap("reset"), { release = true })
@@ -158,28 +177,28 @@ hl.define_submap("power", "reset", function()
 	-- Power-off the system
 	hl.bind(
 		"P",
-		hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd \"systemctl poweroff\""),
+		hl.dsp.exec_cmd("@hyprshutdown@ -t 'Shutting down...' --post-cmd 'systemctl poweroff'"),
 		common_flag
 	)
 
 	-- Power-off the system and enter firmware setup on next boot
 	hl.bind(
 		"SHIFT + P",
-		hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd \"systemctl poweroff --firmware-setup\""),
+		hl.dsp.exec_cmd("@hyprshutdown@ -t 'Shutting down...' --post-cmd 'systemctl poweroff --firmware-setup'"),
 		common_flag
 	)
 
 	-- Reboot the system
 	hl.bind(
 		"R",
-		hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd \"systemctl reboot\""),
+		hl.dsp.exec_cmd("@hyprshutdown@ -t 'Rebooting...' --post-cmd 'systemctl reboot'"),
 		common_flag
 	)
 
 	-- Reboot the system and enter firmware setup on boot
 	hl.bind(
 		"SHIFT + R",
-		hl.dsp.exec_cmd("hyprshutdown -t 'Rebooting...' --post-cmd \"systemctl reboot --firmware-setup\""),
+		hl.dsp.exec_cmd("@hyprshutdown@ -t 'Rebooting...' --post-cmd 'systemctl reboot --firmware-setup'"),
 		common_flag
 	)
 
@@ -222,6 +241,9 @@ hl.bind(main_mod .. " + T", hl.dsp.window.float())
 
 -- Toggles the current window's opaque state
 hl.bind(main_mod .. " + CTRL + T", hl.dsp.window.set_prop({ prop = "opaque", value = "toggle" }))
+
+-- Open window switcher
+hl.bind(main_mod .. " + TAB", noctalia_msg("window-switcher"))
 
 ------ Move focus
 -- Move focus left
