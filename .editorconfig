@@ -27,8 +27,8 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
-[*.lua]
-# Use tab indents for Lua files
+[*.{lua,sh}]
+# Use tab indents for Lua files & shell scripts
 indent_style = tab
 indent_size = 4
 
