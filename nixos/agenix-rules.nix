@@ -28,7 +28,7 @@ let
     secretsDir = "_secrets";
 
     # Import helper functions
-    inherit (import ./lib/secrets.nix) mkSecrets;
+    mkSecrets = import ./lib/mk-secrets.nix;
 in
 
 # Declare secret files to encrypt
