@@ -18,7 +18,7 @@
             adventurers-server.HostName = "10.144.144.10";
 
             # Shortcut for the FRP proxy of Adventurers' Update 2 Server
-            adventurers-proxy.HostName = "v4.adventurers.morningmc.qzz.io";
+            adventurers-proxy.HostName = "v4.adventurers.morningmc.link";
             adventurers-proxy.User = "root";
         };
     };

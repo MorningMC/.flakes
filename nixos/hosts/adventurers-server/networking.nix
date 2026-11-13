@@ -18,8 +18,8 @@
         passwordFile = config.age.secrets.cloudflare-token-adventurers-server-ddns.path;
 
         # Specify domains to update
-        zone = "morningmc.qzz.io";
-        domains = [ "adventurers.morningmc.qzz.io" "v6.adventurers.morningmc.qzz.io" ];
+        zone = "morningmc.link";
+        domains = [ "adventurers.morningmc.link" "v6.adventurers.morningmc.link" ];
         usev4 = ""; # Disable IPv4 address detection as detected IPv4 will be behind a NAT
     };
 
