@@ -35,6 +35,9 @@
                     + "Experimental Period \\u00A7f2\\u00A7r\\n"
                     + "Running modpack version \\u00A762.0.0-unstable-2026-11-14";
 
+                # Use offline authentication. Players are identified only by their names.
+                online-mode = false;
+
                 # Set difficulty to hard
                 difficulty = "hard";
 
