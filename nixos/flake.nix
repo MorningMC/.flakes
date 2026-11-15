@@ -13,6 +13,10 @@
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+        # CachyOS kernel for NixOS
+        # Overriding nixpkgs input will break binary cache
+        nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
         # age-encrypted secrets for NixOS and Home manager
         agenix.url = "github:ryantm/agenix";
         agenix.inputs.nixpkgs.follows = "nixpkgs";

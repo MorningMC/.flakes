@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ inputs, ... }: {
     imports = [
         # Import Home Manager module
         inputs.home-manager.nixosModules.default
@@ -6,12 +6,6 @@
         # Import agenix module for secret encryption
         inputs.agenix.nixosModules.default
     ];
-
-    # Specify the Linux kernel used
-    boot.kernelPackages = pkgs.linuxPackages_zen;
-
-    # Enable SysRq functions
-    boot.kernel.sysctl."kernel.sysrq" = true;
 
     # Make user settings fully declarative
     users.mutableUsers = false;

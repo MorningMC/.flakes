@@ -1,21 +1,27 @@
-{
-    # Bootloader configurations
-    boot.loader = {
-        # Enable systemd-boot EFI boot manager
-        systemd-boot.enable = true;
+{ pkgs, inputs, ... }: {
+    boot = {
+        # Specify the Linux kernel used
+        kernelPackages = pkgs.linuxPackagesFor
+            inputs.nix-cachyos-kernel.packages.${pkgs.stdenv.hostPlatform.system}.linux-cachyos-server;
 
-        # Limit generation entries in boot partition to prevent boot partition running out of disk space
-        systemd-boot.configurationLimit = 32;
+        # Bootloader configurations
+        loader = {
+            # Enable systemd-boot EFI boot manager
+            systemd-boot.enable = true;
 
-        # Boot to NixOS directly without displaying the loader menu
-        timeout = 0;
+            # Limit generation entries in boot partition to prevent boot partition running out of disk space
+            systemd-boot.configurationLimit = 32;
 
-        # Allow the installation process to modify EFI boot variables
-        efi.canTouchEfiVariables = true;
+            # Boot to NixOS directly without displaying the loader menu
+            timeout = 0;
+
+            # Allow the installation process to modify EFI boot variables
+            efi.canTouchEfiVariables = true;
+        };
+
+        # Delete all files in /tmp during boot
+        tmp.cleanOnBoot = true;
     };
-
-    # Delete all files in /tmp during boot
-    boot.tmp.cleanOnBoot = true;
 
     # Define the hostname of the machine
     networking.hostName = "adventurers-server";
