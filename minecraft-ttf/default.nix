@@ -9,19 +9,25 @@
     minecraft-ttf-bin,
     minecraft-ttf-cache,
 
-    # Flags. See https://github.com/tryashtar/minecraft-ttf#optional-parameters for more information.
     version ? "latest",
+    assetsCache ? minecraft-ttf-cache.override { inherit version; },
+
+    # Flags. See https://github.com/tryashtar/minecraft-ttf#optional-parameters for more information.
     identifiers ? [ "default" ],
+    resourcePacks ? [ ],
+    fontName ? null,
+    fontCreated ? null,
+    fontModified ? null,
     styles ? [ "regular" ],
     color ? "auto",
-    char-range ? "00000-fffff",
-    unifont-chars ? "",
-    option-uniform ? false,
-    option-jp ? false
+    charRange ? "00000-fffff",
+    unifontCharRange ? "",
+    useUniformFont ? false,
+    useJapaneseGlyph ? false
 }: stdenvNoCC.mkDerivation {
     # Specify package name and version
     pname = "minecraft-ttf";
-    version = "1.6";
+    version = "1.7";
 
     # Declare derivation metadatas
     meta = {
@@ -45,15 +51,23 @@
     buildPhase = ''
         runHook preBuild
 
-        minecraft-ttf vanilla generate ${lib.escapeShellArg version} \
-            --identifiers ${lib.escapeShellArg (lib.concatStringsSep "," identifiers)} \
-            --styles ${lib.escapeShellArg (lib.concatStringsSep "," styles)} \
-            --color ${lib.escapeShellArg color} \
-            --chars ${lib.escapeShellArg char-range} \
-            --unifont-chars ${lib.escapeShellArg unifont-chars} \
-            ${lib.optionalString option-uniform "--option-uniform"} \
-            ${lib.optionalString option-jp "--option-jp"} \
-            --cache ${minecraft-ttf-cache.override { inherit version; }}
+        # Generate for every identifiers
+        for identifier in ${lib.escapeShellArgs identifiers}; do
+            minecraft-ttf generate \
+                ${if version == "latest" then "--jar-latest" else "--jar-vanilla ${version}"} \
+                --identifier "$identifier" \
+                ${lib.optionalString (resourcePacks != [ ]) "--packs ${lib.escapeShellArgs resourcePacks}"} \
+                ${lib.optionalString (fontName != null) "--font-name ${lib.escapeShellArg fontName}"} \
+                ${lib.optionalString (fontCreated != null) "--font-created ${lib.escapeShellArg fontCreated}"} \
+                ${lib.optionalString (fontModified != null) "--font-modified ${lib.escapeShellArg fontModified}"} \
+                --styles ${lib.escapeShellArg (lib.concatStringsSep "," styles)} \
+                --color ${lib.escapeShellArg color} \
+                --chars ${lib.escapeShellArg charRange} \
+                --unifont-chars ${lib.escapeShellArg unifontCharRange} \
+                ${lib.optionalString useUniformFont "--option-uniform"} \
+                ${lib.optionalString useJapaneseGlyph "--option-jp"} \
+                --cache ${assetsCache}
+        done
 
         runHook postBuild
     '';

@@ -2,11 +2,15 @@
     lib,
     rustPlatform,
 
+    pkg-config,
+    zstd,
+    aws-lc,
+
     minecraft-ttf
 }: rustPlatform.buildRustPackage (finalAttrs: {
     # Specify package name and version
     pname = "minecraft-ttf-bin";
-    version = "1.6";
+    version = "1.7";
 
     # Declare derivation metadatas
     meta = {
@@ -27,4 +31,15 @@
 
     # Specify Cargo lock file
     cargoLock.lockFile = "${minecraft-ttf}/${finalAttrs.cargoRoot}/Cargo.lock";
+
+    # Declare build-time dependencies
+    nativeBuildInputs = [
+        pkg-config
+    ];
+
+    # Declare runtime dependencies
+    buildInputs = [
+        zstd
+        aws-lc
+    ];
 })
