@@ -33,7 +33,7 @@
                 # Specify Message of the Day
                 motd = "\\u00A7aAdventurers' Update \\u00A7b2 \\u00A7aServer\\u00A7r "
                     + "Experimental Period \\u00A7f2\\u00A7r\\n"
-                    + "Running modpack version \\u00A762.0.0-unstable-2026-11-14";
+                    + "Running modpack version \\u00A762.0.0-unstable-2026-11-15";
 
                 # Use offline authentication. Players are identified only by their names.
                 online-mode = false;
