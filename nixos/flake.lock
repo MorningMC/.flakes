@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793757180,
-        "narHash": "sha256-gyV7AtCwLnOImcrfSETP4J3Ie96bz19DY47B7m7Y3HM=",
+        "lastModified": 1794715309,
+        "narHash": "sha256-awkBBs5ctFKgEYjpNGpi3t/VqF589n5EWfdinRb2gNI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b787c48e2ec57a9d098f5c2721882a3bc1e16f97",
+        "rev": "a1293da7dd8e497e08d26173f97e2976b36a31ea",
         "type": "github"
       },
       "original": {
@@ -198,11 +198,11 @@
     "minecraft-ttf_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1790146115,
-        "narHash": "sha256-qW7XBE1z8+d3Rp/6v7c5Sjid+Lr7P1bVOxmsfkTtgy8=",
+        "lastModified": 1794254722,
+        "narHash": "sha256-2b0QpiqjPtIjuHbltpbCQItB3Yn3KfscTXmHI+iklfE=",
         "owner": "tryashtar",
         "repo": "minecraft-ttf",
-        "rev": "e8fc47540baececf03f26fbc8a974ee5d091f7b9",
+        "rev": "08aa47362c745fa4ed5565af0b910752b39fac5c",
         "type": "github"
       },
       "original": {
@@ -255,11 +255,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793543282,
-        "narHash": "sha256-PHtGxKYM99f8WhGR5YD7iiCiwemKa2wUD4yVI2oALFg=",
+        "lastModified": 1794739050,
+        "narHash": "sha256-PCGNIyAydZcdUXCxEXTjrS1+wWS+k9E+ENqBkUK2Mpg=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "cee0f879d338cf08f814210fa6c2b280594ade0a",
+        "rev": "9bd074026d6db75b59aae8cd6071b5f2fe27a36c",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1793859282,
-        "narHash": "sha256-5GAN7erLBMzy6ydPpNfAlH7BFsim5IuPS+Wvtu60jH8=",
+        "lastModified": 1794722354,
+        "narHash": "sha256-VMAwEtLAwOrp2qp8bhCosws4Y59TdOXKUnzWtP7Slko=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "08438cbe7bd021f5a8164a4137aeb84d249534c3",
+        "rev": "faa6e1178602ed10ed224864a0735eb1f141f63a",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1793726008,
-        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
+        "lastModified": 1794537146,
+        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
+        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
         "type": "github"
       },
       "original": {
@@ -376,11 +376,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1793530215,
-        "narHash": "sha256-rXBx+z9KptvV+hm987LjbN13uJ5OV2kwY1Q0f78gJVg=",
+        "lastModified": 1794619036,
+        "narHash": "sha256-qtEvNBtgRcpC+K84zMprIkn82U902RLN7HhF2xkyGuk=",
         "owner": "pedorich-n",
         "repo": "playit-nixos-module",
-        "rev": "29606a144260bf5c9f864cf218b1f41fa193461f",
+        "rev": "2174c0960ca53c987b3dd17e5d9dadb8f686dea4",
         "type": "github"
       },
       "original": {
@@ -409,11 +409,11 @@
     "split-monitor-workspaces": {
       "flake": false,
       "locked": {
-        "lastModified": 1793456211,
-        "narHash": "sha256-kEhVSeUUfN9wbkf26XUDbDe/5cvvoLz/gvlR4K9H/ps=",
+        "lastModified": 1794333413,
+        "narHash": "sha256-sEWlLcUkvEZ8SacJe7OW2m6BKwwGd/8E7TJD4ClzdmU=",
         "owner": "zjeffer",
         "repo": "split-monitor-workspaces",
-        "rev": "78e3cf811aa7d3e0e359d2f5496418cb6508ba9e",
+        "rev": "83cf651e024490d627c7cbdc03206af043ceca5b",
         "type": "github"
       },
       "original": {
@@ -455,7 +455,7 @@
     "version-menifest": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-RTvSffj9rjxCgp5CEgnAc8EjSxt0ySvWiB4h/sfW/ks=",
+        "narHash": "sha256-IkB2pudxq4z//JF6d464Z5gOv3m5l8QwkPFvHe8ZCgg=",
         "type": "file",
         "url": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
       },

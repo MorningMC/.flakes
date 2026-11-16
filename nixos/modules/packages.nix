@@ -35,9 +35,6 @@
         # Enable ALSA support
         alsa.enable = true;
         alsa.support32Bit = true;
-
-        # Enable JACK support
-        jack.enable = true;
     };
 
     # Enable RealtimeKit system service if PipeWire is enabled
