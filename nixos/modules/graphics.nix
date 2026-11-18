@@ -1,10 +1,4 @@
-{ config, lib, pkgs, ... }: {
-    # Enable hardware acceleration for 32-bit applications on supported systems by default
-    hardware.graphics.enable32Bit = lib.mkDefault (
-        pkgs.stdenv.hostPlatform.isx86_64 # On an x86_64 system
-        && (config.boot.kernelPackages.kernel.features.ia32Emulation or false) # The kernel supports 32-bit emulation
-    );
-
+{ config, lib, ... }: {
     # Configure NVIDIA driver on-demand (enabled in host-specific configurations)
     hardware.nvidia = {
         # Use open-source kernel module

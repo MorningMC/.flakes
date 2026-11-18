@@ -7,18 +7,24 @@
     discreteCardPci = "0000:02:00.0";
 in
 {
+    # Configure hardware acceleration
+    hardware.graphics = {
+        # Enable hardware acceleration for 32-bit applications
+        enable32Bit = true;
+
+        # Enable Intel graphics drivers
+        extraPackages = with pkgs; [
+            intel-media-driver # VA-API media driver
+            intel-compute-runtime # OpenCL & Level Zero compute runtime
+            vpl-gpu-rt # Intel VPL GPU Runtime
+        ];
+        extraPackages32 = with pkgs.driversi686Linux; [
+            intel-media-driver # 32-bit VA-API media driver
+        ];
+    };
+
     # Declare video drivers
     services.xserver.videoDrivers = [ "nvidia" ];
-
-    # Enable Intel graphics drivers
-    hardware.graphics.extraPackages = with pkgs; [
-        intel-media-driver # VA-API media driver
-        intel-compute-runtime # OpenCL & Level Zero compute runtime
-        vpl-gpu-rt # Intel VPL GPU Runtime
-    ];
-    hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [
-        intel-media-driver # 32-bit VA-API media driver
-    ];
 
     # Enable PRIME render offload support
     hardware.nvidia.prime = {
