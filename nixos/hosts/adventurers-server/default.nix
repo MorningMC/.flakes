@@ -26,6 +26,10 @@
     # Define the hostname of the machine
     networking.hostName = "adventurers-server";
 
+    # Enable OpenSSH daemon to allow remote control
+    services.openssh.enable = true;
+    services.openssh.settings.PasswordAuthentication = false; # Do not allow password login
+
     # Specify time zone
     time.timeZone = "Asia/Shanghai";
 

@@ -1,7 +1,4 @@
 { flake, ... }: {
-    # Enable OpenSSH daemon
-    services.openssh.enable = true;
-
     # Specify authorized OpenSSH public keys
     users.users.morningmc.openssh.authorizedKeys.keys = [
         (builtins.readFile ./id_ed25519.pub)
