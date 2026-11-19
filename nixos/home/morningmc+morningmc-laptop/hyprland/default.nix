@@ -2,8 +2,8 @@
     # Enable Hyprland
     programs.hyprland.enable = true;
 
-    # Manage Hyprland by Home Manager
     home-manager.users.morningmc = { config, ... }: {
+        # Manage Hyprland by Home Manager
         wayland.windowManager.hyprland = {
             enable = true;
 
@@ -30,7 +30,6 @@
 
                         config.programs.noctalia.package # Requires Noctalia IPC
                     ];
-                    bashOptions = [ "errexit" "nounset" ]; # The script fails when `errexit` & `pipefail` are both set
                 };
             in
             {
