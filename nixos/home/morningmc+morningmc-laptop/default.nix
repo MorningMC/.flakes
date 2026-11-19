@@ -17,6 +17,9 @@
         hashedPasswordFile = config.age.secrets.morningmc_password.path;
     };
 
+    # Make this user trusted by Nix daemon
+    nix.settings.trusted-users = [ "morningmc" ];
+
     home-manager.users.morningmc = {
         imports = [
             # Import agenix module for secret encryption

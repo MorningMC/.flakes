@@ -12,13 +12,17 @@
 
         # Declare the user’s additional groups besides `users`
         extraGroups = [
-            "wheel" "networkmanager"
+            "wheel"
+            "networkmanager"
             config.services.minecraft-servers.group # Allow current user to manage Minecraft servers
         ];
 
         # Declare the password of the user
         hashedPasswordFile = config.age.secrets.morningmc_password.path;
     };
+
+    # Make this user trusted by Nix daemon
+    nix.settings.trusted-users = [ "morningmc" ];
 
     # Let Home Manager install and manage itself
     home-manager.users.morningmc.programs.home-manager.enable = true;
