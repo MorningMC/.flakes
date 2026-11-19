@@ -19,8 +19,8 @@
             efi.canTouchEfiVariables = true;
         };
 
-        # Delete all files in /tmp during boot
-        tmp.cleanOnBoot = true;
+        # Mount a tmpfs on `/tmp` during boot
+        tmp.useTmpfs = true;
     };
 
     # Define the hostname of the machine
