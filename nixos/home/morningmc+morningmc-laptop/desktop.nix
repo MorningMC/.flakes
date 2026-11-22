@@ -28,5 +28,9 @@
         QT_QPA_PLATFORMTHEME = "kde";
         XDG_MENU_PREFIX = "plasma-";
         GDK_BACKEND = "wayland";
+
+        # Specify cursor theme
+        XCURSOR_THEME = "Bibata-Modern-Classic";
+        XCURSOR_SIZE = 24;
     };
 }
