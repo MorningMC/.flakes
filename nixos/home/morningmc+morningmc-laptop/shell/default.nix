@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
     # Enable Z Shell
     programs.zsh.enable = true;
 
@@ -6,7 +6,7 @@
     users.users.morningmc.shell = pkgs.zsh;
 
     # Manage Z Shell by Home Manager
-    home-manager.users.morningmc = { config, lib, ... }: {
+    home-manager.users.morningmc = { config, ... }: {
         programs.zsh = {
             enable = true;
 
@@ -53,5 +53,6 @@
     };
 
     # Get Zsh completion for system packages
-    environment.pathsToLink = [ "/share/zsh" ];
+    environment.pathsToLink =
+        lib.mkIf config.home-manager.users.morningmc.programs.zsh.enableCompletion [ "/share/zsh" ];
 }
