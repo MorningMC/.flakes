@@ -6,7 +6,6 @@
         kdePackages.dolphin # File explorer
         kdePackages.filelight # Inspect filesystem usage
         libreoffice # Office suite
-        freerdp # RDP client
         weechat # IRC client
         qq
         wechat

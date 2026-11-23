@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ lib, pkgs, ... }: {
     users.users.morningmc.packages = with pkgs; [
         # Build tools
         gcc
@@ -19,6 +19,10 @@
         # Embedded software SDKs
         arduino-cli
 
+        # Utilities
+        freerdp # RDP client
+        android-tools # Android debugging bridge
+        scrcpy # Android remote control
         commitlint # Git commit message style check
     ];
 
