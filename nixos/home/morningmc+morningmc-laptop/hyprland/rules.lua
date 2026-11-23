@@ -116,9 +116,17 @@ hl.window_rule({
 	size = { "(monitor_w*.60)", "(monitor_h*.60)" },
 })
 
--- Make Minecraft window opaque by default
-hl.window_rule({ match = { class = ".*[Mm]inecraft.*" }, opaque = true })
-hl.window_rule({ match = { title = ".*[Mm]inecraft.*" }, opaque = true })
+-- Make Minecraft window opaque by default & allow tearing
+hl.window_rule({
+	match = { class = ".*[Mm]inecraft.*" },
+	opaque = true,
+	immediate = true,
+})
+hl.window_rule({
+	match = { title = ".*[Mm]inecraft.*" },
+	opaque = true,
+	immediate = true,
+})
 
 -- Fix JetBrains IDEs focus/rerendering problem
 hl.window_rule({
@@ -144,4 +152,11 @@ hl.window_rule({
 	match = { class = "io\\.github\\.Qalculate\\.qalculate-(qt|gtk)" },
 	float = true,
 	size = { 600, 750 }
+})
+
+-- Allow Waydroid tearing & fullscreen by default
+hl.window_rule({
+	match = { class = "Waydroid", title = "Waydroid" },
+	immediate = true,
+	fullscreen = true,
 })

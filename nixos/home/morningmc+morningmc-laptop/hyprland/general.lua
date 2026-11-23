@@ -21,6 +21,9 @@ hl.config({
 
 		-- Do not fall back to the next available window when moving focus in a direction where no window was found
 		no_focus_fallback = true,
+
+		-- Reduce game latency by allow tearing
+		allow_tearing = true,
 	},
 
 	-- Dwindle layout-specific configurations
@@ -105,6 +108,11 @@ hl.config({
 
 		-- Disable Hyprland's default background
 		disable_hyprland_logo = true,
+	},
+
+	render = {
+		-- Reduce lag when only one fullscreen application is on a screen
+		direct_scanout = 1,
 	},
 
 	ecosystem = {
