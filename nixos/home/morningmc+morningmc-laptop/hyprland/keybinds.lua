@@ -46,10 +46,10 @@ hl.bind(main_mod .. " + F11", hl.dsp.window.fullscreen({ mode = "maximized" }))
 -- Open the window in fullscreen
 hl.bind(main_mod .. " + SHIFT + F11", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
--- Toggle debug overlay
+-- Toggle debug overlay (global keybind)
 hl.bind(main_mod .. " + F3", function()
 	hl.config({ ["debug.overlay"] = not hl.get_config("debug.overlay") })
-end)
+end, { locked = true })
 
 ------ Application shortcuts
 -- Open terminal
