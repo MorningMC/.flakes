@@ -38,7 +38,7 @@ hl.bind(main_mod .. " + escape", hl.dsp.window.close())
 hl.bind(main_mod .. " + SHIFT + escape", hl.dsp.exec_cmd("loginctl lock-session"), { locked = true })
 
 -- Exit Hyprland with hyprshutdown (require long press)
-hl.bind(main_mod .. " + CTRL + escape", hl.dsp.exec_cmd("hyprshutdown"), { long_press = true })
+hl.bind(main_mod .. " + CTRL + escape", hl.dsp.exec_cmd("@hyprshutdown@"), { long_press = true })
 
 -- Maximize the window
 hl.bind(main_mod .. " + F11", hl.dsp.window.fullscreen({ mode = "maximized" }))
