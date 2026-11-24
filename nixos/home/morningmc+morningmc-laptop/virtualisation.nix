@@ -1,11 +1,16 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
     # Declare encrypted secrets used
     age.secrets.morningmc_container-windows.file = ./_secrets/container-windows.env.age;
 
     # Declare Windows VM container
     virtualisation.oci-containers.containers.windows = {
-        # Declare used container image
-        image = "ghcr.io/dockur/windows";
+        # Declare the container image
+        image = "dockurr/windows";
+        imageFile = pkgs.dockerTools.pullImage {
+            imageName = "dockurr/windows";
+            imageDigest = "sha256:16fd7c39a3e48bb946d29c59dc6015942e5b900a1fa5d7e5552053bfc48ee2ea";
+            hash = "sha256-2HoDRcvez4eE2u5+95+X5/FdY32vGMvo8uqDobbAQis=";
+        };
 
         # Declare the environment variables
         environment = {
