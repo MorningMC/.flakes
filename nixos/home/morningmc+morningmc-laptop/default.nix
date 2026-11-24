@@ -11,7 +11,7 @@
         description = "MorningMC";
 
         # Declare the user’s additional groups besides `users`
-        extraGroups = [ "wheel" "networkmanager" "dialout" ];
+        extraGroups = [ "wheel" "networkmanager" ];
 
         # Declare the password of the user
         hashedPasswordFile = config.age.secrets.morningmc_password.path;

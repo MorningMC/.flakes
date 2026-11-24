@@ -26,6 +26,9 @@
         commitlint # Git commit message style check
     ];
 
+    # Allow the user to access serial TTYs
+    users.users.morningmc.extraGroups = [ "dialout" ];
+
     home-manager.users.morningmc = { config, ... }: {
         programs = {
             # Enable Git
