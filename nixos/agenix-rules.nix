@@ -54,7 +54,7 @@ in
 ) [
     "password.age" # Hashed user password
     "easytier-adventurers.env.age" # EasyTier `adventurers` instance network secret
-    "docker-windows.env.age" # Windows Docker container secret
+    "container-windows.env.age" # Windows Docker container secret
 ]) //
 
 (mkSecrets "home/morningmc+morningmc-laptop/${secretsDir}" (
