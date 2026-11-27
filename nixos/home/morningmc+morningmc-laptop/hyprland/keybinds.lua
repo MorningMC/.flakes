@@ -245,31 +245,19 @@ hl.bind(main_mod .. " + CTRL + T", hl.dsp.window.set_prop({ prop = "opaque", val
 -- Open window switcher
 hl.bind(main_mod .. " + TAB", noctalia_msg("window-switcher"))
 
------- Move focus
--- Move focus left
-hl.bind(main_mod .. " + left", hl.dsp.focus({ direction = "l" }))
+------ Move focus / window
+local directions = { l = "H", d = "J", u = "K", r = "L" }
 
--- Move focus right
-hl.bind(main_mod .. " + right", hl.dsp.focus({ direction = "r" }))
+for direction, key in pairs(directions) do
+	-- Move focus
+	hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ direction = direction }))
 
--- Move focus up
-hl.bind(main_mod .. " + up", hl.dsp.focus({ direction = "u" }))
+	-- Move window
+	hl.bind(main_mod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = direction }))
 
--- Move focus down
-hl.bind(main_mod .. " + down", hl.dsp.focus({ direction = "d" }))
-
------- Move window or move into / out of groups
--- Move window left
-hl.bind(main_mod .. " + SHIFT + left", hl.dsp.window.move({ direction = "l", group_aware = true }))
-
--- Move window right
-hl.bind(main_mod .. " + SHIFT + right", hl.dsp.window.move({ direction = "r", group_aware = true }))
-
--- Move window up
-hl.bind(main_mod .. " + SHIFT + up", hl.dsp.window.move({ direction = "u", group_aware = true }))
-
--- Move window down
-hl.bind(main_mod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d", group_aware = true }))
+	-- Move window or move into / out of groups
+	hl.bind(main_mod .. " + CTRL + " .. key, hl.dsp.window.move({ direction = direction, group_aware = true }))
+end
 
 ------ Cycle through windows
 -- Cycle to previous window
