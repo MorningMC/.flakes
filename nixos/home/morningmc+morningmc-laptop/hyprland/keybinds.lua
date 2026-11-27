@@ -76,6 +76,9 @@ hl.bind(main_mod .. " + P", hl.dsp.exec_cmd("pwvucontrol"))
 -- Open PipeWire device control
 hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("crosspipe"))
 
+-- Open calculator
+hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd("@calculator@"))
+
 -- Pick color
 hl.bind(main_mod .. " + O", hl.dsp.exec_cmd("@hyprpicker@ -a"))
 

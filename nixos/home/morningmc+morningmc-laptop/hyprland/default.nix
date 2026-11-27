@@ -40,7 +40,9 @@
                 keybinds = replacePkgs ./keybinds.lua {
                     inherit googleLensSearch;
                     inherit (pkgs) hyprpicker hyprshutdown;
+
                     noctalia = config.programs.noctalia.package;
+                    calculator = config.programs.qalculate.package;
                 };
                 monitors = ./monitors.lua;
                 gestures = ./gestures.lua;
